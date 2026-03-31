@@ -72,32 +72,32 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| INST-01 | TBD | Pending |
-| INST-02 | TBD | Pending |
-| INST-03 | TBD | Pending |
-| HOME-01 | TBD | Pending |
-| HOME-02 | TBD | Pending |
-| HOME-03 | TBD | Pending |
-| HOME-04 | TBD | Pending |
-| RUNT-01 | TBD | Pending |
-| RUNT-02 | TBD | Pending |
-| RUNT-03 | TBD | Pending |
-| MOTN-01 | TBD | Pending |
-| MOTN-02 | TBD | Pending |
-| MOTN-03 | TBD | Pending |
-| CALC-01 | TBD | Pending |
-| CALC-02 | TBD | Pending |
-| CALC-03 | TBD | Pending |
-| CALC-04 | TBD | Pending |
-| CALC-05 | TBD | Pending |
-| QUAL-01 | TBD | Pending |
-| QUAL-02 | TBD | Pending |
+| INST-01 | Phase 1 | Pending |
+| INST-02 | Phase 1 | Pending |
+| INST-03 | Phase 2 | Pending |
+| HOME-01 | Phase 2 | Pending |
+| HOME-02 | Phase 2 | Pending |
+| HOME-03 | Phase 3 | Pending |
+| HOME-04 | Phase 3 | Pending |
+| RUNT-01 | Phase 3 | Pending |
+| RUNT-02 | Phase 3 | Pending |
+| RUNT-03 | Phase 3 | Pending |
+| MOTN-01 | Phase 4 | Pending |
+| MOTN-02 | Phase 4 | Pending |
+| MOTN-03 | Phase 4 | Pending |
+| CALC-01 | Phase 5 | Pending |
+| CALC-02 | Phase 5 | Pending |
+| CALC-03 | Phase 5 | Pending |
+| CALC-04 | Phase 5 | Pending |
+| CALC-05 | Phase 5 | Pending |
+| QUAL-01 | Phase 6 | Pending |
+| QUAL-02 | Phase 6 | Pending |
 
 **Coverage:**
 - v1 requirements: 20 total
-- Mapped to phases: 0
-- Unmapped: 20 ⚠️
+- Mapped to phases: 20
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-31*
-*Last updated: 2026-03-31 after initial definition*
+*Last updated: 2026-03-31 after roadmap generation*
