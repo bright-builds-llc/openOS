@@ -7,8 +7,8 @@
 
 ### Install and Shell
 
-- [ ] **INST-01**: User can open the site in mobile Safari on iPhone and see onboarding that explains how to add it to the Home Screen as a web app.
-- [ ] **INST-02**: User can launch the installed web app from the iPhone Home Screen and enter the experience in standalone app mode.
+- [x] **INST-01**: User can open the site in mobile Safari on iPhone and see onboarding that explains how to add it to the Home Screen as a web app.
+- [x] **INST-02**: User can launch the installed web app from the iPhone Home Screen and enter the experience in standalone app mode.
 - [ ] **INST-03**: User can use the experience in portrait orientation across supported iPhone viewport sizes with layout metrics that adapt sensibly to the device.
 
 ### Home Screen
@@ -72,8 +72,8 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| INST-01 | Phase 1 | Pending |
-| INST-02 | Phase 1 | Pending |
+| INST-01 | Phase 1 | Complete |
+| INST-02 | Phase 1 | Complete |
 | INST-03 | Phase 2 | Pending |
 | HOME-01 | Phase 2 | Pending |
 | HOME-02 | Phase 2 | Pending |
@@ -100,4 +100,4 @@
 
 ---
 *Requirements defined: 2026-03-31*
-*Last updated: 2026-03-31 after roadmap generation*
+*Last updated: 2026-03-31 after phase 1 completion*

@@ -34,6 +34,8 @@ This roadmap turns the approved V1 scope into six phases. The order follows the 
 
 **Goal:** Users reach iCeption through a browser-to-installed-web-app flow that clearly guides them into the intended standalone iPhone experience.
 
+**Status:** Complete (verified 2026-03-31)
+
 **Requirements:** INST-01, INST-02
 
 **Why first:**
@@ -139,8 +141,8 @@ This roadmap turns the approved V1 scope into six phases. The order follows the 
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| INST-01 | Phase 1 | Pending |
-| INST-02 | Phase 1 | Pending |
+| INST-01 | Phase 1 | Complete |
+| INST-02 | Phase 1 | Complete |
 | INST-03 | Phase 2 | Pending |
 | HOME-01 | Phase 2 | Pending |
 | HOME-02 | Phase 2 | Pending |
@@ -168,3 +170,4 @@ This roadmap turns the approved V1 scope into six phases. The order follows the 
 ---
 *Roadmap created: 2026-03-31*
 *Roadmap approved: 2026-03-31*
+*Phase 1 completed: 2026-03-31*
