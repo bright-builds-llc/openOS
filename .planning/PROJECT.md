@@ -24,6 +24,7 @@ When launched fullscreen on an iPhone, the experience must feel convincingly lik
 - [ ] Users can use a Calculator app that visually and behaviorally matches the standard portrait iPhone calculator closely enough to feel authentic.
 - [ ] The system uses an extensible internal app model so additional built-in apps, repo-submitted apps, and escape-hatch apps can be added without redesigning the runtime.
 - [ ] Unimplemented apps can still be launched into a polished full-screen "Coming Soon" experience instead of dead icons.
+- [ ] Implemented features include basic UI-level browser tests so core fidelity and interaction flows can be checked with confidence.
 
 ### Out of Scope
 
@@ -40,6 +41,8 @@ The user wants this to become a genuinely open alternative ecosystem over time, 
 
 Because the experience is web-based, the browser context matters. The primary target should be an installed fullscreen web app on iPhone, with the normal browser-tab experience acting as an onboarding shell that encourages users to add the site to their home screen. The design goal is not literal Apple branding. The project should avoid Apple logos and similar trademark-heavy branding while still pursuing close interaction and visual parity where legally and practically appropriate.
 
+The user also wants a basic UI-level testing story from the start. V1 does not need exhaustive end-to-end coverage, but core flows should have lightweight browser automation tests that prove the main user-visible behavior works and help preserve fidelity during iteration.
+
 ## Constraints
 
 - **Platform**: Mobile web on iPhone in portrait — V1 must feel right on iPhone-sized portrait viewports rather than trying to generalize across every device class immediately.
@@ -47,6 +50,7 @@ Because the experience is web-based, the browser context matters. The primary ta
 - **Responsive fidelity**: Support essentially all portrait iPhone sizes — layout metrics, spacing, and safe-area treatment need sensible adaptation instead of being tuned to one fixed device.
 - **Interaction fidelity**: Home screen layout, wallpaper and dock feel, status bar treatment, app motion, touch responsiveness, and calculator behavior are non-negotiable V1 quality bars.
 - **Architecture**: Build a real internal app model from V1 — the first slice must support future apps, a UIKit-like layer, and app distribution without a rewrite.
+- **Verification**: Add basic browser UI tests for key flows — the project should prove the illusion-critical interactions continue to work as features are added.
 - **Brand/IP**: Avoid literal Apple logos and similar trademark-heavy branding — the project can pursue close UX parity without relying on protected Apple marks.
 
 ## Key Decisions
@@ -58,7 +62,8 @@ Because the experience is web-based, the browser context matters. The primary ta
 | Launch unimplemented apps into a polished full-screen "Coming Soon" state | Placeholder icons should still preserve the illusion instead of acting broken or inert | — Pending |
 | Ship only the portrait standard Calculator in V1 | Keeps the first app narrow while still exercising fidelity, layout, input behavior, and app-shell transitions | — Pending |
 | Build an extensible app model in V1 instead of a Calculator-only demo | The long-term goal depends on future app extensibility, app distribution, and escape-hatch installs | — Pending |
+| Include basic browser UI tests from the first milestone | Core fidelity depends on interaction behavior, so lightweight regression coverage should exist before the app surface grows | — Pending |
 | Avoid literal Apple logos and related marks | Reduces unnecessary IP risk while still allowing close UX inspiration | — Pending |
 
 ---
-*Last updated: 2026-03-31 after initialization*
+*Last updated: 2026-03-31 after workflow clarification*
