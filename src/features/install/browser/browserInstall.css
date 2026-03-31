@@ -1,0 +1,138 @@
+.browser-install-shell {
+  position: relative;
+  width: min(100%, 430px);
+  aspect-ratio: 390 / 844;
+  border-radius: 36px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background:
+    radial-gradient(circle at top, rgba(117, 170, 255, 0.42), transparent 28%),
+    linear-gradient(180deg, #19315f 0%, #0a1331 34%, #060915 100%);
+  box-shadow: 0 30px 80px rgba(1, 4, 14, 0.56);
+}
+
+.browser-install-shell__preview {
+  position: absolute;
+  inset: 0;
+  padding: 44px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  filter: saturate(0.85);
+}
+
+.browser-install-shell__status {
+  display: flex;
+  justify-content: space-between;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+}
+
+.browser-install-shell__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px 14px;
+  margin-top: 52px;
+}
+
+.browser-install-shell__icon {
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+}
+
+.browser-install-shell__glyph {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.browser-install-shell__label {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.72rem;
+}
+
+.browser-install-shell__dock {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  padding: 16px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(24px);
+}
+
+.browser-install-shell__dock-glyph {
+  aspect-ratio: 1;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.install-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap: 18px;
+  padding: 28px;
+  background:
+    linear-gradient(180deg, rgba(6, 8, 15, 0.2) 0%, rgba(6, 8, 15, 0.86) 38%, rgba(6, 8, 15, 0.96) 100%);
+}
+
+.install-overlay__eyebrow {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.install-overlay__title {
+  margin: 0;
+  font-size: clamp(2rem, 9vw, 3rem);
+  line-height: 0.96;
+  letter-spacing: -0.06em;
+}
+
+.install-overlay__body {
+  margin: 0;
+  color: rgba(239, 244, 255, 0.82);
+  line-height: 1.5;
+}
+
+.install-overlay__steps {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: rgba(239, 244, 255, 0.88);
+  display: grid;
+  gap: 10px;
+}
+
+.install-overlay__actions {
+  display: grid;
+  gap: 10px;
+}
+
+.install-overlay__primary,
+.install-overlay__secondary {
+  border: 0;
+  border-radius: 18px;
+  padding: 14px 16px;
+  cursor: pointer;
+}
+
+.install-overlay__primary {
+  background: linear-gradient(180deg, #a5c6ff 0%, #6c9eff 100%);
+  color: #041127;
+  font-weight: 700;
+}
+
+.install-overlay__secondary {
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(243, 247, 255, 0.92);
+}
