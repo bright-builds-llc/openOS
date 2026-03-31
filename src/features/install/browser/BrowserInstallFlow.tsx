@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { AppTapIntercept } from "./AppTapIntercept";
 import { BrowserInstallOverlay } from "./BrowserInstallOverlay";
+import { PreviewShell } from "./PreviewShell";
 import "./browserInstall.css";
 
 type BrowserInstallFlowProps = {
@@ -10,42 +12,18 @@ export function BrowserInstallFlow({
   installSource,
 }: BrowserInstallFlowProps) {
   const [isTakeoverVisible, setIsTakeoverVisible] = useState(true);
-
-  const previewIcons = [
-    "Calculator",
-    "Weather",
-    "Camera",
-    "Photos",
-    "Music",
-    "Notes",
-    "Maps",
-    "Clock",
-  ];
+  const [maybeInterceptedApp, setMaybeInterceptedApp] = useState<string | null>(
+    null,
+  );
 
   return (
     <section className="browser-install-shell">
-      <div
-        aria-hidden="true"
-        className="browser-install-shell__preview"
-      >
-        <div className="browser-install-shell__status">
-          <span>9:41</span>
-          <span>{installSource}</span>
-        </div>
-        <div className="browser-install-shell__grid">
-          {previewIcons.map((label) => (
-            <div className="browser-install-shell__icon" key={label}>
-              <div className="browser-install-shell__glyph" />
-              <div className="browser-install-shell__label">{label}</div>
-            </div>
-          ))}
-        </div>
-        <div className="browser-install-shell__dock">
-          <div className="browser-install-shell__dock-glyph" />
-          <div className="browser-install-shell__dock-glyph" />
-          <div className="browser-install-shell__dock-glyph" />
-          <div className="browser-install-shell__dock-glyph" />
-        </div>
+      <div className="browser-install-shell__preview">
+        <PreviewShell
+          onAppTap={(appLabel) => {
+            setMaybeInterceptedApp(appLabel);
+          }}
+        />
       </div>
       {isTakeoverVisible ? (
         <BrowserInstallOverlay
@@ -54,6 +32,15 @@ export function BrowserInstallFlow({
           }}
         />
       ) : null}
+      {maybeInterceptedApp !== null ? (
+        <AppTapIntercept
+          appLabel={maybeInterceptedApp}
+          onClose={() => {
+            setMaybeInterceptedApp(null);
+          }}
+        />
+      ) : null}
+      <div className="browser-install-shell__source">Detected from {installSource}</div>
     </section>
   );
 }

@@ -21,6 +21,18 @@
   filter: saturate(0.85);
 }
 
+.browser-install-shell__source {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 14px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
 .browser-install-shell__status {
   display: flex;
   justify-content: space-between;
@@ -40,6 +52,14 @@
   display: grid;
   gap: 8px;
   justify-items: center;
+}
+
+.browser-install-shell__icon-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
 }
 
 .browser-install-shell__glyph {
@@ -82,6 +102,32 @@
   padding: 28px;
   background:
     linear-gradient(180deg, rgba(6, 8, 15, 0.2) 0%, rgba(6, 8, 15, 0.86) 38%, rgba(6, 8, 15, 0.96) 100%);
+}
+
+.install-intercept {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  background: rgba(2, 5, 14, 0.78);
+  backdrop-filter: blur(22px);
+}
+
+.install-intercept__card {
+  width: min(100%, 320px);
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  background: rgba(11, 16, 29, 0.92);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.42);
+}
+
+.install-intercept__card h2 {
+  margin: 0 0 12px;
+  font-size: 1.8rem;
+  line-height: 1;
+  letter-spacing: -0.05em;
 }
 
 .install-overlay__eyebrow {

@@ -1,0 +1,34 @@
+type AppTapInterceptProps = {
+  appLabel: string;
+  onClose: () => void;
+};
+
+export function AppTapIntercept({
+  appLabel,
+  onClose,
+}: AppTapInterceptProps) {
+  return (
+    <section className="install-intercept" aria-label={`${appLabel} install prompt`}>
+      <div className="install-intercept__card">
+        <p className="entry-kicker">Preview limit reached</p>
+        <h2>Install iCeption to open {appLabel}.</h2>
+        <p className="entry-body">
+          Browser mode is only a guided preview. Add iCeption to your Home
+          Screen to use the real app experience.
+        </p>
+        <div className="install-overlay__actions">
+          <button className="install-overlay__primary" type="button">
+            Install iCeption
+          </button>
+          <button
+            className="install-overlay__secondary"
+            onClick={onClose}
+            type="button"
+          >
+            Back to preview
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
