@@ -1,4 +1,8 @@
 import type { CSSProperties } from "react";
+import { AmbientBackground } from "./components/AmbientBackground";
+import { Dock } from "./components/Dock";
+import { HomeScreenGrid } from "./components/HomeScreenGrid";
+import { StatusBar } from "./components/StatusBar";
 import { createShellProfile } from "./profile/createShellProfile";
 import { useShellViewport } from "./profile/useShellViewport";
 import "./shellFoundation.css";
@@ -37,22 +41,13 @@ export function AdaptiveShellFoundation() {
       style={createShellStyle(profile)}
     >
       <div className="shell-scene__frame">
-        <div className="shell-scene__status-placeholder">
-          <span>9:41</span>
-          <span>{profile.kind}</span>
-        </div>
-        <div className="shell-scene__grid-placeholder">
-          <div className="shell-scene__tile" />
-          <div className="shell-scene__tile" />
-          <div className="shell-scene__tile" />
-          <div className="shell-scene__tile" />
-        </div>
-        <div className="shell-scene__dock-placeholder">
-          <div className="shell-scene__dock-tile" />
-          <div className="shell-scene__dock-tile" />
-          <div className="shell-scene__dock-tile" />
-          <div className="shell-scene__dock-tile" />
-        </div>
+        <AmbientBackground
+          prefersReducedMotion={prefersReducedMotion}
+          profileKind={profile.kind}
+        />
+        <StatusBar profile={profile} />
+        <HomeScreenGrid profile={profile} />
+        <Dock profile={profile} />
       </div>
     </section>
   );

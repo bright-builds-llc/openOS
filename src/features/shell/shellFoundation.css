@@ -24,7 +24,45 @@
   flex-direction: column;
 }
 
-.shell-scene__status-placeholder {
+.ambient-background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.ambient-background__layer {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(64px);
+  opacity: 0.56;
+}
+
+.ambient-background__layer--one {
+  top: -12%;
+  left: -14%;
+  width: 66%;
+  height: 34%;
+  background: rgba(150, 168, 255, 0.45);
+}
+
+.ambient-background__layer--two {
+  top: 24%;
+  right: -12%;
+  width: 56%;
+  height: 26%;
+  background: rgba(102, 222, 201, 0.28);
+}
+
+.ambient-background__layer--three {
+  bottom: -18%;
+  left: 18%;
+  width: 72%;
+  height: 30%;
+  background: rgba(244, 140, 117, 0.22);
+}
+
+.shell-status-bar {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -35,27 +73,75 @@
   letter-spacing: 0.04em;
 }
 
-.shell-scene__grid-placeholder {
+.shell-status-bar__time {
+  font-weight: 600;
+}
+
+.shell-status-bar__indicators {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.shell-status-bar__signal,
+.shell-status-bar__wifi {
+  display: inline-block;
+  width: 16px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(244, 248, 255, 0.82);
+}
+
+.shell-status-bar__battery {
+  width: 24px;
+  height: 12px;
+  padding: 2px;
+  border: 1.5px solid rgba(244, 248, 255, 0.82);
+  border-radius: 4px;
+}
+
+.shell-status-bar__battery-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+  background: rgba(244, 248, 255, 0.82);
+}
+
+.shell-grid {
+  position: relative;
   margin-top: var(--shell-grid-top);
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--shell-grid-gap-y) var(--shell-grid-gap-x);
 }
 
-.shell-scene__tile,
-.shell-scene__dock-tile {
+.shell-grid__item {
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+}
+
+.shell-grid__icon,
+.shell-dock__tile {
   aspect-ratio: 1;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.16);
   backdrop-filter: blur(10px);
 }
 
-.shell-scene__tile {
+.shell-grid__icon {
   width: var(--shell-icon-size);
-  justify-self: center;
 }
 
-.shell-scene__dock-placeholder {
+.shell-grid__label {
+  color: rgba(244, 248, 255, 0.92);
+  font-size: var(--shell-label-size);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+.shell-dock {
+  position: relative;
   margin-top: auto;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -67,7 +153,7 @@
   backdrop-filter: blur(24px);
 }
 
-.shell-scene__dock-tile {
+.shell-dock__tile {
   width: var(--shell-dock-icon-size);
   justify-self: center;
 }
