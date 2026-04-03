@@ -33,7 +33,7 @@ export function AdaptiveShellFoundation() {
 
   return (
     <section
-      aria-label="iCeption shell foundation"
+      aria-label="openOS shell foundation"
       className="shell-scene"
       data-motion={prefersReducedMotion ? "reduced" : "full"}
       data-shell-profile={profile.kind}

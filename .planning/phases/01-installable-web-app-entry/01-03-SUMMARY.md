@@ -17,9 +17,9 @@ tech-stack:
 key-files:
   created:
     - public/manifest.webmanifest
-    - public/icons/iception-icon.svg
-    - public/icons/iception-icon-180.png
-    - public/icons/iception-icon-512.png
+    - public/icons/openos-icon.svg
+    - public/icons/openos-icon-180.png
+    - public/icons/openos-icon-512.png
     - src/features/install/standalone/LaunchState.ts
     - src/features/install/standalone/LaunchState.test.ts
     - src/features/install/standalone/LaunchStateStorage.ts
@@ -40,7 +40,7 @@ completed: 2026-03-31
 
 # Phase 1: Installable Web App Entry Summary
 
-**Installed iCeption identity with original icon assets and a standalone entry flow that distinguishes first launch from returning launches**
+**Installed openOS identity with original icon assets and a standalone entry flow that distinguishes first launch from returning launches**
 
 ## Performance
 
@@ -51,7 +51,7 @@ completed: 2026-03-31
 - **Files modified:** 10
 
 ## Accomplishments
-- Added manifest and Apple web-app metadata for the installed iCeption identity
+- Added manifest and Apple web-app metadata for the installed openOS identity
 - Created original icon assets and wired them for both manifest and Apple touch icon usage
 - Implemented a short first-launch splash and a returning-user fast path on the standalone branch
 
@@ -59,15 +59,15 @@ completed: 2026-03-31
 
 Each task was committed atomically:
 
-1. **Task 1: Wire manifest and Apple web-app metadata for iCeption identity** - `bbe4771` (feat)
+1. **Task 1: Wire manifest and Apple web-app metadata for openOS identity** - `bbe4771` (feat)
 2. **Task 2: Implement standalone launch-state behavior** - `3d2595b` (test)
 3. **Task 3: Keep browser and standalone paths cleanly separated** - `435cc19` (feat)
 
 ## Files Created/Modified
 - `public/manifest.webmanifest` - installed app identity metadata
-- `public/icons/iception-icon.svg` - original source icon asset
-- `public/icons/iception-icon-180.png` - Apple touch icon asset
-- `public/icons/iception-icon-512.png` - large installed icon asset
+- `public/icons/openos-icon.svg` - original source icon asset
+- `public/icons/openos-icon-180.png` - Apple touch icon asset
+- `public/icons/openos-icon-512.png` - large installed icon asset
 - `src/features/install/standalone/LaunchState.ts` - pure standalone launch-state logic
 - `src/features/install/standalone/StandaloneEntry.tsx` - installed entry branch UI and launch timing
 

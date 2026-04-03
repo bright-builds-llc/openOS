@@ -1,8 +1,8 @@
-# iCeption
+# openOS
 
 ## What This Is
 
-iCeption is a mobile web experience that aims to feel nearly indistinguishable from using an iPhone when opened fullscreen on an iPhone in portrait mode. V1 starts at the iPhone-style home screen, supports convincing app open and dismiss animations, and ships a high-fidelity Calculator app while laying the foundation for a broader web-based iOS-like app ecosystem.
+openOS is a mobile web experience that aims to feel nearly indistinguishable from using an iPhone when opened fullscreen on an iPhone in portrait mode. V1 starts at the iPhone-style home screen, supports convincing app open and dismiss animations, and ships a high-fidelity Calculator app while laying the foundation for a broader web-based iOS-like app ecosystem.
 
 Longer term, this project aims to become an open platform for browser-native "virtual iOS apps," including a basic UIKit-style library, a repo-driven app distribution model, and an escape hatch for installing arbitrary apps inside the experience.
 

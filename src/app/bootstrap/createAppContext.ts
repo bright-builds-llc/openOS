@@ -39,7 +39,9 @@ function getDevInstallContextOverride(
   }
 
   const params = new URLSearchParams(search);
-  const maybeOverride = params.get("iception-install-context");
+  const maybeOverride =
+    params.get("openos-install-context") ??
+    params.get("iception-install-context");
 
   if (maybeOverride === null || !isInstallContextKind(maybeOverride)) {
     return null;

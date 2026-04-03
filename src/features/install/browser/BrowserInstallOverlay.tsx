@@ -8,11 +8,11 @@ export function BrowserInstallOverlay({
   onDismiss,
 }: BrowserInstallOverlayProps) {
   return (
-    <section className="install-overlay" aria-label="Install iCeption">
+    <section className="install-overlay" aria-label="Install openOS">
       <div className="install-overlay__eyebrow">Safari install required</div>
-      <h1 className="install-overlay__title">Install iCeption to enter the real experience.</h1>
+      <h1 className="install-overlay__title">Install openOS to enter the real experience.</h1>
       <p className="install-overlay__body">
-        iCeption is designed to feel like an iPhone only when it runs as an
+        openOS is designed to feel like an iPhone only when it runs as an
         installed web app. This browser view is a guided preview.
       </p>
       <ol className="install-overlay__steps">
@@ -22,7 +22,7 @@ export function BrowserInstallOverlay({
       </ol>
       <div className="install-overlay__actions">
         <button className="install-overlay__primary" type="button">
-          Install iCeption
+          Install openOS
         </button>
         <button
           className="install-overlay__secondary"

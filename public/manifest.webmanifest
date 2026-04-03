@@ -1,7 +1,7 @@
 {
-  "name": "iCeption",
-  "short_name": "iCeption",
-  "description": "Install iCeption to enter the standalone iPhone-inspired web app experience.",
+  "name": "openOS",
+  "short_name": "openOS",
+  "description": "Install openOS to enter the standalone iPhone-inspired web app experience.",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
@@ -9,17 +9,17 @@
   "theme_color": "#0a1331",
   "icons": [
     {
-      "src": "/icons/iception-icon-180.png",
+      "src": "/icons/openos-icon-180.png",
       "sizes": "180x180",
       "type": "image/png"
     },
     {
-      "src": "/icons/iception-icon-512.png",
+      "src": "/icons/openos-icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "/icons/iception-icon.svg",
+      "src": "/icons/openos-icon.svg",
       "sizes": "512x512",
       "type": "image/svg+xml"
     }

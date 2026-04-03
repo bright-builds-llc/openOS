@@ -22,11 +22,11 @@ Guide users from Safari into the intended installed standalone iPhone web-app ex
 ### Pre-install experience
 - Before install, users may see a limited live preview of the home screen.
 - Pre-install interaction should be intentionally limited; meaningful product use should not happen in browser mode.
-- If users tap an app before installing, show a polished intercept that redirects them toward installing iCeption instead of opening the real app.
+- If users tap an app before installing, show a polished intercept that redirects them toward installing openOS instead of opening the real app.
 - Browser mode should look close to the installed experience, but it may include subtle preview-mode treatment where needed to explain why install is recommended.
 
 ### Installed app identity
-- The installed app name should be `iCeption`.
+- The installed app name should be `openOS`.
 - The Home Screen icon should feel plausible inside an iPhone grid, but it must be original and avoid Apple-derived marks.
 - First launch should include a very short polished launch state that feels app-like, not a long boot animation.
 - Branding inside the installed app should stay restrained so the illusion remains strong.
@@ -57,7 +57,7 @@ Guide users from Safari into the intended installed standalone iPhone web-app ex
 <deferred>
 ## Deferred Ideas
 
-- Add a short note in README and/or docs explaining that the name `iCeption` combines `iPhone` and `Inception` — useful project context, but outside this phase's implementation boundary.
+- If historical context is useful later, add a short docs note that the project was previously named `iCeption`, which combined `iPhone` and `Inception`.
 
 </deferred>
 

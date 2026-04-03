@@ -1,17 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
   <defs>
-    <linearGradient id="iception-bg" x1="96" y1="48" x2="420" y2="464" gradientUnits="userSpaceOnUse">
+    <linearGradient id="openos-bg" x1="96" y1="48" x2="420" y2="464" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#8BD6FF" />
       <stop offset="0.48" stop-color="#568CFF" />
       <stop offset="1" stop-color="#0B1232" />
     </linearGradient>
-    <linearGradient id="iception-ring" x1="142" y1="140" x2="378" y2="380" gradientUnits="userSpaceOnUse">
+    <linearGradient id="openos-ring" x1="142" y1="140" x2="378" y2="380" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#FFFFFF" />
       <stop offset="1" stop-color="#B9D7FF" />
     </linearGradient>
   </defs>
-  <rect x="32" y="32" width="448" height="448" rx="104" fill="url(#iception-bg)" />
-  <circle cx="256" cy="256" r="122" stroke="url(#iception-ring)" stroke-width="40" opacity="0.96" />
+  <rect x="32" y="32" width="448" height="448" rx="104" fill="url(#openos-bg)" />
+  <circle cx="256" cy="256" r="122" stroke="url(#openos-ring)" stroke-width="40" opacity="0.96" />
   <circle cx="256" cy="256" r="56" fill="#0C173F" fill-opacity="0.96" />
   <path d="M254 110c13 0 24 11 24 24s-11 24-24 24-24-11-24-24 11-24 24-24Z" fill="#F4FAFF" />
   <path d="M254 330c13 0 24 11 24 24s-11 24-24 24-24-11-24-24 11-24 24-24Z" fill="#F4FAFF" opacity="0.92" />

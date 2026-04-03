@@ -1,4 +1,4 @@
-# Project State: iCeption
+# Project State: openOS
 
 ## Project Reference
 

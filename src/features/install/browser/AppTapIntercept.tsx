@@ -11,14 +11,14 @@ export function AppTapIntercept({
     <section className="install-intercept" aria-label={`${appLabel} install prompt`}>
       <div className="install-intercept__card">
         <p className="entry-kicker">Preview limit reached</p>
-        <h2>Install iCeption to open {appLabel}.</h2>
+        <h2>Install openOS to open {appLabel}.</h2>
         <p className="entry-body">
-          Browser mode is only a guided preview. Add iCeption to your Home
+          Browser mode is only a guided preview. Add openOS to your Home
           Screen to use the real app experience.
         </p>
         <div className="install-overlay__actions">
           <button className="install-overlay__primary" type="button">
-            Install iCeption
+            Install openOS
           </button>
           <button
             className="install-overlay__secondary"

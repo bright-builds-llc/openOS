@@ -1,13 +1,13 @@
 # Project Research Summary
 
-**Project:** iCeption
+**Project:** openOS
 **Domain:** browser-native iPhone-like installed web app shell
 **Researched:** 2026-03-31
 **Confidence:** MEDIUM
 
 ## Executive Summary
 
-iCeption is best treated as an installed, standalone mobile web app rather than a normal website with an iPhone skin. The current Apple user flow for iPhone web apps explicitly supports “Add to Home Screen” with “Open as Web App,” and both Apple and MDN documentation make clear that installed display mode, viewport handling, and safe-area treatment materially change how the experience behaves. That means the architecture and roadmap should optimize first for standalone iPhone usage, while normal browser mode acts as an onboarding shell.
+openOS is best treated as an installed, standalone mobile web app rather than a normal website with an iPhone skin. The current Apple user flow for iPhone web apps explicitly supports “Add to Home Screen” with “Open as Web App,” and both Apple and MDN documentation make clear that installed display mode, viewport handling, and safe-area treatment materially change how the experience behaves. That means the architecture and roadmap should optimize first for standalone iPhone usage, while normal browser mode acts as an onboarding shell.
 
 The strongest technical recommendation is a React + TypeScript + Vite client application with a real app runtime from the start: app registry, launcher state, motion orchestration, device-profile derivation, and a shared app shell. This avoids the common trap of shipping a Calculator-only demo that must be rewritten as soon as the second app appears. The main risk is fidelity drift across iPhone sizes and display modes, which is why lightweight Playwright UI tests should be in scope from the first real feature milestone.
 

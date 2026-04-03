@@ -41,7 +41,7 @@ export function StandaloneEntry({
       <section className="standalone-entry">
         <div className="standalone-entry__splash">
           <div className="standalone-entry__icon" />
-          <p className="standalone-entry__splash-title">Launching iCeption</p>
+          <p className="standalone-entry__splash-title">Launching openOS</p>
         </div>
       </section>
     );

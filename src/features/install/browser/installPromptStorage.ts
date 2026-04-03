@@ -1,11 +1,15 @@
-const INSTALL_PROMPT_DISMISSED_AT_KEY = "iception.installPromptDismissedAt";
+const INSTALL_PROMPT_DISMISSED_AT_KEY = "openos.installPromptDismissedAt";
+const LEGACY_INSTALL_PROMPT_DISMISSED_AT_KEY =
+  "iception.installPromptDismissedAt";
 
 type StorageLike = Pick<Storage, "getItem" | "setItem" | "removeItem">;
 
 export function readInstallPromptDismissedAt(
   storage: StorageLike,
 ): number | null {
-  const maybeValue = storage.getItem(INSTALL_PROMPT_DISMISSED_AT_KEY);
+  const maybeValue =
+    storage.getItem(INSTALL_PROMPT_DISMISSED_AT_KEY) ??
+    storage.getItem(LEGACY_INSTALL_PROMPT_DISMISSED_AT_KEY);
 
   if (maybeValue === null) {
     return null;
@@ -15,6 +19,7 @@ export function readInstallPromptDismissedAt(
 
   if (!Number.isFinite(parsedValue)) {
     storage.removeItem(INSTALL_PROMPT_DISMISSED_AT_KEY);
+    storage.removeItem(LEGACY_INSTALL_PROMPT_DISMISSED_AT_KEY);
     return null;
   }
 
@@ -30,4 +35,5 @@ export function writeInstallPromptDismissedAt(
 
 export function clearInstallPromptDismissedAt(storage: StorageLike): void {
   storage.removeItem(INSTALL_PROMPT_DISMISSED_AT_KEY);
+  storage.removeItem(LEGACY_INSTALL_PROMPT_DISMISSED_AT_KEY);
 }

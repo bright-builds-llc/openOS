@@ -62,7 +62,7 @@ export function BrowserInstallFlow({
       {promptState.mode === "persistent" ? (
         <div className="install-prompt-pill">
           <div>
-            <div className="install-prompt-pill__title">Install iCeption</div>
+            <div className="install-prompt-pill__title">Install openOS</div>
             <div className="install-prompt-pill__body">
               Open apps for real from your Home Screen.
             </div>

@@ -1,8 +1,8 @@
-# Roadmap: iCeption
+# Roadmap: openOS
 
 **Created:** 2026-03-31
 **Approved:** 2026-03-31
-**Project:** iCeption
+**Project:** openOS
 **V1 requirements mapped:** 20 / 20
 **Unmapped:** 0
 
@@ -32,7 +32,7 @@ This roadmap turns the approved V1 scope into six phases. The order follows the 
 
 ### Phase 1: Installable Web App Entry
 
-**Goal:** Users reach iCeption through a browser-to-installed-web-app flow that clearly guides them into the intended standalone iPhone experience.
+**Goal:** Users reach openOS through a browser-to-installed-web-app flow that clearly guides them into the intended standalone iPhone experience.
 
 **Status:** Complete (verified 2026-03-31)
 

@@ -1,4 +1,4 @@
-# Requirements: iCeption
+# Requirements: openOS
 
 **Defined:** 2026-03-31
 **Core Value:** When launched fullscreen on an iPhone, the experience must feel convincingly like using iOS, starting with the home screen, motion system, and Calculator.
