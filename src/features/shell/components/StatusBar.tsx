@@ -1,3 +1,4 @@
+import "../layout/homeScreenLayout.css";
 import type { ShellProfile } from "../profile/createShellProfile";
 
 type StatusBarProps = {
