@@ -5,7 +5,7 @@
 See: `.planning/PROJECT.md` (updated 2026-03-31)
 
 **Core value:** When launched fullscreen on an iPhone, the experience must feel convincingly like using iOS, starting with the home screen, motion system, and Calculator.
-**Current focus:** Phase 2 context gathering
+**Current focus:** Phase 3 context gathering
 
 ## Artifact Status
 
@@ -16,21 +16,21 @@ See: `.planning/PROJECT.md` (updated 2026-03-31)
 | research/ | Complete | Stack, features, architecture, pitfalls, and summary written and committed |
 | REQUIREMENTS.md | Complete | V1 and V2 scope defined and committed |
 | ROADMAP.md | Complete | Approved roadmap with six phases covering all v1 requirements |
-| STATE.md | Active | Updated after Phase 1 completion |
+| STATE.md | Active | Updated after Phase 2 completion |
 
 ## Current Phase Outlook
 
 ### Next action
 
-- Start Phase 2 context gathering or planning from the approved roadmap.
+- Start Phase 3 context gathering or planning from the approved roadmap.
 
 ### Most recently completed phase
 
-- **Phase 1: Installable Web App Entry** — complete and verified.
+- **Phase 2: Adaptive Shell Foundation** — complete and verified.
 
 ### Planned next phase
 
-- **Phase 2: Adaptive Shell Foundation** — build responsive portrait iPhone shell primitives.
+- **Phase 3: Home Screen Runtime** — build the launcher, app registry, and placeholder app behavior.
 
 ## Notes
 
@@ -40,9 +40,9 @@ See: `.planning/PROJECT.md` (updated 2026-03-31)
 
 ## Session
 
-**Last Date:** 2026-04-03T08:32:26.474Z
-**Stopped At:** Phase 2 context gathered
-**Resume File:** .planning/phases/02-adaptive-shell-foundation/02-CONTEXT.md
+**Last Date:** 2026-04-03T08:54:36.694Z
+**Stopped At:** Phase 2 complete
+**Resume File:** .planning/ROADMAP.md
 
 ---
-*State updated: 2026-03-31 after phase 1 completion*
+*State updated: 2026-04-03 after phase 2 completion*

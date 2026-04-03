@@ -9,12 +9,12 @@
 
 - [x] **INST-01**: User can open the site in mobile Safari on iPhone and see onboarding that explains how to add it to the Home Screen as a web app.
 - [x] **INST-02**: User can launch the installed web app from the iPhone Home Screen and enter the experience in standalone app mode.
-- [ ] **INST-03**: User can use the experience in portrait orientation across supported iPhone viewport sizes with layout metrics that adapt sensibly to the device.
+- [x] **INST-03**: User can use the experience in portrait orientation across supported iPhone viewport sizes with layout metrics that adapt sensibly to the device.
 
 ### Home Screen
 
-- [ ] **HOME-01**: User lands on an iPhone-like home screen with wallpaper, status bar treatment, app grid, and dock.
-- [ ] **HOME-02**: User sees a full realistic grid of app icons and labels rather than a sparse single-app screen.
+- [x] **HOME-01**: User lands on an iPhone-like home screen with wallpaper, status bar treatment, app grid, and dock.
+- [x] **HOME-02**: User sees a full realistic grid of app icons and labels rather than a sparse single-app screen.
 - [ ] **HOME-03**: User can tap any visible app icon from the home screen.
 - [ ] **HOME-04**: User opening an unimplemented app sees a polished full-screen "Coming Soon" app state instead of a dead icon or broken route.
 
@@ -74,9 +74,9 @@
 |-------------|-------|--------|
 | INST-01 | Phase 1 | Complete |
 | INST-02 | Phase 1 | Complete |
-| INST-03 | Phase 2 | Pending |
-| HOME-01 | Phase 2 | Pending |
-| HOME-02 | Phase 2 | Pending |
+| INST-03 | Phase 2 | Complete |
+| HOME-01 | Phase 2 | Complete |
+| HOME-02 | Phase 2 | Complete |
 | HOME-03 | Phase 3 | Pending |
 | HOME-04 | Phase 3 | Pending |
 | RUNT-01 | Phase 3 | Pending |
@@ -100,4 +100,4 @@
 
 ---
 *Requirements defined: 2026-03-31*
-*Last updated: 2026-03-31 after phase 1 completion*
+*Last updated: 2026-04-03 after phase 2 completion*
