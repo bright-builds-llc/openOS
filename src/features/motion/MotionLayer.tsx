@@ -11,7 +11,6 @@ type MotionLayerProps = {
   app: RuntimeApp;
   state: Exclude<HomeNavigationState, { kind: "home" }>;
   children: ReactNode;
-  homeControl?: ReactNode;
   onTransitionComplete: () => void;
 };
 
@@ -37,7 +36,6 @@ export function MotionLayer({
   app,
   state,
   children,
-  homeControl,
   onTransitionComplete,
 }: MotionLayerProps) {
   useEffect(() => {
@@ -64,7 +62,6 @@ export function MotionLayer({
       <div className="motion-layer__surface" style={createMotionStyle(state)}>
         <div className="motion-layer__surface-inner">
           <div className="motion-layer__surface-frame">
-            {homeControl}
             <div className="motion-layer__content">{children}</div>
           </div>
           <div className="motion-layer__app-label">{app.label}</div>

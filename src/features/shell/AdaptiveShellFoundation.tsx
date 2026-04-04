@@ -146,26 +146,6 @@ export function AdaptiveShellFoundation() {
         {maybeOpenApp !== null ? (
           <MotionLayer
             app={maybeOpenApp}
-            homeControl={
-              runtimeState.kind === "open-app" ? (
-                <HomePill
-                  onHome={() => {
-                    runWithOptionalViewTransition(
-                      () => {
-                        setRuntimeState((currentState) =>
-                          closeRuntimeApp(currentState, {
-                            prefersReducedMotion,
-                            supportsViewTransitions: hasNativeViewTransitions,
-                          }),
-                        );
-                      },
-                      document,
-                      hasNativeViewTransitions && !prefersReducedMotion,
-                    );
-                  }}
-                />
-              ) : null
-            }
             onTransitionComplete={() => {
               setRuntimeState((currentState) =>
                 completeRuntimeTransition(currentState, {
@@ -182,7 +162,31 @@ export function AdaptiveShellFoundation() {
               driver: "css",
             } : runtimeState}
           >
-          <AppSurface app={maybeOpenApp}>{appSurfaceContent}</AppSurface>
+            <AppSurface
+              app={maybeOpenApp}
+              homeControl={
+                runtimeState.kind === "open-app" ? (
+                  <HomePill
+                    onHome={() => {
+                      runWithOptionalViewTransition(
+                        () => {
+                          setRuntimeState((currentState) =>
+                            closeRuntimeApp(currentState, {
+                              prefersReducedMotion,
+                              supportsViewTransitions: hasNativeViewTransitions,
+                            }),
+                          );
+                        },
+                        document,
+                        hasNativeViewTransitions && !prefersReducedMotion,
+                      );
+                    }}
+                  />
+                ) : null
+              }
+            >
+              {appSurfaceContent}
+            </AppSurface>
           </MotionLayer>
         ) : null}
       </div>
