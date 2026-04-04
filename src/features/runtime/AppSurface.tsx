@@ -18,6 +18,7 @@ export function AppSurface({
       className="app-surface"
       data-availability={app.availability}
       data-launch-surface={app.launchSurface}
+      data-testid={`app-surface:${app.id}`}
     >
       <header className="app-surface__header">
         <div className="app-surface__eyebrow">

@@ -16,8 +16,10 @@ export function CalculatorApp() {
   );
 
   return (
-    <section className="calculator-app">
-      <div className="calculator-app__display">{state.display}</div>
+    <section className="calculator-app" data-testid="calculator-app">
+      <div className="calculator-app__display" data-testid="calculator-display">
+        {state.display}
+      </div>
       <div className="calculator-app__keypad">
         {calculatorButtons.flatMap((row, rowIndex) =>
           row.map((button) => (
@@ -37,6 +39,7 @@ export function CalculatorApp() {
               ]
                 .filter(Boolean)
                 .join(" ")}
+              data-testid={`calculator-key:${button.id}`}
               key={`${rowIndex}-${button.id}`}
               onClick={() => {
                 dispatch(button.action);

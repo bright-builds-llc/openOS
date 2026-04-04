@@ -7,6 +7,7 @@ export function HomePill({ onHome }: HomePillProps) {
     <button
       aria-label="Return to home screen"
       className="home-pill"
+      data-testid="home-pill"
       onClick={onHome}
       type="button"
     >

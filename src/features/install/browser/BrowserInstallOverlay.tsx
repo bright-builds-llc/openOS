@@ -8,7 +8,11 @@ export function BrowserInstallOverlay({
   onDismiss,
 }: BrowserInstallOverlayProps) {
   return (
-    <section className="install-overlay" aria-label="Install openOS">
+    <section
+      className="install-overlay"
+      aria-label="Install openOS"
+      data-testid="install-overlay"
+    >
       <div className="install-overlay__eyebrow">Safari install required</div>
       <h1 className="install-overlay__title">Install openOS to enter the real experience.</h1>
       <p className="install-overlay__body">

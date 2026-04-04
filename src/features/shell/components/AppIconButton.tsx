@@ -57,6 +57,7 @@ export function AppIconButton({
       data-availability={app.availability}
       data-launch-surface={app.launchSurface}
       data-pressed={isPressed ? "true" : "false"}
+      data-testid={`app-icon:${app.id}`}
       onClick={handleOpen}
       style={style}
       type="button"
