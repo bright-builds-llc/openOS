@@ -56,6 +56,16 @@
   animation: app-close-reduced var(--motion-duration) ease both;
 }
 
+.shell-scene__home[data-runtime-state="open-app"] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.shell-scene__home[data-runtime-state="opening"],
+.shell-scene__home[data-runtime-state="closing"] {
+  opacity: 1;
+}
+
 .motion-layer[data-state="open-app"] .motion-layer__surface,
 .motion-layer[data-state="opening"] .motion-layer__surface,
 .motion-layer[data-state="closing"] .motion-layer__surface {

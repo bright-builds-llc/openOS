@@ -1,14 +1,16 @@
-import type { PropsWithChildren } from "react";
+import type { PropsWithChildren, ReactNode } from "react";
 import type { RuntimeApp } from "./appRegistry";
 import "./runtimeShell.css";
 
 type AppSurfaceProps = PropsWithChildren<{
   app: RuntimeApp;
+  homeControl?: ReactNode;
 }>;
 
 export function AppSurface({
   app,
   children,
+  homeControl,
 }: AppSurfaceProps) {
   return (
     <section
@@ -29,6 +31,9 @@ export function AppSurface({
         </div>
       </header>
       <div className="app-surface__body">{children}</div>
+      {homeControl ? (
+        <div className="app-surface__chrome">{homeControl}</div>
+      ) : null}
     </section>
   );
 }

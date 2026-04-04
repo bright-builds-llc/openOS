@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
 import { CalculatorApp } from "../apps/calculator/CalculatorApp";
+import { HomePill } from "../motion/HomePill";
 import { MotionLayer } from "../motion/MotionLayer";
 import { runWithOptionalViewTransition, supportsViewTransitions } from "../motion/supportsViewTransitions";
 import { AppSurface } from "../runtime/AppSurface";
 import { appRegistry } from "../runtime/appRegistry";
 import { ComingSoonApp } from "../runtime/ComingSoonApp";
 import {
+  closeRuntimeApp,
   completeRuntimeTransition,
   createInitialHomeScreenRuntimeState,
   getOpenRuntimeApp,
@@ -61,6 +63,15 @@ export function AdaptiveShellFoundation() {
     ) : maybeOpenApp !== null ? (
       <ComingSoonApp app={maybeOpenApp} />
     ) : null;
+
+  useEffect(() => {
+    setRuntimeState((currentState) =>
+      syncRuntimeMotionPreferences(currentState, {
+        prefersReducedMotion,
+        supportsViewTransitions: hasNativeViewTransitions,
+      }),
+    );
+  }, [hasNativeViewTransitions, prefersReducedMotion]);
 
   return (
     <section
@@ -135,6 +146,26 @@ export function AdaptiveShellFoundation() {
         {maybeOpenApp !== null ? (
           <MotionLayer
             app={maybeOpenApp}
+            homeControl={
+              runtimeState.kind === "open-app" ? (
+                <HomePill
+                  onHome={() => {
+                    runWithOptionalViewTransition(
+                      () => {
+                        setRuntimeState((currentState) =>
+                          closeRuntimeApp(currentState, {
+                            prefersReducedMotion,
+                            supportsViewTransitions: hasNativeViewTransitions,
+                          }),
+                        );
+                      },
+                      document,
+                      hasNativeViewTransitions && !prefersReducedMotion,
+                    );
+                  }}
+                />
+              ) : null
+            }
             onTransitionComplete={() => {
               setRuntimeState((currentState) =>
                 completeRuntimeTransition(currentState, {
@@ -151,7 +182,7 @@ export function AdaptiveShellFoundation() {
               driver: "css",
             } : runtimeState}
           >
-            <AppSurface app={maybeOpenApp}>{appSurfaceContent}</AppSurface>
+          <AppSurface app={maybeOpenApp}>{appSurfaceContent}</AppSurface>
           </MotionLayer>
         ) : null}
       </div>
