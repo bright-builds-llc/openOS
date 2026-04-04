@@ -25,6 +25,10 @@ export const initialCalculatorState: CalculatorState = {
   shouldShowAllClear: true,
 };
 
+function isDisplayError(state: CalculatorState): boolean {
+  return state.display === "Error";
+}
+
 function parseDisplayValue(display: string): number {
   const value = Number(display);
 
@@ -57,7 +61,7 @@ function applyPendingOperator(
   operator: CalculatorOperator,
   left: number,
   right: number,
-): number {
+): number | "Error" {
   switch (operator) {
     case "+":
       return left + right;
@@ -66,7 +70,7 @@ function applyPendingOperator(
     case "×":
       return left * right;
     case "÷":
-      return right === 0 ? 0 : left / right;
+      return right === 0 ? "Error" : left / right;
   }
 }
 
@@ -74,6 +78,15 @@ function writeDigit(
   state: CalculatorState,
   digit: string,
 ): CalculatorState {
+  if (isDisplayError(state)) {
+    return {
+      ...initialCalculatorState,
+      display: digit,
+      isFreshEntry: false,
+      shouldShowAllClear: false,
+    };
+  }
+
   if (state.isFreshEntry) {
     return {
       ...state,
@@ -99,6 +112,15 @@ function writeDigit(
 }
 
 function writeDecimal(state: CalculatorState): CalculatorState {
+  if (isDisplayError(state)) {
+    return {
+      ...initialCalculatorState,
+      display: "0.",
+      isFreshEntry: false,
+      shouldShowAllClear: false,
+    };
+  }
+
   if (state.isFreshEntry) {
     return {
       ...state,
@@ -123,6 +145,10 @@ function applyOperator(
   state: CalculatorState,
   operator: CalculatorOperator,
 ): CalculatorState {
+  if (isDisplayError(state)) {
+    return initialCalculatorState;
+  }
+
   const currentValue = parseDisplayValue(state.display);
 
   if (state.storedValue === null || state.isFreshEntry) {
@@ -149,6 +175,14 @@ function applyOperator(
     currentValue,
   );
 
+  if (nextValue === "Error") {
+    return {
+      ...initialCalculatorState,
+      display: "Error",
+      shouldShowAllClear: true,
+    };
+  }
+
   return {
     ...state,
     display: formatDisplayValue(nextValue),
@@ -159,6 +193,10 @@ function applyOperator(
 }
 
 function applyEquals(state: CalculatorState): CalculatorState {
+  if (isDisplayError(state)) {
+    return initialCalculatorState;
+  }
+
   if (state.pendingOperator === null || state.storedValue === null) {
     return state;
   }
@@ -169,6 +207,14 @@ function applyEquals(state: CalculatorState): CalculatorState {
     state.storedValue,
     currentValue,
   );
+
+  if (nextValue === "Error") {
+    return {
+      ...initialCalculatorState,
+      display: "Error",
+      shouldShowAllClear: true,
+    };
+  }
 
   return {
     ...state,
@@ -193,6 +239,10 @@ function applyClear(state: CalculatorState): CalculatorState {
 }
 
 function applyToggleSign(state: CalculatorState): CalculatorState {
+  if (isDisplayError(state)) {
+    return state;
+  }
+
   const currentValue = parseDisplayValue(state.display);
 
   return {
@@ -202,6 +252,10 @@ function applyToggleSign(state: CalculatorState): CalculatorState {
 }
 
 function applyPercent(state: CalculatorState): CalculatorState {
+  if (isDisplayError(state)) {
+    return state;
+  }
+
   const currentValue = parseDisplayValue(state.display);
 
   return {
@@ -209,6 +263,24 @@ function applyPercent(state: CalculatorState): CalculatorState {
     display: formatDisplayValue(currentValue / 100),
     shouldShowAllClear: false,
   };
+}
+
+export function getCalculatorClearLabel(
+  state: CalculatorState,
+): "AC" | "C" {
+  return state.shouldShowAllClear ? "AC" : "C";
+}
+
+export function isOperatorActive(
+  state: CalculatorState,
+  operator: CalculatorOperator,
+): boolean {
+  return (
+    state.pendingOperator === operator &&
+    state.isFreshEntry &&
+    state.storedValue !== null &&
+    !isDisplayError(state)
+  );
 }
 
 export function reduceCalculatorState(

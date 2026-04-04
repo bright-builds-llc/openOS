@@ -1,9 +1,13 @@
 import { useReducer } from "react";
 import { calculatorButtons } from "./calculatorButtons";
 import {
+  getCalculatorClearLabel,
+  isOperatorActive,
+  type CalculatorOperator,
   initialCalculatorState,
   reduceCalculatorState,
 } from "./calculatorState";
+import "./calculator.css";
 
 export function CalculatorApp() {
   const [state, dispatch] = useReducer(
@@ -18,14 +22,30 @@ export function CalculatorApp() {
         {calculatorButtons.flatMap((row, rowIndex) =>
           row.map((button) => (
             <button
-              className={`calculator-app__key calculator-app__key--${button.variant}${button.wide ? " calculator-app__key--wide" : ""}`}
+              className={[
+                "calculator-app__key",
+                `calculator-app__key--${button.variant}`,
+                button.wide ? "calculator-app__key--wide" : "",
+                button.variant === "operator" &&
+                button.action.kind === "operator" &&
+                isOperatorActive(
+                  state,
+                  button.action.value as CalculatorOperator,
+                )
+                  ? "calculator-app__key--operator-active"
+                  : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
               key={`${rowIndex}-${button.id}`}
               onClick={() => {
                 dispatch(button.action);
               }}
               type="button"
             >
-              {button.label}
+              {button.id === "clear"
+                ? getCalculatorClearLabel(state)
+                : button.label}
             </button>
           )),
         )}

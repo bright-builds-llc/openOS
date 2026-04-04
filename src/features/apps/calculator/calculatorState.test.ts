@@ -110,4 +110,34 @@ describe("calculatorState", () => {
     // Assert
     expect(result.display).toBe("0.5");
   });
+
+  it("keeps pending state when clear resets only the current entry", () => {
+    // Arrange
+    let state = initialCalculatorState;
+    state = reduceCalculatorState(state, { kind: "digit", value: "8" });
+    state = reduceCalculatorState(state, { kind: "operator", value: "+" });
+    state = reduceCalculatorState(state, { kind: "digit", value: "4" });
+
+    // Act
+    state = reduceCalculatorState(state, { kind: "clear" });
+    state = reduceCalculatorState(state, { kind: "digit", value: "2" });
+    state = reduceCalculatorState(state, { kind: "equals" });
+
+    // Assert
+    expect(state.display).toBe("10");
+  });
+
+  it("returns an error display when dividing by zero", () => {
+    // Arrange
+    let state = initialCalculatorState;
+    state = reduceCalculatorState(state, { kind: "digit", value: "9" });
+    state = reduceCalculatorState(state, { kind: "operator", value: "÷" });
+    state = reduceCalculatorState(state, { kind: "digit", value: "0" });
+
+    // Act
+    state = reduceCalculatorState(state, { kind: "equals" });
+
+    // Assert
+    expect(state.display).toBe("Error");
+  });
 });
