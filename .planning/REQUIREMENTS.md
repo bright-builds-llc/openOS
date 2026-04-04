@@ -32,11 +32,11 @@
 
 ### Calculator
 
-- [ ] **CALC-01**: User can open Calculator from the home screen as a real implemented app.
-- [ ] **CALC-02**: User can enter digits and decimals into Calculator and see the current value update correctly.
-- [ ] **CALC-03**: User can perform addition, subtraction, multiplication, and division in Calculator.
-- [ ] **CALC-04**: User can use clear/all clear, sign toggle, and percent in Calculator.
-- [ ] **CALC-05**: Calculator visually matches the standard portrait iPhone calculator closely enough to feel authentic on supported iPhone sizes.
+- [x] **CALC-01**: User can open Calculator from the home screen as a real implemented app.
+- [x] **CALC-02**: User can enter digits and decimals into Calculator and see the current value update correctly.
+- [x] **CALC-03**: User can perform addition, subtraction, multiplication, and division in Calculator.
+- [x] **CALC-04**: User can use clear/all clear, sign toggle, and percent in Calculator.
+- [x] **CALC-05**: Calculator visually matches the standard portrait iPhone calculator closely enough to feel authentic on supported iPhone sizes.
 
 ### Verification
 
@@ -85,11 +85,11 @@
 | MOTN-01 | Phase 4 | Complete |
 | MOTN-02 | Phase 4 | Complete |
 | MOTN-03 | Phase 4 | Complete |
-| CALC-01 | Phase 5 | Pending |
-| CALC-02 | Phase 5 | Pending |
-| CALC-03 | Phase 5 | Pending |
-| CALC-04 | Phase 5 | Pending |
-| CALC-05 | Phase 5 | Pending |
+| CALC-01 | Phase 5 | Complete |
+| CALC-02 | Phase 5 | Complete |
+| CALC-03 | Phase 5 | Complete |
+| CALC-04 | Phase 5 | Complete |
+| CALC-05 | Phase 5 | Complete |
 | QUAL-01 | Phase 6 | Pending |
 | QUAL-02 | Phase 6 | Pending |
 
@@ -100,4 +100,4 @@
 
 ---
 *Requirements defined: 2026-03-31*
-*Last updated: 2026-04-04 after phase 4 completion*
+*Last updated: 2026-04-04 after phase 5 completion*

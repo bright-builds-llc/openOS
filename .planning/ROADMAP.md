@@ -112,6 +112,8 @@ This roadmap turns the approved V1 scope into six phases. The order follows the 
 
 **Goal:** Deliver the first real app and prove that the shell/runtime can host an experience that feels convincingly iPhone-like.
 
+**Status:** Complete (verified 2026-04-04)
+
 **Requirements:** CALC-01, CALC-02, CALC-03, CALC-04, CALC-05
 
 **Why fifth:**
@@ -160,11 +162,11 @@ This roadmap turns the approved V1 scope into six phases. The order follows the 
 | MOTN-01 | Phase 4 | Complete |
 | MOTN-02 | Phase 4 | Complete |
 | MOTN-03 | Phase 4 | Complete |
-| CALC-01 | Phase 5 | Pending |
-| CALC-02 | Phase 5 | Pending |
-| CALC-03 | Phase 5 | Pending |
-| CALC-04 | Phase 5 | Pending |
-| CALC-05 | Phase 5 | Pending |
+| CALC-01 | Phase 5 | Complete |
+| CALC-02 | Phase 5 | Complete |
+| CALC-03 | Phase 5 | Complete |
+| CALC-04 | Phase 5 | Complete |
+| CALC-05 | Phase 5 | Complete |
 | QUAL-01 | Phase 6 | Pending |
 | QUAL-02 | Phase 6 | Pending |
 
@@ -180,3 +182,4 @@ This roadmap turns the approved V1 scope into six phases. The order follows the 
 *Phase 2 completed: 2026-04-03*
 *Phase 3 completed: 2026-04-04*
 *Phase 4 completed: 2026-04-04*
+*Phase 5 completed: 2026-04-04*
