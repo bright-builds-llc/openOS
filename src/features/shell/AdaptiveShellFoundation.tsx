@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { getDockIcons, getHomeScreenIcons } from "./data/homeScreenIcons";
 import { AmbientBackground } from "./components/AmbientBackground";
 import { Dock } from "./components/Dock";
 import { HomeScreenGrid } from "./components/HomeScreenGrid";
@@ -30,6 +31,8 @@ function createShellStyle(profile: ReturnType<typeof createShellProfile>) {
 export function AdaptiveShellFoundation() {
   const { sceneRef, metrics, prefersReducedMotion } = useShellViewport();
   const profile = createShellProfile(metrics);
+  const gridApps = getHomeScreenIcons();
+  const dockApps = getDockIcons();
 
   return (
     <section
@@ -46,8 +49,8 @@ export function AdaptiveShellFoundation() {
           profileKind={profile.kind}
         />
         <StatusBar profile={profile} />
-        <HomeScreenGrid profile={profile} />
-        <Dock profile={profile} />
+        <HomeScreenGrid apps={gridApps} profile={profile} />
+        <Dock apps={dockApps} profile={profile} />
       </div>
     </section>
   );
