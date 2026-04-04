@@ -1,13 +1,17 @@
 import { useState } from "react";
 import type { CSSProperties } from "react";
 import { CalculatorApp } from "../apps/calculator/CalculatorApp";
+import { MotionLayer } from "../motion/MotionLayer";
+import { runWithOptionalViewTransition, supportsViewTransitions } from "../motion/supportsViewTransitions";
 import { AppSurface } from "../runtime/AppSurface";
 import { appRegistry } from "../runtime/appRegistry";
 import { ComingSoonApp } from "../runtime/ComingSoonApp";
 import {
+  completeRuntimeTransition,
   createInitialHomeScreenRuntimeState,
   getOpenRuntimeApp,
   openRuntimeApp,
+  syncRuntimeMotionPreferences,
 } from "../runtime/homeScreenRuntime";
 import { getDockIcons, getHomeScreenIcons } from "./data/homeScreenIcons";
 import { AmbientBackground } from "./components/AmbientBackground";
@@ -41,8 +45,12 @@ function createShellStyle(profile: ReturnType<typeof createShellProfile>) {
 export function AdaptiveShellFoundation() {
   const { sceneRef, metrics, prefersReducedMotion } = useShellViewport();
   const profile = createShellProfile(metrics);
+  const hasNativeViewTransitions = supportsViewTransitions();
   const [runtimeState, setRuntimeState] = useState(() =>
-    createInitialHomeScreenRuntimeState(),
+    createInitialHomeScreenRuntimeState({
+      prefersReducedMotion,
+      supportsViewTransitions: hasNativeViewTransitions,
+    }),
   );
   const gridApps = getHomeScreenIcons(appRegistry);
   const dockApps = getDockIcons(appRegistry);
@@ -69,30 +77,83 @@ export function AdaptiveShellFoundation() {
           profileKind={profile.kind}
         />
         <StatusBar profile={profile} />
-        {maybeOpenApp === null ? (
+        <div
+          className="shell-scene__home"
+          data-runtime-state={runtimeState.kind}
+        >
           <>
             <HomeScreenGrid
               apps={gridApps}
-              onOpenApp={(appId) => {
-                setRuntimeState((currentState) =>
-                  openRuntimeApp(appId, appRegistry, currentState),
+              onOpenApp={(appId, originRect) => {
+                runWithOptionalViewTransition(
+                  () => {
+                    setRuntimeState((currentState) =>
+                      openRuntimeApp(
+                        appId,
+                        appRegistry,
+                        currentState,
+                        originRect,
+                        {
+                          prefersReducedMotion,
+                          supportsViewTransitions: hasNativeViewTransitions,
+                        },
+                      ),
+                    );
+                  },
+                  document,
+                  hasNativeViewTransitions && !prefersReducedMotion,
                 );
               }}
               profile={profile}
             />
             <Dock
               apps={dockApps}
-              onOpenApp={(appId) => {
-                setRuntimeState((currentState) =>
-                  openRuntimeApp(appId, appRegistry, currentState),
+              onOpenApp={(appId, originRect) => {
+                runWithOptionalViewTransition(
+                  () => {
+                    setRuntimeState((currentState) =>
+                      openRuntimeApp(
+                        appId,
+                        appRegistry,
+                        currentState,
+                        originRect,
+                        {
+                          prefersReducedMotion,
+                          supportsViewTransitions: hasNativeViewTransitions,
+                        },
+                      ),
+                    );
+                  },
+                  document,
+                  hasNativeViewTransitions && !prefersReducedMotion,
                 );
               }}
               profile={profile}
             />
           </>
-        ) : (
-          <AppSurface app={maybeOpenApp}>{appSurfaceContent}</AppSurface>
-        )}
+        </div>
+        {maybeOpenApp !== null ? (
+          <MotionLayer
+            app={maybeOpenApp}
+            onTransitionComplete={() => {
+              setRuntimeState((currentState) =>
+                completeRuntimeTransition(currentState, {
+                  prefersReducedMotion,
+                  supportsViewTransitions: hasNativeViewTransitions,
+                }),
+              );
+            }}
+            state={runtimeState.kind === "home" ? {
+              kind: "opening",
+              appId: maybeOpenApp.id,
+              originRect: null,
+              motionMode: "full",
+              driver: "css",
+            } : runtimeState}
+          >
+            <AppSurface app={maybeOpenApp}>{appSurfaceContent}</AppSurface>
+          </MotionLayer>
+        ) : null}
       </div>
     </section>
   );

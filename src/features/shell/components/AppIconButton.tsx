@@ -1,12 +1,16 @@
 import { startTransition, useEffect, useRef, useState } from "react";
 import type { RuntimeApp } from "../../runtime/appRegistry";
+import { captureMotionRect } from "../../motion/homeNavigationMotion";
 import { PRESSED_ICON_DURATION_MS } from "../../runtime/homeScreenRuntime";
 
 type AppIconButtonProps = {
   app: RuntimeApp;
   className: string;
   glyphClassName: string;
-  onOpenApp: (appId: string) => void;
+  onOpenApp: (
+    appId: string,
+    originRect: ReturnType<typeof captureMotionRect>,
+  ) => void;
   style: React.CSSProperties;
 };
 
@@ -28,16 +32,21 @@ export function AppIconButton({
     };
   }, []);
 
-  const handleOpen = () => {
+  const handleOpen = (
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
     if (timeoutRef.current !== null) {
       window.clearTimeout(timeoutRef.current);
     }
 
+    const originRect = captureMotionRect(
+      event.currentTarget.getBoundingClientRect(),
+    );
     setIsPressed(true);
     timeoutRef.current = window.setTimeout(() => {
       setIsPressed(false);
       startTransition(() => {
-        onOpenApp(app.id);
+        onOpenApp(app.id, originRect);
       });
     }, PRESSED_ICON_DURATION_MS);
   };
