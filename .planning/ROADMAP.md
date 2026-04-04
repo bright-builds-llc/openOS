@@ -8,7 +8,7 @@
 
 ## Overview
 
-This roadmap turns the approved V1 scope into six phases. The order follows the product’s core dependency chain:
+This roadmap turns the approved V1 scope into six core phases. The original order follows the product’s core dependency chain:
 
 1. The experience must install and enter standalone mode correctly.
 2. The shell must size and render convincingly across portrait iPhone viewports.
@@ -16,6 +16,8 @@ This roadmap turns the approved V1 scope into six phases. The order follows the 
 4. Motion and app-shell navigation must be explicit before the first real app deepens the implementation.
 5. Calculator then validates whether the shell and runtime actually support a believable app.
 6. Browser UI verification closes the loop so fidelity regressions stop accumulating.
+
+A post-execution milestone audit then identified one remaining installed-boundary verification gap plus one optional browser-entry cleanup pass, so two follow-up phases were added before milestone archive.
 
 ## Phase Summary
 
@@ -27,6 +29,8 @@ This roadmap turns the approved V1 scope into six phases. The order follows the 
 | 4 | Motion and App Navigation | Make app open/close behavior feel like part of the OS illusion | MOTN-01, MOTN-02, MOTN-03 | 4 |
 | 5 | Calculator App Fidelity | Deliver the first real app with convincing behavior and presentation | CALC-01, CALC-02, CALC-03, CALC-04, CALC-05 | 5 |
 | 6 | Verification and Launch Polish | Prove the core flow with browser automation and final quality passes | QUAL-01, QUAL-02 | 4 |
+| 7 | Real Installed-Boundary Verification | Prove the shipped installed-PWA/display-mode entry path end to end | INST-02, QUAL-01 | 3 |
+| 8 | Preview/Install UX Parity Cleanup | Align browser preview and install affordances with the real launcher | INST-01, HOME-02, HOME-03, RUNT-01 | 3 |
 
 ## Phase Details
 
@@ -147,6 +151,46 @@ This roadmap turns the approved V1 scope into six phases. The order follows the 
 3. The test suite is stable enough to be part of normal verification rather than a flaky demo aid.
 4. Remaining shell and motion rough edges found during verification are tuned to meet the V1 quality bar.
 
+### Phase 7: Real Installed-Boundary Verification
+
+**Goal:** Prove the real installed-PWA/display-mode launch boundary end to end instead of relying on the dev-only standalone override in browser verification.
+
+**Status:** Planned (must-close audit follow-up)
+
+**Requirements:** INST-02, QUAL-01
+
+**Gap Closure:** Closes the milestone audit gap where Phase 6 browser automation enters standalone through the dev-only `openos-install-context=standalone` shortcut rather than the shipped install boundary.
+
+**Why seventh:**
+- The milestone audit found this is the only blocker preventing full V1 closeout.
+- The launcher/runtime path after standalone entry is already verified; the missing proof is the installed-boundary handoff itself.
+- This should stay narrow and verification-focused rather than reopening unrelated product scope.
+
+**Success criteria:**
+1. Automated verification can exercise the installed/display-mode boundary without depending on the dev-only query override.
+2. The suite proves browser visits stay in onboarding while installed launches enter the standalone shell path.
+3. Shell-flow and Calculator browser verification remain stable on the new harness.
+
+### Phase 8: Preview/Install UX Parity Cleanup
+
+**Goal:** Remove the low-severity browser-entry debts surfaced by the milestone audit without broadening V1 scope.
+
+**Status:** Planned (optional audit follow-up)
+
+**Requirements:** INST-01, HOME-02, HOME-03, RUNT-01
+
+**Gap Closure:** Pays down the audit’s preview/runtime parity and browser install CTA behavior debt.
+
+**Why eighth:**
+- These issues do not block milestone closeout once Phase 7 is complete.
+- They live in the same browser-entry surface, so they can be handled together in one narrow cleanup pass.
+- Keeping this optional preserves a tight path to milestone archive.
+
+**Success criteria:**
+1. Preview-shell icon content derives from a shared launcher/runtime source rather than a hardcoded list.
+2. Browser install CTAs perform a lightweight assist behavior instead of acting as decorative buttons.
+3. Narrow verification protects preview/runtime parity and CTA behavior from regression.
+
 ## Requirement Coverage
 
 | Requirement | Phase | Status |
@@ -176,6 +220,8 @@ This roadmap turns the approved V1 scope into six phases. The order follows the 
 - v1 requirements: 20 total
 - Mapped to phases: 20
 - Unmapped: 0
+
+Audit follow-up Phases 7 and 8 reinforce existing V1 requirements but do not change the original requirement ownership table above.
 
 ---
 *Roadmap created: 2026-03-31*
