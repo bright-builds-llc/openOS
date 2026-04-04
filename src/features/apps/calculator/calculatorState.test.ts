@@ -140,4 +140,35 @@ describe("calculatorState", () => {
     // Assert
     expect(state.display).toBe("Error");
   });
+
+  it("restarts entry after an error when a digit is pressed", () => {
+    // Arrange
+    let state = initialCalculatorState;
+    state = reduceCalculatorState(state, { kind: "digit", value: "9" });
+    state = reduceCalculatorState(state, { kind: "operator", value: "÷" });
+    state = reduceCalculatorState(state, { kind: "digit", value: "0" });
+    state = reduceCalculatorState(state, { kind: "equals" });
+
+    // Act
+    state = reduceCalculatorState(state, { kind: "digit", value: "4" });
+
+    // Assert
+    expect(state.display).toBe("4");
+  });
+
+  it("supports chained operations in sequence", () => {
+    // Arrange
+    let state = initialCalculatorState;
+    state = reduceCalculatorState(state, { kind: "digit", value: "7" });
+    state = reduceCalculatorState(state, { kind: "operator", value: "+" });
+    state = reduceCalculatorState(state, { kind: "digit", value: "5" });
+    state = reduceCalculatorState(state, { kind: "operator", value: "×" });
+    state = reduceCalculatorState(state, { kind: "digit", value: "2" });
+
+    // Act
+    state = reduceCalculatorState(state, { kind: "equals" });
+
+    // Assert
+    expect(state.display).toBe("24");
+  });
 });
