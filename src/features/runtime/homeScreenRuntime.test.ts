@@ -16,7 +16,11 @@ describe("homeScreenRuntime", () => {
     const result = createInitialHomeScreenRuntimeState();
 
     // Assert
-    expect(result).toEqual({ kind: "home" });
+    expect(result).toEqual({
+      kind: "home",
+      motionMode: "full",
+      driver: "css",
+    });
   });
 
   it("opens a known launchable app", () => {
@@ -28,8 +32,11 @@ describe("homeScreenRuntime", () => {
 
     // Assert
     expect(result).toEqual({
-      kind: "open-app",
+      kind: "opening",
       appId: "calculator",
+      originRect: null,
+      motionMode: "full",
+      driver: "css",
     });
   });
 
@@ -49,6 +56,9 @@ describe("homeScreenRuntime", () => {
     const state = {
       kind: "open-app" as const,
       appId: "messages",
+      originRect: null,
+      motionMode: "full" as const,
+      driver: "css" as const,
     };
 
     // Act
