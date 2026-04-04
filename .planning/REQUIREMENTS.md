@@ -15,14 +15,14 @@
 
 - [x] **HOME-01**: User lands on an iPhone-like home screen with wallpaper, status bar treatment, app grid, and dock.
 - [x] **HOME-02**: User sees a full realistic grid of app icons and labels rather than a sparse single-app screen.
-- [ ] **HOME-03**: User can tap any visible app icon from the home screen.
-- [ ] **HOME-04**: User opening an unimplemented app sees a polished full-screen "Coming Soon" app state instead of a dead icon or broken route.
+- [x] **HOME-03**: User can tap any visible app icon from the home screen.
+- [x] **HOME-04**: User opening an unimplemented app sees a polished full-screen "Coming Soon" app state instead of a dead icon or broken route.
 
 ### App Runtime
 
-- [ ] **RUNT-01**: The system defines apps through an internal app model that includes app identity, icon metadata, availability state, and launch target.
-- [ ] **RUNT-02**: The runtime can launch both implemented apps and "Coming Soon" apps through the same app model instead of hard-coded per-app branching.
-- [ ] **RUNT-03**: The shell can host additional apps later without redesigning the home-screen launcher or app container.
+- [x] **RUNT-01**: The system defines apps through an internal app model that includes app identity, icon metadata, availability state, and launch target.
+- [x] **RUNT-02**: The runtime can launch both implemented apps and "Coming Soon" apps through the same app model instead of hard-coded per-app branching.
+- [x] **RUNT-03**: The shell can host additional apps later without redesigning the home-screen launcher or app container.
 
 ### Motion and App Shell
 
@@ -77,11 +77,11 @@
 | INST-03 | Phase 2 | Complete |
 | HOME-01 | Phase 2 | Complete |
 | HOME-02 | Phase 2 | Complete |
-| HOME-03 | Phase 3 | Pending |
-| HOME-04 | Phase 3 | Pending |
-| RUNT-01 | Phase 3 | Pending |
-| RUNT-02 | Phase 3 | Pending |
-| RUNT-03 | Phase 3 | Pending |
+| HOME-03 | Phase 3 | Complete |
+| HOME-04 | Phase 3 | Complete |
+| RUNT-01 | Phase 3 | Complete |
+| RUNT-02 | Phase 3 | Complete |
+| RUNT-03 | Phase 3 | Complete |
 | MOTN-01 | Phase 4 | Pending |
 | MOTN-02 | Phase 4 | Pending |
 | MOTN-03 | Phase 4 | Pending |
@@ -100,4 +100,4 @@
 
 ---
 *Requirements defined: 2026-03-31*
-*Last updated: 2026-04-03 after phase 2 completion*
+*Last updated: 2026-04-04 after phase 3 completion*

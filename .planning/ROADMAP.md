@@ -73,6 +73,8 @@ This roadmap turns the approved V1 scope into six phases. The order follows the 
 
 **Goal:** Introduce the app runtime, home-screen interactions, and placeholder-app behavior so the shell behaves like an extensible launcher instead of a static mock.
 
+**Status:** Complete (verified 2026-04-04)
+
 **Requirements:** HOME-03, HOME-04, RUNT-01, RUNT-02, RUNT-03
 
 **Why third:**
@@ -148,11 +150,11 @@ This roadmap turns the approved V1 scope into six phases. The order follows the 
 | INST-03 | Phase 2 | Complete |
 | HOME-01 | Phase 2 | Complete |
 | HOME-02 | Phase 2 | Complete |
-| HOME-03 | Phase 3 | Pending |
-| HOME-04 | Phase 3 | Pending |
-| RUNT-01 | Phase 3 | Pending |
-| RUNT-02 | Phase 3 | Pending |
-| RUNT-03 | Phase 3 | Pending |
+| HOME-03 | Phase 3 | Complete |
+| HOME-04 | Phase 3 | Complete |
+| RUNT-01 | Phase 3 | Complete |
+| RUNT-02 | Phase 3 | Complete |
+| RUNT-03 | Phase 3 | Complete |
 | MOTN-01 | Phase 4 | Pending |
 | MOTN-02 | Phase 4 | Pending |
 | MOTN-03 | Phase 4 | Pending |
@@ -174,3 +176,4 @@ This roadmap turns the approved V1 scope into six phases. The order follows the 
 *Roadmap approved: 2026-03-31*
 *Phase 1 completed: 2026-03-31*
 *Phase 2 completed: 2026-04-03*
+*Phase 3 completed: 2026-04-04*
