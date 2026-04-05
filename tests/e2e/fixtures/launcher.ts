@@ -39,6 +39,11 @@ export async function gotoBrowserMode(page: Page) {
   await expect(page.getByTestId("install-overlay")).toBeVisible();
 }
 
+export async function dismissInstallTakeover(page: Page) {
+  await page.getByRole("button", { name: "Preview in browser" }).click();
+  await expect(page.getByTestId("install-overlay")).toHaveCount(0);
+}
+
 export async function gotoInstalledContextMode(page: Page) {
   await enableInstalledContextSignals(page);
   await page.goto("/");

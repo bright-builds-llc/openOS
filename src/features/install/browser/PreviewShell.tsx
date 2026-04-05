@@ -21,6 +21,7 @@ export function PreviewShell({ onAppTap }: PreviewShellProps) {
         {gridApps.map((app) => (
           <button
             className="browser-install-shell__icon browser-install-shell__icon-button"
+            data-testid={`preview-app:${app.id}`}
             key={app.id}
             onClick={() => {
               onAppTap(app.label);
@@ -45,6 +46,7 @@ export function PreviewShell({ onAppTap }: PreviewShellProps) {
         {dockApps.map((app) => (
           <div
             className="browser-install-shell__dock-glyph"
+            data-testid={`preview-dock:${app.id}`}
             key={app.id}
             style={{
               background: `linear-gradient(180deg, ${app.icon.tintStart} 0%, ${app.icon.tintEnd} 100%)`,

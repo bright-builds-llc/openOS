@@ -41,7 +41,7 @@ export function BrowserInstallFlow({
   }
 
   return (
-    <section className="browser-install-shell">
+    <section className="browser-install-shell" data-testid="browser-install-shell">
       <div className="browser-install-shell__preview">
         <PreviewShell
           onAppTap={(appLabel) => {
@@ -70,7 +70,7 @@ export function BrowserInstallFlow({
         />
       ) : null}
       {promptState.mode === "persistent" ? (
-        <div className="install-prompt-pill">
+        <div className="install-prompt-pill" data-testid="install-prompt-pill">
           <div>
             <div className="install-prompt-pill__title">Install openOS</div>
             <div className="install-prompt-pill__body">
@@ -79,6 +79,7 @@ export function BrowserInstallFlow({
           </div>
           <button
             className="install-prompt-pill__button"
+            data-testid="install-prompt-pill-button"
             onClick={() => {
               clearInstallPromptDismissedAt(window.localStorage);
               setPromptState(showInstallTakeover(promptState.maybeDismissedAt));
