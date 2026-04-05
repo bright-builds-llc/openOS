@@ -10,9 +10,9 @@ scores:
 gaps:
   requirements: []
   integration:
-    - "Phase 6 browser automation enters standalone mode through the dev-only `openos-install-context=standalone` override rather than proving the real installed-PWA/display-mode boundary end to end."
+    - "Phase 7 replaced the dev-only standalone query override with a production-like `display-mode` browser harness, but literal Home Screen installed-app proof still depends on the pending manual UAT artifact."
   flows:
-    - "The installed launch boundary is implemented and code-verified, but not exercised as a true installed-PWA end-to-end flow by the browser suite."
+    - "The browser suite now proves production-like `display-mode` entry, but the literal Home Screen installed launch still awaits manual UAT confirmation."
 tech_debt:
   - phase: milestone-docs
     items:
@@ -27,9 +27,9 @@ tech_debt:
 
 ## Verdict
 
-openOS V1 has one milestone-level integration gap.
+openOS V1 still has one milestone-level boundary-proof gap.
 
-All 20 V1 requirements are satisfied and all 6 planned phases have passing verification reports, but the milestone does not yet have end-to-end proof that a real installed-PWA launch follows the same boundary exercised by the rest of the shell-flow suite.
+All 20 V1 requirements are satisfied and the original Phase 6 dev-override gap has been narrowed. The browser suite now uses a production-like `display-mode` harness, but the milestone still lacks literal Home Screen installed-container proof until Phase 7 manual UAT is completed.
 
 ## Scorecard
 
@@ -85,21 +85,21 @@ All 20 V1 requirements are satisfied and all 6 planned phases have passing verif
 | Standalone entry hands off into the adaptive shell | Passed | `src/features/install/standalone/StandaloneEntry.tsx` mounts `AdaptiveShellFoundation` after the short launch intro. |
 | Shell layout, runtime, and motion compose through one host path | Passed | `src/features/shell/AdaptiveShellFoundation.tsx`, `src/features/runtime/homeScreenRuntime.ts`, and `src/features/motion/MotionLayer.tsx` share one stateful app-open/app-close pipeline. |
 | Calculator uses the same runtime/app-surface/motion path as all apps | Passed | `src/features/shell/AdaptiveShellFoundation.tsx`, `src/features/runtime/AppSurface.tsx`, and `src/features/apps/calculator/CalculatorApp.tsx` keep Calculator inside the shared host path. |
-| Phase 6 browser tests prove the shipped install boundary end to end | Gap | `tests/e2e/fixtures/launcher.ts` enters standalone with `/?openos-install-context=standalone`, and `playwright.config.ts` runs `pnpm dev`, so the suite does not prove a true installed-PWA/display-mode launch boundary. |
+| Phase 7 browser tests prove the shipped install boundary end to end | Gap | The suite now uses a production-like preview server and `display-mode` harness, but literal Home Screen installed-app proof still depends on the pending manual checklist in `07-UAT.md`. |
 
 ## End-to-End Flows
 
 | Flow | Status | Evidence |
 |------|--------|----------|
 | Browser visit -> install-first onboarding/preview | Passed | `BrowserInstallFlow.tsx` plus Phase 6 shell-flow Playwright scenario. |
-| Standalone launch -> intro -> adaptive home screen | Gap | The installed launch path exists in `StandaloneEntry.tsx` and was code-verified in earlier phases, but the Phase 6 browser suite reaches it via the dev-only standalone override rather than a real installed-PWA boundary. |
+| Standalone launch -> intro -> adaptive home screen | Gap | Automated proof now reaches the standalone branch through a production-like `display-mode` harness, but literal Home Screen launch still awaits the Phase 7 manual UAT check. |
 | Home screen -> Calculator -> Home-pill dismiss -> home | Passed | `AdaptiveShellFoundation.tsx`, `MotionLayer.tsx`, and `tests/e2e/shell-flow.spec.ts`. |
 | Home screen -> placeholder app launch | Passed | `AppSurface.tsx`, `ComingSoonApp.tsx`, and `tests/e2e/shell-flow.spec.ts`. |
 | Calculator happy path through real launcher/runtime | Passed | `tests/e2e/calculator.spec.ts` plus Phase 5 behavior verification. |
 
 ## Critical Gaps
 
-- Phase 6 browser automation uses the dev-only `openos-install-context=standalone` override in `tests/e2e/fixtures/launcher.ts` while `playwright.config.ts` serves the app in dev mode. That verifies the launcher/runtime path after standalone entry, but it does not prove the real installed-PWA/display-mode boundary end to end.
+- Phase 7 removed the Phase 6 dev-only query override and now uses a production-like `display-mode` harness, but the milestone still needs the manual installed-web-app checklist in `07-UAT.md` to claim literal Home Screen launch proof end to end.
 
 ## Tech Debt
 
@@ -115,7 +115,8 @@ All 20 V1 requirements are satisfied and all 6 planned phases have passing verif
 - No phase reported blockers, unsatisfied requirements, anti-patterns, or required human verification.
 - The only execution-time issues surfaced during the milestone were fixed within their owning phases and verified green before phase completion.
 - An independent integration checker confirmed the single integration gap above and also surfaced the two low-severity preview/install CTA caveats recorded in the tech-debt table.
+- Phase 7 has now removed the original `dev-override` automation weakness; the remaining gap is specifically the literal installed-container proof captured by the new UAT artifact.
 
 ## Recommendation
 
-Do not archive the milestone as fully complete yet. Plan and close the installed-boundary verification gap first, then re-run the audit.
+Do not archive the milestone as fully complete yet. Finish the Phase 7 manual installed-boundary UAT and then re-run the audit.
