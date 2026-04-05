@@ -102,9 +102,19 @@
   width: 58px;
   height: 58px;
   border-radius: 16px;
+  display: grid;
+  place-items: center;
   background: rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(12px);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.browser-install-shell__glyph-text {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1.55rem;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
 }
 
 .browser-install-shell__label {
@@ -125,6 +135,8 @@
 .browser-install-shell__dock-glyph {
   aspect-ratio: 1;
   border-radius: 16px;
+  display: grid;
+  place-items: center;
   background: rgba(255, 255, 255, 0.2);
 }
 
