@@ -1,6 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 import {
-  gotoStandaloneMode,
+  gotoInstalledContextMode,
   openApp,
   returnHome,
 } from "./fixtures/launcher";
@@ -12,7 +12,7 @@ async function pressCalculatorKey(page: Page, keyId: string) {
 test("runs the Calculator happy path through the real launcher", async ({
   page,
 }) => {
-  await gotoStandaloneMode(page);
+  await gotoInstalledContextMode(page);
   await openApp(page, "calculator");
 
   await expect(page.getByTestId("calculator-display")).toHaveText("0");

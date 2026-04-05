@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import {
   gotoBrowserMode,
-  gotoStandaloneMode,
+  gotoInstalledContextMode,
   openApp,
   returnHome,
 } from "./fixtures/launcher";
@@ -29,10 +29,10 @@ test.describe("shell flow", () => {
     await expect(page.getByTestId("calculator-app")).toHaveCount(0);
   });
 
-  test("launches Calculator and returns home in standalone mode", async ({
+  test("launches Calculator and returns home in installed-context mode", async ({
     page,
   }) => {
-    await gotoStandaloneMode(page);
+    await gotoInstalledContextMode(page);
 
     await openApp(page, "calculator");
 
@@ -45,7 +45,7 @@ test.describe("shell flow", () => {
   test("opens coming-soon apps through the same runtime path", async ({
     page,
   }) => {
-    await gotoStandaloneMode(page);
+    await gotoInstalledContextMode(page);
 
     await openApp(page, "calendar");
 
