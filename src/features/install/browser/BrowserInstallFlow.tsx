@@ -30,7 +30,15 @@ export function BrowserInstallFlow({
   const [maybeInterceptedApp, setMaybeInterceptedApp] = useState<string | null>(
     null,
   );
+  const [installAssistSequence, setInstallAssistSequence] = useState(0);
   const isTakeoverVisible = promptState.mode === "takeover";
+
+  function handleInstallAssist() {
+    clearInstallPromptDismissedAt(window.localStorage);
+    setMaybeInterceptedApp(null);
+    setPromptState((currentState) => showInstallTakeover(currentState.maybeDismissedAt));
+    setInstallAssistSequence((currentSequence) => currentSequence + 1);
+  }
 
   return (
     <section className="browser-install-shell">
@@ -48,6 +56,7 @@ export function BrowserInstallFlow({
       </div>
       {isTakeoverVisible ? (
         <BrowserInstallOverlay
+          assistSequence={installAssistSequence}
           onDismiss={() => {
             const nextState = dismissInstallPrompt(Date.now());
 
@@ -57,6 +66,7 @@ export function BrowserInstallFlow({
               nextState.maybeDismissedAt ?? Date.now(),
             );
           }}
+          onInstallAssist={handleInstallAssist}
         />
       ) : null}
       {promptState.mode === "persistent" ? (
@@ -85,6 +95,7 @@ export function BrowserInstallFlow({
           onClose={() => {
             setMaybeInterceptedApp(null);
           }}
+          onInstallAssist={handleInstallAssist}
         />
       ) : null}
       <div className="browser-install-shell__source">Detected from {installSource}</div>

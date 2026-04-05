@@ -1,11 +1,13 @@
 type AppTapInterceptProps = {
   appLabel: string;
   onClose: () => void;
+  onInstallAssist: () => void;
 };
 
 export function AppTapIntercept({
   appLabel,
   onClose,
+  onInstallAssist,
 }: AppTapInterceptProps) {
   return (
     <section className="install-intercept" aria-label={`${appLabel} install prompt`}>
@@ -17,7 +19,12 @@ export function AppTapIntercept({
           Screen to use the real app experience.
         </p>
         <div className="install-overlay__actions">
-          <button className="install-overlay__primary" type="button">
+          <button
+            className="install-overlay__primary"
+            data-testid="install-intercept-primary"
+            onClick={onInstallAssist}
+            type="button"
+          >
             Install openOS
           </button>
           <button
