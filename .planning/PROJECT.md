@@ -2,7 +2,7 @@
 
 ## What This Is
 
-openOS is a mobile web experience that aims to feel nearly indistinguishable from using an iPhone when opened fullscreen on an iPhone in portrait mode. V1 starts at the iPhone-style home screen, supports convincing app open and dismiss animations, and ships a high-fidelity Calculator app while laying the foundation for a broader web-based iOS-like app ecosystem.
+openOS is a shipped mobile web experience that aims to feel nearly indistinguishable from using an iPhone when opened fullscreen on an iPhone in portrait mode. V1 delivers the iPhone-style home screen, convincing app open/dismiss motion, a high-fidelity Calculator app, and the platform foundations for a broader web-based iOS-like app ecosystem.
 
 Longer term, this project aims to become an open platform for browser-native "virtual iOS apps," including a basic UIKit-style library, a repo-driven app distribution model, and an escape hatch for installing arbitrary apps inside the experience.
 
@@ -10,21 +10,31 @@ Longer term, this project aims to become an open platform for browser-native "vi
 
 When launched fullscreen on an iPhone, the experience must feel convincingly like using iOS, starting with the home screen, motion system, and Calculator.
 
+## Current State
+
+- **Shipped version:** `v1` on 2026-04-05
+- **User-facing surface:** install-first Safari onboarding, standalone launch intro, adaptive home screen, shared launcher/runtime/motion system, placeholder app surfaces, and a high-fidelity Calculator
+- **Verification:** WebKit browser coverage for shell flow, Calculator, installed-boundary truthfulness, and browser-entry parity
+- **Codebase:** React 19, Vite 8, TypeScript 6, Vitest 4, Playwright 1.59, with about 3,975 lines of TypeScript/TSX in the current repo
+
 ## Requirements
 
 ### Validated
 
-(None yet — ship to validate)
+- ✓ Installed Safari onboarding and standalone Home Screen launch — `v1`
+- ✓ Adaptive portrait iPhone-like home screen with wallpaper, status bar, full grid, and dock — `v1`
+- ✓ Shared launcher runtime with placeholder app surfaces and reversible motion/Home-pill navigation — `v1`
+- ✓ High-fidelity portrait Calculator implemented through the shared runtime path — `v1`
+- ✓ Browser-level shell, Calculator, installed-boundary, and browser-entry verification — `v1`
 
 ### Active
 
-- [ ] Users can open the site as an installed fullscreen web app on iPhone and land on a convincing iPhone-style home screen.
-- [ ] Users can browse a realistic home screen grid with dock, wallpaper feel, and status bar treatment that adapts sensibly across portrait iPhone sizes.
-- [ ] Users can open apps with iPhone-like motion and return home through a custom bottom-center Home control while an app is open.
-- [ ] Users can use a Calculator app that visually and behaviorally matches the standard portrait iPhone calculator closely enough to feel authentic.
-- [ ] The system uses an extensible internal app model so additional built-in apps, repo-submitted apps, and escape-hatch apps can be added without redesigning the runtime.
-- [ ] Unimplemented apps can still be launched into a polished full-screen "Coming Soon" experience instead of dead icons.
-- [ ] Implemented features include basic UI-level browser tests so core fidelity and interaction flows can be checked with confidence.
+- [ ] Users can open additional implemented built-in apps beyond Calculator.
+- [ ] Users can navigate between multiple home-screen pages.
+- [ ] Developers can build apps against a reusable UIKit-like web layer.
+- [ ] Contributors can submit apps through a repo-driven review flow.
+- [ ] Users can browse and install apps from a basic in-product app catalog.
+- [ ] Users can install arbitrary virtual apps through an escape-hatch flow.
 
 ### Out of Scope
 
@@ -35,13 +45,9 @@ When launched fullscreen on an iPhone, the experience must feel convincingly lik
 
 ## Context
 
-This project starts greenfield in a nearly empty repository. The first milestone is deliberately narrow: create a high-fidelity installed web app experience on iPhone that reproduces the emotional feel of iOS home-screen interaction without needing to recreate the full operating system.
+V1 proved that an installable, browser-native iPhone-inspired experience can feel coherent across install entry, adaptive shell rendering, shared runtime, motion, and a first real app. The shipped codebase now has the right architectural seams for broader growth: registry-driven app identity, shared app surfaces, explicit motion/navigation state, and meaningful browser verification around the core illusion-critical flows.
 
-The user wants this to become a genuinely open alternative ecosystem over time, competing with the closed nature of iOS and the App Store by using web technologies instead of native platform gatekeeping. That means the V1 architecture should not hard-code Calculator as a one-off demo. It should establish a sensible app runtime, app metadata model, launch routing, and app shell contract that can grow into a small UIKit-style library, a repo-based app submission flow via pull requests, and an escape hatch for arbitrary virtual app installation.
-
-Because the experience is web-based, the browser context matters. The primary target should be an installed fullscreen web app on iPhone, with the normal browser-tab experience acting as an onboarding shell that encourages users to add the site to their home screen. The design goal is not literal Apple branding. The project should avoid Apple logos and similar trademark-heavy branding while still pursuing close interaction and visual parity where legally and practically appropriate.
-
-The user also wants a basic UI-level testing story from the start. V1 does not need exhaustive end-to-end coverage, but core flows should have lightweight browser automation tests that prove the main user-visible behavior works and help preserve fidelity during iteration.
+The next milestone should shift from “prove the illusion” to “grow the platform carefully.” The highest-value directions are additional implemented apps, multi-page home behavior, and the first reusable platform/app-distribution primitives. The browser onboarding/install surface is now in good shape and no longer needs to drive roadmap priority.
 
 ## Constraints
 
@@ -57,13 +63,21 @@ The user also wants a basic UI-level testing story from the start. V1 does not n
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Make installed fullscreen usage the primary target on iPhone | The illusion is materially stronger when browser chrome is removed and safe areas can be treated more predictably | — Pending |
-| Use a realistic full app grid with placeholder apps | The home screen should feel complete even before most apps are implemented | — Pending |
-| Launch unimplemented apps into a polished full-screen "Coming Soon" state | Placeholder icons should still preserve the illusion instead of acting broken or inert | — Pending |
-| Ship only the portrait standard Calculator in V1 | Keeps the first app narrow while still exercising fidelity, layout, input behavior, and app-shell transitions | — Pending |
-| Build an extensible app model in V1 instead of a Calculator-only demo | The long-term goal depends on future app extensibility, app distribution, and escape-hatch installs | — Pending |
-| Include basic browser UI tests from the first milestone | Core fidelity depends on interaction behavior, so lightweight regression coverage should exist before the app surface grows | — Pending |
-| Avoid literal Apple logos and related marks | Reduces unnecessary IP risk while still allowing close UX inspiration | — Pending |
+| Make installed fullscreen usage the primary target on iPhone | The illusion is materially stronger when browser chrome is removed and safe areas can be treated more predictably | ✓ Validated in `v1` |
+| Use a realistic full app grid with placeholder apps | The home screen should feel complete even before most apps are implemented | ✓ Validated in `v1` |
+| Launch unimplemented apps into a polished full-screen "Coming Soon" state | Placeholder icons should still preserve the illusion instead of acting broken or inert | ✓ Validated in `v1` |
+| Ship only the portrait standard Calculator in V1 | Keeps the first app narrow while still exercising fidelity, layout, input behavior, and app-shell transitions | ✓ Validated in `v1` |
+| Build an extensible app model in V1 instead of a Calculator-only demo | The long-term goal depends on future app extensibility, app distribution, and escape-hatch installs | ✓ Validated in `v1` |
+| Include basic browser UI tests from the first milestone | Core fidelity depends on interaction behavior, so lightweight regression coverage should exist before the app surface grows | ✓ Validated in `v1` |
+| Avoid literal Apple logos and related marks | Reduces unnecessary IP risk while still allowing close UX inspiration | ✓ Maintained in `v1` |
+
+## Next Milestone Goals
+
+- Expand beyond Calculator with additional implemented built-in apps
+- Introduce multi-page home-screen behavior without weakening the current shell illusion
+- Begin the reusable UIKit-like web layer and app-host primitives
+- Define the first contributor/app distribution workflow
+- Explore the initial in-product catalog and escape-hatch install path
 
 ---
-*Last updated: 2026-03-31 after workflow clarification*
+*Last updated: 2026-04-05 after v1 milestone*

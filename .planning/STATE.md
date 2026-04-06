@@ -2,10 +2,10 @@
 
 ## Project Reference
 
-See: `.planning/PROJECT.md` (updated 2026-03-31)
+See: `.planning/PROJECT.md` (updated 2026-04-05)
 
 **Core value:** When launched fullscreen on an iPhone, the experience must feel convincingly like using iOS, starting with the home screen, motion system, and Calculator.
-**Current focus:** Milestone final audit
+**Current focus:** Planning next milestone
 
 ## Artifact Status
 
@@ -14,37 +14,37 @@ See: `.planning/PROJECT.md` (updated 2026-03-31)
 | PROJECT.md | Complete | Initial project context committed |
 | config.json | Complete | Workflow set to YOLO, comprehensive, parallel, research/check/verifier on |
 | research/ | Complete | Stack, features, architecture, pitfalls, and summary written and committed |
-| REQUIREMENTS.md | Complete | V1 and V2 scope defined and committed |
-| ROADMAP.md | Active | Phase 8 completed; milestone closeout is ready |
-| STATE.md | Active | Updated after Phase 8 verification |
+| milestones/ | Complete | v1 roadmap, requirements, and audit archived |
+| MILESTONES.md | Complete | v1 release entry recorded |
+| REQUIREMENTS.md | Archived | v1 requirements archived; create a fresh file via `$gsd-new-milestone` |
+| ROADMAP.md | Active | Collapsed milestone summary points to the v1 archive |
+| STATE.md | Active | Updated after v1 milestone archive |
 
 ## Current Phase Outlook
 
 ### Next action
 
-- Run the final milestone audit/closeout pass now that the optional Phase 8 cleanup is complete.
+- Start the next milestone with fresh requirements and roadmap definition.
 
 ### Most recently completed phase
 
-- **Phase 8: Preview/Install UX Parity Cleanup** — complete and verified.
+- **Milestone v1: iPhone Web App Foundation** — archived and tagged.
 
 ### Planned next phase
 
-- None. The roadmap phase set is complete.
+- None yet. Use `$gsd-new-milestone` to define the next milestone’s scope.
 
 ## Notes
 
 - Installed standalone iPhone usage is the primary experience.
-- The first milestone intentionally prioritizes shell fidelity, app runtime flexibility, and Calculator authenticity over breadth.
-- Basic browser UI tests are part of the V1 quality bar, not optional cleanup.
-- Phase 7 closed the milestone audit blocker with automated boundary coverage plus a completed literal Home Screen UAT pass.
-- Phase 8 cleaned up the remaining browser preview/install UX debt surfaced by the prior audit.
+- v1 shipped the installable iPhone-inspired shell, shared runtime/motion system, and high-fidelity Calculator.
+- The next milestone should focus on additional apps, multi-page home behavior, and the first reusable platform/app-distribution layer.
 
 ## Session
 
 **Last Date:** 2026-04-05T14:39:19Z
-**Stopped At:** Phase 8 complete
-**Resume File:** .planning/phases/08-preview-install-ux-parity-cleanup/08-VERIFICATION.md
+**Stopped At:** v1 milestone archived
+**Resume File:** .planning/PROJECT.md
 
 ---
-*State updated: 2026-04-05 after Phase 8 completion*
+*State updated: 2026-04-05 after v1 milestone archive*

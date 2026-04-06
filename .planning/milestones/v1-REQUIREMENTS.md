@@ -1,3 +1,18 @@
+# Requirements Archive: v1 iPhone Web App Foundation
+
+**Archived:** 2026-04-05
+**Status:** SHIPPED
+
+## Requirement Outcomes
+
+- **Validated:** all 20 v1 requirements shipped and were verified through phase execution plus milestone audit
+- **Adjusted:** none
+- **Dropped:** none
+
+For next-milestone requirements, start a fresh `.planning/REQUIREMENTS.md` via `$gsd-new-milestone`.
+
+---
+
 # Requirements: openOS
 
 **Defined:** 2026-03-31
@@ -100,4 +115,4 @@
 
 ---
 *Requirements defined: 2026-03-31*
-*Last updated: 2026-04-04 after phase 6 completion*
+*Last updated: 2026-04-05 after phase 8 completion*
