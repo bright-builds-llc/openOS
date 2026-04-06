@@ -11,14 +11,16 @@ import {
   closeRuntimeApp,
   completeRuntimeTransition,
   createInitialHomeScreenRuntimeState,
+  getHomeScreenPageCount,
   getOpenRuntimeApp,
   openRuntimeApp,
+  setActiveHomeScreenPage,
   syncRuntimeMotionPreferences,
 } from "../runtime/homeScreenRuntime";
-import { getDockIcons, getHomeScreenIcons } from "./data/homeScreenIcons";
+import { getDockIcons, getHomeScreenPages } from "./data/homeScreenIcons";
 import { AmbientBackground } from "./components/AmbientBackground";
 import { Dock } from "./components/Dock";
-import { HomeScreenGrid } from "./components/HomeScreenGrid";
+import { HomeScreenPages } from "./components/HomeScreenPages";
 import { StatusBar } from "./components/StatusBar";
 import { createShellProfile } from "./profile/createShellProfile";
 import { useShellViewport } from "./profile/useShellViewport";
@@ -54,7 +56,8 @@ export function AdaptiveShellFoundation() {
       supportsViewTransitions: hasNativeViewTransitions,
     }),
   );
-  const gridApps = getHomeScreenIcons(appRegistry);
+  const homePages = getHomeScreenPages(appRegistry);
+  const pageCount = getHomeScreenPageCount(appRegistry);
   const dockApps = getDockIcons(appRegistry);
   const maybeOpenApp = getOpenRuntimeApp(runtimeState, appRegistry);
   const appSurfaceContent =
@@ -93,8 +96,17 @@ export function AdaptiveShellFoundation() {
           data-runtime-state={runtimeState.kind}
         >
           <>
-            <HomeScreenGrid
-              apps={gridApps}
+            <HomeScreenPages
+              activePage={runtimeState.activePage}
+              onChangePage={(nextPage) => {
+                setRuntimeState((currentState) =>
+                  setActiveHomeScreenPage(
+                    currentState,
+                    nextPage,
+                    pageCount,
+                  ),
+                );
+              }}
               onOpenApp={(appId, originRect) => {
                 runWithOptionalViewTransition(
                   () => {
@@ -115,6 +127,7 @@ export function AdaptiveShellFoundation() {
                   hasNativeViewTransitions && !prefersReducedMotion,
                 );
               }}
+              pages={homePages}
               profile={profile}
             />
             <Dock

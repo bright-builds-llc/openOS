@@ -28,6 +28,11 @@
   position: absolute;
   inset: 0;
   overflow: hidden;
+  pointer-events: none;
+}
+
+.ambient-background * {
+  pointer-events: none;
 }
 
 .ambient-background__layer {
@@ -156,4 +161,8 @@
 .shell-dock__tile {
   width: var(--shell-dock-icon-size);
   justify-self: center;
+}
+
+.shell-pages__track {
+  will-change: transform;
 }
