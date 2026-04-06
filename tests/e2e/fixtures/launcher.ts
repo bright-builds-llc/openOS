@@ -77,3 +77,21 @@ export async function waitForHomeScreen(page: Page) {
   await expect(page.getByLabel("openOS shell foundation")).toBeVisible();
   await expect(page.getByTestId("app-icon:calculator")).toBeVisible();
 }
+
+export async function expectActiveHomePage(
+  page: Page,
+  pageIndex: number,
+) {
+  await expect(page.getByTestId("home-screen-pages")).toHaveAttribute(
+    "data-active-page",
+    String(pageIndex),
+  );
+  await expect(
+    page.getByTestId(`home-page-indicator:${pageIndex}`),
+  ).toHaveAttribute("aria-selected", "true");
+}
+
+export async function goToHomePage(page: Page, pageIndex: number) {
+  await page.getByTestId(`home-page-indicator:${pageIndex}`).click();
+  await expectActiveHomePage(page, pageIndex);
+}

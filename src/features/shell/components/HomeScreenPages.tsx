@@ -26,6 +26,7 @@ export function HomeScreenPages({
       className="shell-pages"
       data-active-page={activePage}
       data-page-count={pageCount}
+      data-testid="home-screen-pages"
     >
       <div className="shell-pages__viewport">
         <div
@@ -38,6 +39,7 @@ export function HomeScreenPages({
             <div
               className="shell-pages__page"
               data-page-index={page.index}
+              data-testid={`home-screen-page:${page.index}`}
               key={page.index}
             >
               <HomeScreenGrid
@@ -60,6 +62,7 @@ export function HomeScreenPages({
                 aria-selected={isActive}
                 className="shell-pages__indicator"
                 data-active={isActive ? "true" : "false"}
+                data-testid={`home-page-indicator:${page.index}`}
                 key={page.index}
                 onClick={() => {
                   onChangePage(page.index);
