@@ -10,6 +10,17 @@ Longer term, this project aims to become an open platform for browser-native "vi
 
 When launched fullscreen on an iPhone, the experience must feel convincingly like using iOS, starting with the home screen, motion system, and Calculator.
 
+## Current Milestone: v1.1 Core Apps & Platform Foundations
+
+**Goal:** Expand openOS from a shell-and-Calculator proof into the first believable multi-app system with Notes, Settings, a managed-iframe Browser, multi-page home screens, and the first reusable app-platform primitives.
+
+**Target features:**
+- `Settings` app for openOS preferences and early app/platform management surfaces
+- `Notes` app with local persistence and explicit local-only/no-sync messaging
+- managed-iframe `Browser` app for curated/embed-safe destinations with graceful blocked-embed fallback
+- multi-page home-screen behavior
+- internal app-platform primitives for future apps and developer-facing app management
+
 ## Current State
 
 - **Shipped version:** `v1` on 2026-04-05
@@ -29,12 +40,11 @@ When launched fullscreen on an iPhone, the experience must feel convincingly lik
 
 ### Active
 
-- [ ] Users can open additional implemented built-in apps beyond Calculator.
-- [ ] Users can navigate between multiple home-screen pages.
-- [ ] Developers can build apps against a reusable UIKit-like web layer.
-- [ ] Contributors can submit apps through a repo-driven review flow.
-- [ ] Users can browse and install apps from a basic in-product app catalog.
-- [ ] Users can install arbitrary virtual apps through an escape-hatch flow.
+- [ ] Users can open and use a `Settings` app for openOS-specific preferences.
+- [ ] Users can create, edit, view, and delete locally persisted notes in a `Notes` app, with clear local-only/no-sync messaging.
+- [ ] Users can open a limited `Browser` app that embeds allowed/embed-safe destinations and falls back gracefully when embedding is blocked.
+- [ ] Users can navigate multiple home-screen pages while keeping the current shell illusion intact.
+- [ ] Developers can define apps against the first reusable app-platform primitives and internal app-management seams.
 
 ### Out of Scope
 
@@ -47,7 +57,7 @@ When launched fullscreen on an iPhone, the experience must feel convincingly lik
 
 V1 proved that an installable, browser-native iPhone-inspired experience can feel coherent across install entry, adaptive shell rendering, shared runtime, motion, and a first real app. The shipped codebase now has the right architectural seams for broader growth: registry-driven app identity, shared app surfaces, explicit motion/navigation state, and meaningful browser verification around the core illusion-critical flows.
 
-The next milestone should shift from “prove the illusion” to “grow the platform carefully.” The highest-value directions are additional implemented apps, multi-page home behavior, and the first reusable platform/app-distribution primitives. The browser onboarding/install surface is now in good shape and no longer needs to drive roadmap priority.
+`v1.1` shifts from “prove the illusion” to “grow the platform carefully.” The chosen scope stays close to the existing shell/runtime strengths: `Settings` and `Notes` are natural openOS-native apps, while `Browser` is intentionally limited to a managed-iframe model because arbitrary web embedding is constrained by `X-Frame-Options` and CSP `frame-ancestors`. The browser onboarding/install surface is now in good shape and no longer drives milestone priority.
 
 ## Constraints
 
@@ -73,11 +83,11 @@ The next milestone should shift from “prove the illusion” to “grow the pla
 
 ## Next Milestone Goals
 
-- Expand beyond Calculator with additional implemented built-in apps
+- Ship `Settings`, `Notes`, and a managed-iframe `Browser`
 - Introduce multi-page home-screen behavior without weakening the current shell illusion
 - Begin the reusable UIKit-like web layer and app-host primitives
-- Define the first contributor/app distribution workflow
-- Explore the initial in-product catalog and escape-hatch install path
+- Define the first internal app-management/developer-facing platform surfaces
+- Keep sync, broad app distribution, and arbitrary app install flows out of this milestone
 
 ---
-*Last updated: 2026-04-05 after v1 milestone*
+*Last updated: 2026-04-06 after starting v1.1 milestone*
