@@ -16,6 +16,7 @@ export type RuntimeAppAvailability = "implemented" | "coming-soon";
 
 export type RuntimeAppLaunchSurface =
   | "calculator"
+  | "browser"
   | "notes"
   | "settings"
   | "coming-soon";
@@ -236,8 +237,8 @@ export const builtInAppDefinitions: RuntimeAppDefinition[] = [
     storage: createAppStorageMetadata("browser-grid"),
     placement: "grid",
     page: 1,
-    availability: "coming-soon",
-    launchSurface: "coming-soon",
+    availability: "implemented",
+    launchSurface: "browser",
   }),
   defineRuntimeApp({
     id: "voice",
@@ -289,8 +290,8 @@ export const builtInAppDefinitions: RuntimeAppDefinition[] = [
     settings: createAppSettingsParticipation("app-list"),
     storage: createAppStorageMetadata("browser"),
     placement: "dock",
-    availability: "coming-soon",
-    launchSurface: "coming-soon",
+    availability: "implemented",
+    launchSurface: "browser",
   }),
   defineRuntimeApp({
     id: "messages",
