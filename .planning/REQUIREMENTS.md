@@ -95,9 +95,9 @@
 | BROW-02 | Phase 13 | Complete |
 | BROW-03 | Phase 13 | Complete |
 | BROW-04 | Phase 13 | Complete |
-| PLAT-03 | Phase 14 | Pending |
-| QUAL-03 | Phase 14 | Pending |
-| QUAL-04 | Phase 14 | Pending |
+| PLAT-03 | Phase 14 | Complete |
+| QUAL-03 | Phase 14 | Complete |
+| QUAL-04 | Phase 14 | Complete |
 
 **Coverage:**
 - v1.1 requirements: 20 total
@@ -106,4 +106,4 @@
 
 ---
 *Requirements defined: 2026-04-06*
-*Last updated: 2026-04-07 after phase 13 completion*
+*Last updated: 2026-04-07 after phase 14 completion*
