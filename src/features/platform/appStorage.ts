@@ -21,6 +21,13 @@ export function createAppStorageMetadata(
   };
 }
 
+export function createAppStorageKey(
+  namespace: string,
+  key: string,
+): string {
+  return `${namespace}.${key}`;
+}
+
 export function listStorageManagedApps<
   TApp extends StorageAwareApp,
 >(
