@@ -6,7 +6,7 @@ import {
 } from "./appRegistry";
 
 describe("appRegistry", () => {
-  it("marks Calculator as the only implemented app", () => {
+  it("marks the implemented app set explicitly", () => {
     // Arrange
     const implementedApps = appRegistry.filter(
       (app) => app.availability === "implemented",
@@ -16,7 +16,7 @@ describe("appRegistry", () => {
     const result = implementedApps.map((app) => app.id);
 
     // Assert
-    expect(result).toEqual(["calculator"]);
+    expect(result).toEqual(["calculator", "settings"]);
   });
 
   it("uses explicit dock placement for the curated dock apps", () => {
