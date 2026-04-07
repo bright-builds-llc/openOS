@@ -87,10 +87,10 @@
 | SETT-02 | Phase 11 | Complete |
 | SETT-03 | Phase 11 | Complete |
 | SETT-04 | Phase 11 | Complete |
-| NOTE-01 | Phase 12 | Pending |
-| NOTE-02 | Phase 12 | Pending |
-| NOTE-03 | Phase 12 | Pending |
-| NOTE-04 | Phase 12 | Pending |
+| NOTE-01 | Phase 12 | Complete |
+| NOTE-02 | Phase 12 | Complete |
+| NOTE-03 | Phase 12 | Complete |
+| NOTE-04 | Phase 12 | Complete |
 | BROW-01 | Phase 13 | Pending |
 | BROW-02 | Phase 13 | Pending |
 | BROW-03 | Phase 13 | Pending |
@@ -106,4 +106,4 @@
 
 ---
 *Requirements defined: 2026-04-06*
-*Last updated: 2026-04-06 after phase 11 completion*
+*Last updated: 2026-04-07 after phase 12 completion*
