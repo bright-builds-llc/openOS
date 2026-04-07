@@ -45,7 +45,7 @@ describe("appDefinitions", () => {
     const result = implementedApps.map((app) => app.id);
 
     // Assert
-    expect(result).toEqual(["calculator", "settings"]);
+    expect(result).toEqual(["notes", "calculator", "settings"]);
   });
 
   it("returns a typed definition through the helper", () => {

@@ -16,7 +16,7 @@ describe("appRegistry", () => {
     const result = implementedApps.map((app) => app.id);
 
     // Assert
-    expect(result).toEqual(["calculator", "settings"]);
+    expect(result).toEqual(["notes", "calculator", "settings"]);
   });
 
   it("uses explicit dock placement for the curated dock apps", () => {

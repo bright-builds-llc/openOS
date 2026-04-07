@@ -1,0 +1,134 @@
+.notes-app {
+  display: grid;
+  gap: 18px;
+}
+
+.notes-app__hero {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.notes-app__eyebrow {
+  margin: 0 0 6px;
+  color: rgba(244, 248, 255, 0.58);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.notes-app__title {
+  margin: 0;
+  font-size: clamp(2.1rem, 9vw, 3.4rem);
+  line-height: 0.94;
+  letter-spacing: -0.05em;
+}
+
+.notes-app__create,
+.notes-app__delete {
+  border: 0;
+  border-radius: 18px;
+  padding: 12px 14px;
+  color: #041127;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.notes-app__create {
+  background: linear-gradient(180deg, #fde68a 0%, #facc15 100%);
+}
+
+.notes-app__delete {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(244, 248, 255, 0.92);
+}
+
+.notes-app__warning {
+  padding: 14px 16px;
+  border-radius: 20px;
+  background: rgba(250, 204, 21, 0.12);
+  color: rgba(255, 244, 210, 0.94);
+  line-height: 1.45;
+}
+
+.notes-app__layout {
+  display: grid;
+  gap: 14px;
+}
+
+.notes-app__list,
+.notes-app__editor {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.notes-app__list-item {
+  display: grid;
+  gap: 4px;
+  width: 100%;
+  border: 0;
+  border-radius: 18px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.notes-app__list-item[data-active="true"] {
+  background: rgba(250, 204, 21, 0.16);
+  border: 1px solid rgba(250, 204, 21, 0.34);
+}
+
+.notes-app__list-title {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.notes-app__list-preview {
+  color: rgba(244, 248, 255, 0.62);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.notes-app__editor-actions {
+  display: flex;
+  justify-content: end;
+}
+
+.notes-app__title-input,
+.notes-app__body-input {
+  width: 100%;
+  border: 0;
+  color: rgba(244, 248, 255, 0.96);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 18px;
+}
+
+.notes-app__title-input {
+  padding: 14px 16px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.notes-app__body-input {
+  min-height: 220px;
+  padding: 16px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.notes-app__empty {
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(244, 248, 255, 0.62);
+  line-height: 1.45;
+}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
 import { CalculatorApp } from "../apps/calculator/CalculatorApp";
+import { NotesApp } from "../apps/notes/NotesApp";
 import { SettingsApp } from "../apps/settings/SettingsApp";
 import { HomePill } from "../motion/HomePill";
 import { MotionLayer } from "../motion/MotionLayer";
@@ -78,6 +79,8 @@ export function AdaptiveShellFoundation() {
   const appSurfaceContent =
     maybeOpenApp?.launchSurface === "calculator" ? (
       <CalculatorApp />
+    ) : maybeOpenApp?.launchSurface === "notes" ? (
+      <NotesApp />
     ) : maybeOpenApp?.launchSurface === "settings" ? (
       <SettingsApp />
     ) : maybeOpenApp !== null ? (

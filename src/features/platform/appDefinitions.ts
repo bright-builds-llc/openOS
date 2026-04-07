@@ -16,6 +16,7 @@ export type RuntimeAppAvailability = "implemented" | "coming-soon";
 
 export type RuntimeAppLaunchSurface =
   | "calculator"
+  | "notes"
   | "settings"
   | "coming-soon";
 
@@ -125,8 +126,8 @@ export const builtInAppDefinitions: RuntimeAppDefinition[] = [
     storage: createAppStorageMetadata("notes"),
     placement: "grid",
     page: 0,
-    availability: "coming-soon",
-    launchSurface: "coming-soon",
+    availability: "implemented",
+    launchSurface: "notes",
   }),
   defineRuntimeApp({
     id: "health",
