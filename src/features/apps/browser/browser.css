@@ -9,6 +9,39 @@
   gap: 10px;
 }
 
+.browser-app__app-chip {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.browser-app__app-glyph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #60a5fa 0%, #0f172a 100%);
+  color: rgba(244, 248, 255, 0.95);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.browser-app__app-label {
+  color: rgba(244, 248, 255, 0.88);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .browser-app__eyebrow {
   margin: 0;
   color: rgba(244, 248, 255, 0.58);

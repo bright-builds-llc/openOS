@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { getCanonicalRuntimeAppForLaunchSurface } from "../../runtime/appRegistry";
 import { BrowserFrame } from "./BrowserFrame";
 import {
   browserDestinations,
@@ -6,6 +7,18 @@ import {
 } from "./browserDestinations";
 import "./browser.css";
 
+function getBrowserRuntimeApp() {
+  const maybeBrowserApp =
+    getCanonicalRuntimeAppForLaunchSurface("browser");
+
+  if (maybeBrowserApp === null) {
+    throw new Error("Browser runtime metadata is missing.");
+  }
+
+  return maybeBrowserApp;
+}
+
+const BROWSER_RUNTIME_APP = getBrowserRuntimeApp();
 const initialDestination =
   browserDestinations[0]?.id ?? null;
 
@@ -25,8 +38,18 @@ export function BrowserApp() {
     >
       <header className="browser-app__hero">
         <div>
+          <div className="browser-app__app-chip">
+            <span aria-hidden="true" className="browser-app__app-glyph">
+              {BROWSER_RUNTIME_APP.icon.glyph}
+            </span>
+            <span className="browser-app__app-label">
+              Managed app
+            </span>
+          </div>
           <p className="browser-app__eyebrow">openOS</p>
-          <h1 className="browser-app__title">Browser</h1>
+          <h1 className="browser-app__title">
+            {BROWSER_RUNTIME_APP.label}
+          </h1>
         </div>
         <p className="browser-app__body">
           This browser stays honest: it only embeds destinations

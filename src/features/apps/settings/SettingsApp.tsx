@@ -9,8 +9,7 @@ import {
   writeOpenOsSettings,
 } from "../../settings/settingsPreferences";
 import {
-  listRuntimeAppsForSettings,
-  listRuntimeStorageManagedApps,
+  listCanonicalRuntimeAppsForSettings,
 } from "../../runtime/appRegistry";
 import "./settings.css";
 
@@ -63,10 +62,7 @@ export function SettingsApp() {
   const [settings, setSettings] = useState(() =>
     readOpenOsSettings(window.localStorage),
   );
-  const settingsVisibleApps = listRuntimeAppsForSettings();
-  const storageManagedAppIds = new Set(
-    listRuntimeStorageManagedApps().map((app) => app.id),
-  );
+  const settingsVisibleApps = listCanonicalRuntimeAppsForSettings();
 
   useEffect(() => {
     return subscribeToOpenOsSettings(window, () => {
@@ -197,9 +193,7 @@ export function SettingsApp() {
                   {app.label}
                 </span>
                 <span className="settings-app__row-hint">
-                  {storageManagedAppIds.has(app.id)
-                    ? app.storage.namespace
-                    : "No storage namespace"}
+                  {app.storage.namespace}
                 </span>
               </span>
               <span className="settings-app__row-value">
