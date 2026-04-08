@@ -22,6 +22,12 @@ test.describe("app integration", () => {
 
     await openApp(page, "settings");
     await expect(page.getByTestId("settings-managed-apps")).toBeVisible();
+    await expect(
+      page.getByTestId("settings-managed-app:browser-grid"),
+    ).toBeVisible();
+    await expect(
+      page.getByTestId("settings-managed-app:browser"),
+    ).toHaveCount(0);
     await returnHome(page, "settings");
     await expectActiveHomePage(page, 1);
 

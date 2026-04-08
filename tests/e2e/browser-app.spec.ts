@@ -6,7 +6,7 @@ import {
 } from "./fixtures/launcher";
 
 test.describe("browser app", () => {
-  test("opens through the launcher, renders embedded content, and falls back gracefully", async ({
+  test("opens through the launcher, renders embedded content, and switches cleanly between embedded and fallback destinations", async ({
     page,
   }) => {
     await gotoInstalledContextMode(page);
@@ -35,5 +35,21 @@ test.describe("browser app", () => {
     await expect(
       page.getByTestId("browser-open-external"),
     ).toHaveAttribute("href", "https://developer.mozilla.org/");
+
+    await page
+      .getByTestId("browser-destination:openos-guide")
+      .click();
+
+    await expect(
+      page.getByTestId("browser-destination:openos-guide"),
+    ).toHaveAttribute("data-active", "true");
+    await expect(
+      page.getByTestId("browser-fallback"),
+    ).toHaveCount(0);
+    await expect(
+      embeddedFixture.getByRole("heading", {
+        name: "Embedded destination ready",
+      }),
+    ).toBeVisible();
   });
 });

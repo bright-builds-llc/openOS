@@ -51,5 +51,13 @@ test.describe("settings app", () => {
     await expect(
       page.getByTestId("settings-managed-app:browser-grid"),
     ).toContainText("Browser");
+    await expect(
+      page.getByTestId("settings-managed-app:browser"),
+    ).toHaveCount(0);
+
+    const browserRows = page.locator(
+      '[data-testid="settings-managed-app:browser-grid"]',
+    );
+    await expect(browserRows).toHaveCount(1);
   });
 });
