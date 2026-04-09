@@ -1,0 +1,73 @@
+# Requirements: openOS
+
+**Defined:** 2026-04-09
+**Core Value:** When launched fullscreen on an iPhone, the experience must feel convincingly like using iOS, starting with the home screen, motion system, and Calculator.
+
+## v1.2 Requirements
+
+### Notes
+
+- [ ] **NOTE-05**: User can search notes by title and body text.
+- [ ] **NOTE-06**: User can organize notes using folders or tags and browse notes through that structure.
+
+### Browser
+
+- [ ] **BROW-05**: User can browse arbitrary sites rather than a curated/embed-safe set only.
+- [ ] **BROW-06**: User can enter arbitrary URLs directly.
+
+### Platform
+
+- [ ] **PLAT-04**: Contributors can submit apps through a repo-driven review workflow.
+- [ ] **PLAT-05**: User can browse apps in an in-product app catalog.
+
+### Verification
+
+- [ ] **QUAL-05**: Automated browser UI tests verify Notes search/organization and Browser direct-URL/truthful-fallback behavior at a basic level.
+- [ ] **QUAL-06**: Automated tests verify the repo-driven app-submission flow and in-product app catalog browsing at a basic level.
+
+## Future Requirements
+
+### Notes Expansion
+
+- **NOTE-07**: User can sync notes across devices/accounts.
+- **NOTE-08**: User can edit notes with richer formatting than plain text.
+
+### Browser Expansion
+
+- **BROW-07**: User can use multiple browser tabs.
+
+### Platform Growth
+
+- **PLAT-06**: User can install arbitrary virtual apps through an escape-hatch flow.
+
+## Out of Scope
+
+| Feature | Reason |
+|---------|--------|
+| Notes sync/accounts | Adds backend and identity scope before local search and organization are proven |
+| Rich-text notes editor | Increases editor complexity before the upgraded Notes information model settles |
+| Browser tabs | Too much browser-state complexity for the first careful browsing expansion |
+| Full Safari-parity browsing claims | The product must stay truthful about what can still require external fallback |
+| Arbitrary app install escape hatch | Follows after submission and catalog foundations, not before them |
+
+## Traceability
+
+| Requirement | Phase | Status |
+|-------------|-------|--------|
+| NOTE-05 | Phase TBD | Pending |
+| NOTE-06 | Phase TBD | Pending |
+| BROW-05 | Phase TBD | Pending |
+| BROW-06 | Phase TBD | Pending |
+| PLAT-04 | Phase TBD | Pending |
+| PLAT-05 | Phase TBD | Pending |
+| QUAL-05 | Phase TBD | Pending |
+| QUAL-06 | Phase TBD | Pending |
+
+**Coverage:**
+- v1.2 requirements: 8 total
+- Mapped to phases: 0
+- Unmapped: 8 ⚠️
+
+---
+*Requirements defined: 2026-04-09*
+*Last updated: 2026-04-09 after v1.2 definition*
