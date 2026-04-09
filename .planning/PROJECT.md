@@ -2,92 +2,86 @@
 
 ## What This Is
 
-openOS is a shipped mobile web experience that aims to feel nearly indistinguishable from using an iPhone when opened fullscreen on an iPhone in portrait mode. V1 delivers the iPhone-style home screen, convincing app open/dismiss motion, a high-fidelity Calculator app, and the platform foundations for a broader web-based iOS-like app ecosystem.
+openOS is a shipped mobile web experience that aims to feel nearly indistinguishable from using an iPhone when opened fullscreen on an iPhone in portrait mode. `v1.1` grows the project from a shell-and-Calculator proof into the first believable multi-app system, adding page-aware home screens, `Settings`, `Notes`, a truthful managed-iframe `Browser`, and the first reusable app-platform primitives.
 
-Longer term, this project aims to become an open platform for browser-native "virtual iOS apps," including a basic UIKit-style library, a repo-driven app distribution model, and an escape hatch for installing arbitrary apps inside the experience.
+Longer term, the project still aims to become an open platform for browser-native "virtual iOS apps," including a basic UIKit-style library, a repo-driven app distribution model, and an escape hatch for installing arbitrary apps inside the experience.
 
 ## Core Value
 
 When launched fullscreen on an iPhone, the experience must feel convincingly like using iOS, starting with the home screen, motion system, and Calculator.
 
-## Current Milestone: v1.1 Core Apps & Platform Foundations
-
-**Goal:** Expand openOS from a shell-and-Calculator proof into the first believable multi-app system with Notes, Settings, a managed-iframe Browser, multi-page home screens, and the first reusable app-platform primitives.
-
-**Target features:**
-- `Settings` app for openOS preferences and early app/platform management surfaces
-- `Notes` app with local persistence and explicit local-only/no-sync messaging
-- managed-iframe `Browser` app for curated/embed-safe destinations with graceful blocked-embed fallback
-- multi-page home-screen behavior
-- internal app-platform primitives for future apps and developer-facing app management
-
 ## Current State
 
-- **Shipped version:** `v1` on 2026-04-05
-- **User-facing surface:** install-first Safari onboarding, standalone launch intro, adaptive home screen, shared launcher/runtime/motion system, placeholder app surfaces, and a high-fidelity Calculator
-- **Verification:** WebKit browser coverage for shell flow, Calculator, installed-boundary truthfulness, and browser-entry parity
-- **Codebase:** React 19, Vite 8, TypeScript 6, Vitest 4, Playwright 1.59, with about 3,975 lines of TypeScript/TSX in the current repo
+- **Shipped version:** `v1.1` on 2026-04-09
+- **User-facing surface:** install-first Safari onboarding, adaptive shell, shared launcher/runtime/motion system, multi-page home screens, high-fidelity Calculator, real `Settings`, local-only `Notes`, and a truthful managed-iframe `Browser`
+- **Verification:** milestone audit passed after `pnpm test` (`95` tests), `pnpm test:e2e --project=webkit-iphone` (`16` tests), and `pnpm build`
+- **Codebase:** React 19, Vite 8, TypeScript 6, Vitest 4, Playwright 1.59, with about 6,538 lines of TypeScript/TSX in `src/` and `tests/`
 
 ## Requirements
 
 ### Validated
 
-- ✓ Installed Safari onboarding and standalone Home Screen launch — `v1`
-- ✓ Adaptive portrait iPhone-like home screen with wallpaper, status bar, full grid, and dock — `v1`
-- ✓ Shared launcher runtime with placeholder app surfaces and reversible motion/Home-pill navigation — `v1`
-- ✓ High-fidelity portrait Calculator implemented through the shared runtime path — `v1`
-- ✓ Browser-level shell, Calculator, installed-boundary, and browser-entry verification — `v1`
+- ✓ Install-first Safari onboarding and standalone Home Screen launch flow — `v1`
+- ✓ Adaptive portrait iPhone shell, shared launcher/runtime/motion system, and high-fidelity Calculator — `v1`
+- ✓ Multi-page home-screen behavior with launcher return-to-origin semantics — `v1.1`
+- ✓ Reusable internal app-platform primitives for app definitions, settings participation, and storage namespaces — `v1.1`
+- ✓ Real `Settings` app with persistent preferences and internal app-management surface — `v1.1`
+- ✓ Real local-only `Notes` app with browser-verified persistence and honest no-sync messaging — `v1.1`
+- ✓ Truthful managed-iframe `Browser` with curated destinations, graceful fallback, and integrated launcher-path verification — `v1.1`
 
 ### Active
 
-- [ ] Users can open and use a `Settings` app for openOS-specific preferences.
-- [ ] Users can create, edit, view, and delete locally persisted notes in a `Notes` app, with clear local-only/no-sync messaging.
-- [ ] Users can open a limited `Browser` app that embeds allowed/embed-safe destinations and falls back gracefully when embedding is blocked.
-- [ ] Users can navigate multiple home-screen pages while keeping the current shell illusion intact.
-- [ ] Developers can define apps against the first reusable app-platform primitives and internal app-management seams.
+- [ ] Users can search notes and organize them with folders or tags.
+- [ ] Users can sync notes across devices/accounts and use richer editing than plain text.
+- [ ] Users can browse beyond the current curated/embed-safe Browser scope without making dishonest product claims.
+- [ ] Contributors can submit, browse, and install virtual apps through a repo-driven platform flow.
 
 ### Out of Scope
 
-- Landscape mode — V1 is portrait-first and should focus on one convincing form factor before widening coverage.
-- Widgets — not core to the first fidelity milestone and would distract from the home-screen/app-shell foundation.
-- Notifications — requires additional system surfaces beyond the first interactive illusion target.
-- Lock screen — a separate system surface that is not required to validate the home-screen-first concept.
+- Landscape mode until the portrait iPhone experience remains strong as the product grows.
+- Widgets, notifications, and lock screen system surfaces before the app platform and core shell mature further.
+- Literal Apple logos and related marks.
 
 ## Context
 
-V1 proved that an installable, browser-native iPhone-inspired experience can feel coherent across install entry, adaptive shell rendering, shared runtime, motion, and a first real app. The shipped codebase now has the right architectural seams for broader growth: registry-driven app identity, shared app surfaces, explicit motion/navigation state, and meaningful browser verification around the core illusion-critical flows.
+`v1` proved the install boundary, shell fidelity, shared launcher/runtime path, motion system, and first real app. `v1.1` then validated that openOS can grow carefully without breaking the illusion: the home screen can span multiple pages, real built-in apps can share a platform contract, and browser constraints can be handled truthfully instead of hidden behind fake general-purpose browsing claims.
 
-`v1.1` shifts from “prove the illusion” to “grow the platform carefully.” The chosen scope stays close to the existing shell/runtime strengths: `Settings` and `Notes` are natural openOS-native apps, while `Browser` is intentionally limited to a managed-iframe model because arbitrary web embedding is constrained by `X-Frame-Options` and CSP `frame-ancestors`. The browser onboarding/install surface is now in good shape and no longer drives milestone priority.
+The next milestone is still intentionally open. The strongest available directions are expanding Notes, broadening Browser carefully, and turning the internal app-platform layer into something contributors can build against without rewriting the current runtime seams.
 
 ## Constraints
 
-- **Platform**: Mobile web on iPhone in portrait — V1 must feel right on iPhone-sized portrait viewports rather than trying to generalize across every device class immediately.
-- **Installation model**: Fullscreen installed web app is the primary experience — immersion and status-bar treatment are materially better there than in a normal browser tab.
-- **Responsive fidelity**: Support essentially all portrait iPhone sizes — layout metrics, spacing, and safe-area treatment need sensible adaptation instead of being tuned to one fixed device.
-- **Interaction fidelity**: Home screen layout, wallpaper and dock feel, status bar treatment, app motion, touch responsiveness, and calculator behavior are non-negotiable V1 quality bars.
-- **Architecture**: Build a real internal app model from V1 — the first slice must support future apps, a UIKit-like layer, and app distribution without a rewrite.
-- **Verification**: Add basic browser UI tests for key flows — the project should prove the illusion-critical interactions continue to work as features are added.
-- **Brand/IP**: Avoid literal Apple logos and similar trademark-heavy branding — the project can pursue close UX parity without relying on protected Apple marks.
+- **Platform:** Mobile web on iPhone in portrait remains the primary target.
+- **Installation model:** Fullscreen installed web app is still the intended experience.
+- **Responsive fidelity:** Support essentially all portrait iPhone sizes without weakening the illusion.
+- **Interaction fidelity:** Home screen, motion, touch response, and built-in app quality remain non-negotiable.
+- **Architecture:** Keep app identity, launcher behavior, settings participation, and storage ownership on shared runtime/platform seams.
+- **Verification:** Maintain browser-level regression coverage for illusion-critical and milestone-defining user flows.
+- **Brand/IP:** Avoid literal Apple marks while pursuing close UX parity.
 
 ## Key Decisions
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Make installed fullscreen usage the primary target on iPhone | The illusion is materially stronger when browser chrome is removed and safe areas can be treated more predictably | ✓ Validated in `v1` |
-| Use a realistic full app grid with placeholder apps | The home screen should feel complete even before most apps are implemented | ✓ Validated in `v1` |
-| Launch unimplemented apps into a polished full-screen "Coming Soon" state | Placeholder icons should still preserve the illusion instead of acting broken or inert | ✓ Validated in `v1` |
-| Ship only the portrait standard Calculator in V1 | Keeps the first app narrow while still exercising fidelity, layout, input behavior, and app-shell transitions | ✓ Validated in `v1` |
-| Build an extensible app model in V1 instead of a Calculator-only demo | The long-term goal depends on future app extensibility, app distribution, and escape-hatch installs | ✓ Validated in `v1` |
-| Include basic browser UI tests from the first milestone | Core fidelity depends on interaction behavior, so lightweight regression coverage should exist before the app surface grows | ✓ Validated in `v1` |
-| Avoid literal Apple logos and related marks | Reduces unnecessary IP risk while still allowing close UX inspiration | ✓ Maintained in `v1` |
+| Make installed fullscreen usage the primary target on iPhone | The illusion is materially stronger without browser chrome | ✓ Validated in `v1` |
+| Build an extensible app model early instead of a Calculator-only demo | Future apps and platform work needed shared launcher/runtime seams from the start | ✓ Validated in `v1` |
+| Keep Browser truthful and limited to curated/embed-safe destinations | Arbitrary browsing is constrained by iframe embedding policy and would be dishonest to overclaim | ✓ Validated in `v1.1` |
+| Use shared platform metadata as the source of truth for app identity, settings participation, and storage | Multiple built-in apps needed one reusable contract instead of ad hoc wiring | ✓ Validated in `v1.1` |
+| Close milestone audit gaps with focused cleanup instead of reopening broad scope | Preserved momentum and fixed the actual truthfulness issue in app-side code | ✓ Validated in `v1.1` |
 
 ## Next Milestone Goals
 
-- Ship `Settings`, `Notes`, and a managed-iframe `Browser`
-- Introduce multi-page home-screen behavior without weakening the current shell illusion
-- Begin the reusable UIKit-like web layer and app-host primitives
-- Define the first internal app-management/developer-facing platform surfaces
-- Keep sync, broad app distribution, and arbitrary app install flows out of this milestone
+- Decide whether the next milestone focuses first on Notes expansion, Browser expansion, or platform distribution.
+- Preserve the truthful install-and-launcher-path quality bar while adding broader app capability.
+- Introduce the next milestone explicitly through `$gsd-new-milestone` rather than letting post-`v1.1` work drift.
+
+<details>
+<summary>Archived milestone framing</summary>
+
+### Completed Milestone
+
+`v1.1 Core Apps & Platform Foundations` shipped on 2026-04-09 after Phases 9-15 and a passing milestone audit.
+
+</details>
 
 ---
-*Last updated: 2026-04-06 after starting v1.1 milestone*
+*Last updated: 2026-04-09 after completing v1.1 milestone*
