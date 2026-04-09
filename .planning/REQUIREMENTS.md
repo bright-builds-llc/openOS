@@ -54,19 +54,19 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| NOTE-05 | Phase TBD | Pending |
-| NOTE-06 | Phase TBD | Pending |
-| BROW-05 | Phase TBD | Pending |
-| BROW-06 | Phase TBD | Pending |
-| PLAT-04 | Phase TBD | Pending |
-| PLAT-05 | Phase TBD | Pending |
-| QUAL-05 | Phase TBD | Pending |
-| QUAL-06 | Phase TBD | Pending |
+| NOTE-05 | Phase 16 | Pending |
+| NOTE-06 | Phase 16 | Pending |
+| BROW-05 | Phase 17 | Pending |
+| BROW-06 | Phase 17 | Pending |
+| PLAT-04 | Phase 18 | Pending |
+| PLAT-05 | Phase 19 | Pending |
+| QUAL-05 | Phase 20 | Pending |
+| QUAL-06 | Phase 20 | Pending |
 
 **Coverage:**
 - v1.2 requirements: 8 total
-- Mapped to phases: 0
-- Unmapped: 8 ⚠️
+- Mapped to phases: 8
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-04-09*
