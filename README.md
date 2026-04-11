@@ -52,14 +52,14 @@ Public demo URL: **Unavailable today**. The README visuals are generated from th
 ## Quickstart
 
 ```bash
-pnpm install
-pnpm dev
-pnpm build
-pnpm test
-pnpm test:e2e
+bun install
+bun run dev
+bun run build
+bun run test
+bun run test:e2e
 ```
 
-Use `pnpm dev` for local iteration. Vite will print the local URL. Use `pnpm test:e2e` to run the WebKit iPhone launcher-path suite against the built preview app.
+Use `bun run dev` for local iteration. Vite will print the local URL. Use `bun run test:e2e` to run the WebKit iPhone launcher-path suite against the built preview app.
 
 ## Project status
 
@@ -74,19 +74,19 @@ Use `pnpm dev` for local iteration. Vite will print the local URL. Use `pnpm tes
 - Generate fresh artifact-only media locally:
 
   ```bash
-  pnpm readme:media
+  bun run readme:media
   ```
 
 - Refresh tracked README media in `docs/readme-media/`:
 
   ```bash
-  pnpm readme:media:update
+  bun run readme:media:update
   ```
 
 - Check whether tracked media has drifted from a fresh capture:
 
   ```bash
-  pnpm readme:media:check
+  bun run readme:media:check
   ```
 
 The capture flow uses the real Playwright launcher helpers from `tests/e2e/fixtures/launcher.ts`. Static screenshots are tracked under `docs/readme-media/`. The animated README asset is a GIF for GitHub rendering. The capture script also emits an MP4 artifact for review, but that video is not required by the README itself.

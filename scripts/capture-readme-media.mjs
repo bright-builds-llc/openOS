@@ -38,8 +38,8 @@ async function ensureCleanOutput() {
   await fs.mkdir(framesDir, { recursive: true });
 }
 
-function getPnpmCommand() {
-  return process.platform === "win32" ? "pnpm.cmd" : "pnpm";
+function getBunCommand() {
+  return process.platform === "win32" ? "bun.exe" : "bun";
 }
 
 function runCommand(command, commandArgs, maybeOptions = {}) {
@@ -182,8 +182,8 @@ async function buildDriftSummary() {
 async function main() {
   await ensureCleanOutput();
 
-  runCommand(getPnpmCommand(), [
-    "exec",
+  runCommand(getBunCommand(), [
+    "x",
     "playwright",
     "test",
     "tests/e2e/readme-media.spec.ts",
