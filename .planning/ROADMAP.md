@@ -24,6 +24,8 @@
 | 18 | App Submission Foundations | Introduce the first repo-driven app submission workflow on top of the shared openOS app-platform layer | PLAT-04 | 4 |
 | 19 | App Catalog | Expose the first in-product app catalog surface from shared submission metadata | PLAT-05 | 4 |
 | 20 | Verification and Distribution Integration | 3/3 | Complete    | 2026-04-11 |
+| 21 | Submitted Manifest Discovery Hardening | Ensure submitted app manifests cannot be silently skipped between repo validation and the catalog source | Tech debt follow-up | 4 |
+| 22 | Browser Launcher Identity Cleanup | Remove residual Browser launcher identity risk and strengthen dock-path coverage | Tech debt follow-up | 4 |
 
 ## Active Phases
 
@@ -121,6 +123,44 @@
 2. Automated tests verify Browser direct-URL entry and truthful fallback behavior at a basic level.
 3. Automated tests verify the repo-driven app submission flow and in-product catalog browsing at a basic level.
 4. The final verification set passes without reopening major truthfulness or integration gaps.
+
+### Phase 21: Submitted Manifest Discovery Hardening
+
+**Goal:** Ensure submitted app manifests cannot be silently skipped between repo validation and the catalog source.
+
+**Status:** Planned
+
+**Requirements:** None — closes `v1.2` tech debt affecting `PLAT-04`, `PLAT-05`, and `QUAL-06`
+
+**Why sixth:**
+- The current submission-to-catalog seam works for the checked-in samples, but it is still brittle because manifest registration is manual.
+- Hardening manifest discovery now removes the highest-risk distribution workflow debt before the submission surface scales.
+- This keeps the repo-driven validator and the in-product catalog on one trustworthy source of truth.
+
+**Success criteria:**
+1. Submitted manifests are discovered automatically or the validator fails when unregistered manifest files exist on disk.
+2. `bun run submissions:check` verifies every submitted manifest file present in `src/features/platform/submitted-apps/`.
+3. The catalog source and submission validator cannot silently diverge for newly added manifests.
+4. Contributor docs remain accurate for the hardened submission workflow.
+
+### Phase 22: Browser Launcher Identity Cleanup
+
+**Goal:** Remove residual Browser launcher identity risk and strengthen launcher-path coverage across grid and dock entrypoints.
+
+**Status:** Planned
+
+**Requirements:** None — closes `v1.2` tech debt affecting future Browser persistence and launcher-path proof
+
+**Why seventh:**
+- Browser still carries two launcher entries with different storage namespaces, which becomes riskier if Browser state grows beyond the current stateless surface.
+- Dock-entry coverage is the last noted Browser launcher-path hole in the current milestone evidence.
+- Closing both issues together keeps Browser launcher identity and verification aligned before later browsing work expands the app again.
+
+**Success criteria:**
+1. Browser launcher entries no longer risk divergent persisted state.
+2. Launcher-path verification explicitly covers both grid and dock Browser entrypoints at a basic level.
+3. Existing Browser direct-entry and truthful fallback behavior remain intact after the cleanup.
+4. Settings/runtime metadata surfaces stay coherent after the launcher identity cleanup.
 
 ## Requirement Coverage
 

@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Notes, Browser & Platform Growth
-status: Ready for milestone completion
-stopped_at: Phase 20 complete, ready for milestone completion
+status: Ready to plan
+stopped_at: Gap closure phases 21-22 created from v1.2 milestone audit
 last_updated: "2026-04-11T19:56:10.000Z"
 progress:
-  total_phases: 5
+  total_phases: 7
   completed_phases: 5
   total_plans: 15
   completed_plans: 15
-  percent: 100
+  percent: 71
 ---
 
 # Project State: openOS
@@ -20,7 +20,7 @@ progress:
 See: `.planning/PROJECT.md` (updated 2026-04-09)
 
 **Core value:** When launched fullscreen on an iPhone, the experience must feel convincingly like using iOS, starting with the home screen, motion system, and Calculator.
-**Current focus:** Ready for milestone completion
+**Current focus:** Ready to discuss and plan Phase 21
 
 ## Artifact Status
 
@@ -32,22 +32,22 @@ See: `.planning/PROJECT.md` (updated 2026-04-09)
 | milestones/ | Complete | v1 roadmap, requirements, and audit archived |
 | MILESTONES.md | Complete | v1 release entry recorded |
 | REQUIREMENTS.md | Active | v1.2 requirements defined and mapped |
-| ROADMAP.md | Active | All milestone phases complete; milestone completion is next |
-| STATE.md | Active | Updated after Phase 20 completion |
+| ROADMAP.md | Active | Gap-closure phases 21-22 added after the v1.2 milestone audit |
+| STATE.md | Active | Updated after planning the gap-closure phases |
 
 ## Current Phase Outlook
 
 ### Next action
 
-- Complete and archive **v1.2 Notes, Browser & Platform Growth**.
+- Start planning **Phase 21: Submitted Manifest Discovery Hardening**.
 
 ### Most recently completed phase
 
-- **Phase 20: Verification and Distribution Integration** — complete, verified, and ready for milestone closeout.
+- **Phase 20: Verification and Distribution Integration** — complete, verified, and followed by gap-closure planning.
 
 ### Planned next phase
 
-- **No further feature phase** — milestone completion and archive are next.
+- **Phase 21: Submitted Manifest Discovery Hardening** — harden submitted-manifest discovery and validation.
 
 ## Notes
 
@@ -69,8 +69,8 @@ See: `.planning/PROJECT.md` (updated 2026-04-09)
 ## Session
 
 **Last Date:** 2026-04-11T19:55:19Z
-**Stopped At:** Phase 20 complete, ready for milestone completion
+**Stopped At:** Gap closure phases 21-22 created from v1.2 milestone audit
 **Resume File:** .planning/ROADMAP.md
 
 ---
-*State updated: 2026-04-11 after completing Phase 20*
+*State updated: 2026-04-11 after planning gap-closure phases 21-22*
