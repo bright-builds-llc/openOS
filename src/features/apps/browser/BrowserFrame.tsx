@@ -14,8 +14,11 @@ export function BrowserFrame({ destination }: BrowserFrameProps) {
     >
       <header className="browser-frame__header">
         <div className="browser-frame__title">{destination.title}</div>
-        <div className="browser-frame__subtitle">
-          Embedded destination
+        <div
+          className="browser-frame__subtitle"
+          data-testid="browser-frame-address"
+        >
+          {destination.displayUrl}
         </div>
       </header>
       <iframe

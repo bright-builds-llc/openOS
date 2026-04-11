@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Notes, Browser & Platform Growth
 status: Ready to plan
-stopped_at: Phase 16 complete, ready for Phase 17 planning
-last_updated: "2026-04-11T15:59:55.032Z"
+stopped_at: Phase 17 complete, ready for Phase 18 planning
+last_updated: "2026-04-11T18:42:21.121Z"
 progress:
   total_phases: 5
-  completed_phases: 1
-  total_plans: 3
-  completed_plans: 3
-  percent: 20
+  completed_phases: 2
+  total_plans: 6
+  completed_plans: 6
+  percent: 40
 ---
 
 # Project State: openOS
@@ -20,7 +20,7 @@ progress:
 See: `.planning/PROJECT.md` (updated 2026-04-09)
 
 **Core value:** When launched fullscreen on an iPhone, the experience must feel convincingly like using iOS, starting with the home screen, motion system, and Calculator.
-**Current focus:** Ready to discuss and plan Phase 17
+**Current focus:** Ready to discuss and plan Phase 18
 
 ## Artifact Status
 
@@ -32,22 +32,22 @@ See: `.planning/PROJECT.md` (updated 2026-04-09)
 | milestones/ | Complete | v1 roadmap, requirements, and audit archived |
 | MILESTONES.md | Complete | v1 release entry recorded |
 | REQUIREMENTS.md | Active | v1.2 requirements defined and mapped |
-| ROADMAP.md | Active | Phase 16 complete; Phase 17 is next |
-| STATE.md | Active | Updated after Phase 16 completion |
+| ROADMAP.md | Active | Phase 17 complete; Phase 18 is next |
+| STATE.md | Active | Updated after Phase 17 completion |
 
 ## Current Phase Outlook
 
 ### Next action
 
-- Start implementation planning at **Phase 17: Browser Direct Navigation**.
+- Start implementation planning at **Phase 18: App Submission Foundations**.
 
 ### Most recently completed phase
 
-- **Phase 16: Notes Search and Organization** — complete, verified, and ready to hand off.
+- **Phase 17: Browser Direct Navigation** — complete, verified, and ready to hand off.
 
 ### Planned next phase
 
-- **Phase 17: Browser Direct Navigation** — let Browser accept direct URLs and broaden destination handling honestly.
+- **Phase 18: App Submission Foundations** — introduce the first repo-driven app submission workflow.
 
 ## Notes
 
@@ -68,9 +68,9 @@ See: `.planning/PROJECT.md` (updated 2026-04-09)
 
 ## Session
 
-**Last Date:** 2026-04-11T15:59:55Z
-**Stopped At:** Phase 16 complete, ready for Phase 17 planning
+**Last Date:** 2026-04-11T18:42:21Z
+**Stopped At:** Phase 17 complete, ready for Phase 18 planning
 **Resume File:** .planning/ROADMAP.md
 
 ---
-*State updated: 2026-04-11 after completing Phase 16*
+*State updated: 2026-04-11 after completing Phase 17*

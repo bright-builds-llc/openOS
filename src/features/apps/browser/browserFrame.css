@@ -19,6 +19,7 @@
 .browser-frame__subtitle {
   color: rgba(244, 248, 255, 0.58);
   font-size: 0.82rem;
+  word-break: break-word;
 }
 
 .browser-frame__iframe {

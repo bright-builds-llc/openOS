@@ -12,8 +12,8 @@
 
 ### Browser
 
-- [ ] **BROW-05**: User can browse arbitrary sites rather than a curated/embed-safe set only.
-- [ ] **BROW-06**: User can enter arbitrary URLs directly.
+- [x] **BROW-05**: User can browse arbitrary sites rather than a curated/embed-safe set only.
+- [x] **BROW-06**: User can enter arbitrary URLs directly.
 
 ### Platform
 
@@ -56,8 +56,8 @@
 |-------------|-------|--------|
 | NOTE-05 | Phase 16 | Complete |
 | NOTE-06 | Phase 16 | Complete |
-| BROW-05 | Phase 17 | Pending |
-| BROW-06 | Phase 17 | Pending |
+| BROW-05 | Phase 17 | Complete |
+| BROW-06 | Phase 17 | Complete |
 | PLAT-04 | Phase 18 | Pending |
 | PLAT-05 | Phase 19 | Pending |
 | QUAL-05 | Phase 20 | Pending |
@@ -70,4 +70,4 @@
 
 ---
 *Requirements defined: 2026-04-09*
-*Last updated: 2026-04-11 after completing Phase 16*
+*Last updated: 2026-04-11 after completing Phase 17*

@@ -6,7 +6,7 @@ import {
 } from "./fixtures/launcher";
 
 test.describe("browser app", () => {
-  test("opens through the launcher, renders embedded content, and switches cleanly between embedded and fallback destinations", async ({
+  test("opens through the launcher, handles direct urls, and switches cleanly between embedded and fallback destinations", async ({
     page,
   }) => {
     await gotoInstalledContextMode(page);
@@ -28,13 +28,39 @@ test.describe("browser app", () => {
     ).toBeVisible();
 
     await page
-      .getByTestId("browser-destination:mdn-web-docs")
-      .click();
+      .getByTestId("browser-address-input")
+      .fill("/browser-fixtures/direct-url.html");
+    await page.getByTestId("browser-address-go").click();
 
-    await expect(page.getByTestId("browser-fallback")).toBeVisible();
+    await expect(
+      page.getByTestId("browser-address-input"),
+    ).toHaveValue("/browser-fixtures/direct-url.html");
+    await expect(
+      page.getByTestId("browser-recents"),
+    ).toContainText("Direct Url");
+    await expect(
+      page.getByTestId("browser-frame-address"),
+    ).toContainText("/browser-fixtures/direct-url.html");
+    await expect(
+      page
+        .frameLocator('[data-testid="browser-frame-iframe"]')
+        .getByRole("heading", { name: "Direct navigation ready" }),
+    ).toBeVisible();
+
+    await page
+      .getByTestId("browser-address-input")
+      .fill("developer.mozilla.org");
+    await page.getByTestId("browser-address-go").click();
+
+    await expect(
+      page.getByTestId("browser-address-input"),
+    ).toHaveValue("https://developer.mozilla.org/");
     await expect(
       page.getByTestId("browser-open-external"),
     ).toHaveAttribute("href", "https://developer.mozilla.org/");
+    await expect(
+      page.getByTestId("browser-current-address"),
+    ).toContainText("https://developer.mozilla.org/");
 
     await page
       .getByTestId("browser-destination:openos-guide")
