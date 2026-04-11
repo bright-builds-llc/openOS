@@ -1,0 +1,78 @@
+name: README Media Refresh
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 12 * * *"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  readme-media-refresh:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out default branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright browser
+        run: pnpm exec playwright install --with-deps webkit
+
+      - name: Refresh tracked README media
+        if: github.event_name == 'workflow_dispatch'
+        run: pnpm readme:media:update
+
+      - name: Capture nightly README media artifacts
+        if: github.event_name != 'workflow_dispatch'
+        run: pnpm readme:media:check
+
+      - name: Publish nightly drift summary
+        if: github.event_name != 'workflow_dispatch'
+        run: |
+          if [ -f output/playwright/readme-media/drift-summary.md ]; then
+            cat output/playwright/readme-media/drift-summary.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload README media artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: readme-media
+          path: output/playwright/readme-media
+          if-no-files-found: error
+
+      - name: Create refresh PR
+        if: github.event_name == 'workflow_dispatch'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: readme-media/refresh
+          delete-branch: true
+          commit-message: "docs: refresh README media"
+          title: "docs: refresh README media"
+          body: |
+            Refreshes tracked README screenshots and animated media from the shipped launcher-path flows.
+          add-paths: |
+            docs/readme-media/**
+            README.md

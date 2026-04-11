@@ -1,7 +1,13 @@
 import { defineConfig, devices } from "@playwright/test";
 
+const maybeReadmeMediaCapture =
+  process.env.README_MEDIA_CAPTURE === "1";
+
 export default defineConfig({
   testDir: "./tests/e2e",
+  testIgnore: maybeReadmeMediaCapture
+    ? []
+    : ["**/readme-media.spec.ts"],
   fullyParallel: true,
   outputDir: "test-results",
   reporter: "line",
