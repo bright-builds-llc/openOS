@@ -23,7 +23,7 @@
 | 17 | Browser Direct Navigation | Let `Browser` accept direct URLs and broaden destination handling while keeping fallback behavior honest | BROW-05, BROW-06 | 4 |
 | 18 | App Submission Foundations | Introduce the first repo-driven app submission workflow on top of the shared openOS app-platform layer | PLAT-04 | 4 |
 | 19 | App Catalog | Expose the first in-product app catalog surface from shared submission metadata | PLAT-05 | 4 |
-| 20 | Verification and Distribution Integration | Prove Notes, Browser, and catalog/distribution flows work together cleanly | QUAL-05, QUAL-06 | 4 |
+| 20 | Verification and Distribution Integration | 3/3 | Complete    | 2026-04-11 |
 
 ## Active Phases
 
@@ -107,7 +107,7 @@
 
 **Goal:** Prove the new Notes, Browser, and platform distribution flows work together cleanly.
 
-**Status:** Planned
+**Status:** Complete
 
 **Requirements:** QUAL-05, QUAL-06
 
@@ -132,8 +132,8 @@
 | BROW-06 | Phase 17 | Complete |
 | PLAT-04 | Phase 18 | Complete |
 | PLAT-05 | Phase 19 | Complete |
-| QUAL-05 | Phase 20 | Pending |
-| QUAL-06 | Phase 20 | Pending |
+| QUAL-05 | Phase 20 | Complete |
+| QUAL-06 | Phase 20 | Complete |
 
 **Coverage:**
 - v1.2 requirements: 8 total
@@ -141,4 +141,4 @@
 - Unmapped: 0
 
 ---
-*Roadmap updated: 2026-04-11 after completing Phase 19*
+*Roadmap updated: 2026-04-11 after completing Phase 20*

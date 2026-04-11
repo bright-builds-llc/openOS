@@ -57,6 +57,7 @@ bun run dev
 bun run build
 bun run test
 bun run test:e2e
+bun run verify:v1.2
 ```
 
 Use `bun run dev` for local iteration. Vite will print the local URL. Use `bun run test:e2e` to run the WebKit iPhone launcher-path suite against the built preview app.

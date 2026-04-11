@@ -22,8 +22,8 @@
 
 ### Verification
 
-- [ ] **QUAL-05**: Automated browser UI tests verify Notes search/organization and Browser direct-URL/truthful-fallback behavior at a basic level.
-- [ ] **QUAL-06**: Automated tests verify the repo-driven app-submission flow and in-product app catalog browsing at a basic level.
+- [x] **QUAL-05**: Automated browser UI tests verify Notes search/organization and Browser direct-URL/truthful-fallback behavior at a basic level.
+- [x] **QUAL-06**: Automated tests verify the repo-driven app-submission flow and in-product app catalog browsing at a basic level.
 
 ## Future Requirements
 
@@ -60,8 +60,8 @@
 | BROW-06 | Phase 17 | Complete |
 | PLAT-04 | Phase 18 | Complete |
 | PLAT-05 | Phase 19 | Complete |
-| QUAL-05 | Phase 20 | Pending |
-| QUAL-06 | Phase 20 | Pending |
+| QUAL-05 | Phase 20 | Complete |
+| QUAL-06 | Phase 20 | Complete |
 
 **Coverage:**
 - v1.2 requirements: 8 total
@@ -70,4 +70,4 @@
 
 ---
 *Requirements defined: 2026-04-09*
-*Last updated: 2026-04-11 after completing Phase 19*
+*Last updated: 2026-04-11 after completing Phase 20*

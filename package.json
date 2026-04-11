@@ -8,6 +8,7 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "submissions:check": "bun scripts/validate-submitted-apps.ts",
+    "verify:v1.2": "bash scripts/verify-v1.2.sh",
     "test": "vitest run --passWithNoTests",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
