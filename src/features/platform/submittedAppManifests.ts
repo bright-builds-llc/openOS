@@ -1,6 +1,7 @@
 import type { RuntimeAppIcon } from "./appDefinitions";
 import type { AppSettingsParticipation } from "./appSettings";
 import type { AppStorageMetadata } from "./appStorage";
+import signalBoxManifest from "./submitted-apps/signal-box.json";
 import studioLabManifest from "./submitted-apps/studio-lab.json";
 
 const SUBMITTED_APP_ID_PATTERN =
@@ -253,9 +254,12 @@ export function validateSubmittedAppManifest(
 
 const studioLabManifestRecord =
   studioLabManifest as SubmittedAppManifest;
+const signalBoxManifestRecord =
+  signalBoxManifest as SubmittedAppManifest;
 
 export const submittedAppManifestRecords: SubmittedAppManifest[] = [
   studioLabManifestRecord,
+  signalBoxManifestRecord,
 ];
 
 export function listSubmittedAppManifests(): SubmittedAppManifest[] {

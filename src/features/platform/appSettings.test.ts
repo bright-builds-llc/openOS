@@ -33,6 +33,7 @@ describe("appSettings", () => {
       "calculator",
       "settings",
       "browser-grid",
+      "library",
       "browser",
     ]);
   });

@@ -36,6 +36,11 @@ test.describe("app integration", () => {
     await expect(page.getByTestId("browser-fallback")).toBeVisible();
     await returnHome(page, "browser-grid");
     await expectActiveHomePage(page, 1);
+
+    await openApp(page, "library");
+    await expect(page.getByTestId("app-catalog-app")).toBeVisible();
+    await returnHome(page, "library");
+    await expectActiveHomePage(page, 1);
   });
 
   test("keeps milestone-specific Notes and Browser behaviors intact in the integrated shell", async ({
@@ -68,6 +73,15 @@ test.describe("app integration", () => {
     await expect(page.getByTestId("browser-open-external")).toHaveAttribute(
       "href",
       "https://developer.mozilla.org/",
+    );
+
+    await returnHome(page, "browser-grid");
+    await openApp(page, "library");
+    await expect(page.getByTestId("app-catalog-entry:signal-box")).toBeVisible();
+    await page.getByTestId("app-catalog-entry:signal-box").click();
+    await expect(page.getByTestId("app-catalog-open-repo")).toHaveAttribute(
+      "href",
+      "https://github.com/bright-builds-llc/openos-signal-box",
     );
   });
 });

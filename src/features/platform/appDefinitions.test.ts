@@ -50,6 +50,7 @@ describe("appDefinitions", () => {
       "calculator",
       "settings",
       "browser-grid",
+      "library",
       "browser",
     ]);
   });
@@ -57,7 +58,7 @@ describe("appDefinitions", () => {
   it("assigns settings participation to the milestone apps", () => {
     // Arrange
     const milestoneApps = builtInAppDefinitions.filter((app) =>
-      ["settings", "notes", "browser-grid", "browser"].includes(app.id),
+      ["settings", "notes", "browser-grid", "browser", "library"].includes(app.id),
     );
 
     // Act
@@ -71,6 +72,7 @@ describe("appDefinitions", () => {
       { id: "notes", visibility: "app-list" },
       { id: "settings", visibility: "app-list" },
       { id: "browser-grid", visibility: "app-list" },
+      { id: "library", visibility: "app-list" },
       { id: "browser", visibility: "app-list" },
     ]);
   });
@@ -78,7 +80,7 @@ describe("appDefinitions", () => {
   it("assigns stable storage namespaces to the milestone apps", () => {
     // Arrange
     const milestoneApps = builtInAppDefinitions.filter((app) =>
-      ["settings", "notes", "browser-grid", "browser"].includes(app.id),
+      ["settings", "notes", "browser-grid", "browser", "library"].includes(app.id),
     );
 
     // Act
@@ -92,6 +94,7 @@ describe("appDefinitions", () => {
       { id: "notes", namespace: "openos.apps.notes" },
       { id: "settings", namespace: "openos.apps.settings" },
       { id: "browser-grid", namespace: "openos.apps.browser-grid" },
+      { id: "library", namespace: "openos.apps.library" },
       { id: "browser", namespace: "openos.apps.browser" },
     ]);
   });

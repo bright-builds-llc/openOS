@@ -17,6 +17,7 @@ export type RuntimeAppAvailability = "implemented" | "coming-soon";
 export type RuntimeAppLaunchSurface =
   | "calculator"
   | "browser"
+  | "catalog"
   | "notes"
   | "settings"
   | "coming-soon";
@@ -266,12 +267,12 @@ export const builtInAppDefinitions: RuntimeAppDefinition[] = [
     id: "library",
     label: "Library",
     icon: { glyph: "◎", tintStart: "#7dd3fc", tintEnd: "#14b8a6" },
-    settings: createAppSettingsParticipation(),
+    settings: createAppSettingsParticipation("app-list"),
     storage: createAppStorageMetadata("library"),
     placement: "grid",
     page: 1,
-    availability: "coming-soon",
-    launchSurface: "coming-soon",
+    availability: "implemented",
+    launchSurface: "catalog",
   }),
   defineRuntimeApp({
     id: "phone",

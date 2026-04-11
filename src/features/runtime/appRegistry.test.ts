@@ -27,6 +27,7 @@ describe("appRegistry", () => {
       "calculator",
       "settings",
       "browser-grid",
+      "library",
       "browser",
     ]);
   });
@@ -80,6 +81,7 @@ describe("appRegistry", () => {
       "calculator",
       "settings",
       "browser-grid",
+      "library",
       "browser",
     ]);
   });
@@ -98,6 +100,7 @@ describe("appRegistry", () => {
       "calculator",
       "settings",
       "browser-grid",
+      "library",
     ]);
   });
 
@@ -107,7 +110,7 @@ describe("appRegistry", () => {
     // Act
     const result = listRuntimeStorageManagedApps(appRegistry)
       .filter((app) =>
-        ["settings", "notes", "browser-grid", "browser"].includes(app.id),
+        ["settings", "notes", "browser-grid", "browser", "library"].includes(app.id),
       )
       .map((app) => app.id);
 
@@ -116,6 +119,7 @@ describe("appRegistry", () => {
       "notes",
       "settings",
       "browser-grid",
+      "library",
       "browser",
     ]);
   });
@@ -141,6 +145,7 @@ describe("appRegistry", () => {
       getRuntimeAppStorageNamespace("settings"),
       getRuntimeAppStorageNamespace("browser-grid"),
       getRuntimeAppStorageNamespace("browser"),
+      getRuntimeAppStorageNamespace("library"),
     ];
 
     // Assert
@@ -149,6 +154,7 @@ describe("appRegistry", () => {
       "openos.apps.settings",
       "openos.apps.browser-grid",
       "openos.apps.browser",
+      "openos.apps.library",
     ]);
   });
 
@@ -159,12 +165,14 @@ describe("appRegistry", () => {
     const result = [
       getCanonicalRuntimeAppStorageNamespace("notes"),
       getCanonicalRuntimeAppStorageNamespace("browser"),
+      getCanonicalRuntimeAppStorageNamespace("catalog"),
     ];
 
     // Assert
     expect(result).toEqual([
       "openos.apps.notes",
       "openos.apps.browser-grid",
+      "openos.apps.library",
     ]);
   });
 });

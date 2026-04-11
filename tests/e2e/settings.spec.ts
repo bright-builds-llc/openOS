@@ -52,6 +52,9 @@ test.describe("settings app", () => {
       page.getByTestId("settings-managed-app:browser-grid"),
     ).toContainText("Browser");
     await expect(
+      page.getByTestId("settings-managed-app:library"),
+    ).toContainText("Library");
+    await expect(
       page.getByTestId("settings-managed-app:browser"),
     ).toHaveCount(0);
 

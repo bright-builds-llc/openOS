@@ -88,7 +88,7 @@
 
 **Goal:** Expose the first in-product app catalog surface from shared submission metadata.
 
-**Status:** Planned
+**Status:** Complete
 
 **Requirements:** PLAT-05
 
@@ -131,7 +131,7 @@
 | BROW-05 | Phase 17 | Complete |
 | BROW-06 | Phase 17 | Complete |
 | PLAT-04 | Phase 18 | Complete |
-| PLAT-05 | Phase 19 | Pending |
+| PLAT-05 | Phase 19 | Complete |
 | QUAL-05 | Phase 20 | Pending |
 | QUAL-06 | Phase 20 | Pending |
 
@@ -141,4 +141,4 @@
 - Unmapped: 0
 
 ---
-*Roadmap updated: 2026-04-11 after completing Phase 18*
+*Roadmap updated: 2026-04-11 after completing Phase 19*

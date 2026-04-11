@@ -18,7 +18,10 @@ describe("submittedAppManifests", () => {
     const result = manifests.map((manifest) => manifest.id);
 
     // Assert
-    expect(result).toEqual(["studio-lab"]);
+    expect(result).toEqual([
+      "studio-lab",
+      "signal-box",
+    ]);
   });
 
   it("treats the sample manifest as catalog-ready and valid", () => {
@@ -38,6 +41,15 @@ describe("submittedAppManifests", () => {
         }),
         issues: [],
       },
+      {
+        manifest: expect.objectContaining({
+          id: "signal-box",
+          catalog: expect.objectContaining({
+            status: "catalog-ready",
+          }),
+        }),
+        issues: [],
+      },
     ]);
   });
 
@@ -50,7 +62,10 @@ describe("submittedAppManifests", () => {
     );
 
     // Assert
-    expect(result).toEqual(["studio-lab"]);
+    expect(result).toEqual([
+      "studio-lab",
+      "signal-box",
+    ]);
   });
 
   it("flags catalog-ready submissions that are missing review metadata", () => {

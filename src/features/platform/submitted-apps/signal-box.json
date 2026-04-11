@@ -1,0 +1,40 @@
+{
+  "id": "signal-box",
+  "label": "Signal Box",
+  "summary": "A focused communication dashboard for short-form updates and channel triage.",
+  "description": "Signal Box is a browser-native communications surface designed to show how submitted apps can describe purpose, review state, and catalog metadata before any install path exists in openOS.",
+  "developer": {
+    "name": "Bright Builds Labs"
+  },
+  "source": {
+    "repositoryUrl": "https://github.com/bright-builds-llc/openos-signal-box"
+  },
+  "icon": {
+    "glyph": "◉",
+    "tintStart": "#38bdf8",
+    "tintEnd": "#2563eb"
+  },
+  "runtime": {
+    "launchId": "signal-box",
+    "settings": {
+      "visibility": "hidden"
+    },
+    "storage": {
+      "namespace": "openos.apps.submitted.signal-box"
+    }
+  },
+  "catalog": {
+    "status": "catalog-ready",
+    "category": "Communication",
+    "tags": [
+      "chat",
+      "workflow",
+      "status"
+    ]
+  },
+  "review": {
+    "submittedAt": "2026-04-11",
+    "reviewedAt": "2026-04-11",
+    "reviewNotes": "Validated as a second sample submission to power the first in-product catalog browse flow."
+  }
+}
