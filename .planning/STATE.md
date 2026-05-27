@@ -2,9 +2,9 @@
 gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Notes, Browser & Platform Growth
-status: Ready for milestone closeout
-stopped_at: Phase 22 complete, ready for v1.2 milestone closeout
-last_updated: "2026-04-12T01:24:32.244Z"
+status: Ready for next milestone planning
+stopped_at: v1.2 archived; ready for /gsd-new-milestone
+last_updated: "2026-05-27T13:21:33.265Z"
 progress:
   total_phases: 7
   completed_phases: 7
@@ -17,60 +17,48 @@ progress:
 
 ## Project Reference
 
-See: `.planning/PROJECT.md` (updated 2026-04-09)
+See: `.planning/PROJECT.md` (updated 2026-05-27)
 
-**Core value:** When launched fullscreen on an iPhone, the experience must feel convincingly like using iOS, starting with the home screen, motion system, and Calculator.
-**Current focus:** Ready to close out `v1.2` after Phase 22
+**Core value:** When launched fullscreen on an iPhone, the experience must feel convincingly like using iOS, starting with the home screen, motion system, and Calculator.  
+**Current focus:** Define the next milestone after `v1.2`
 
 ## Artifact Status
 
 | Artifact | Status | Notes |
 |----------|--------|-------|
-| PROJECT.md | Complete | Initial project context committed |
-| config.json | Complete | Workflow set to YOLO, fine granularity, parallel, research/check/verifier on |
-| research/ | Active | Refreshed for v1.2 planning |
-| milestones/ | Complete | v1 roadmap, requirements, and audit archived |
-| MILESTONES.md | Complete | v1 release entry recorded |
-| REQUIREMENTS.md | Active | v1.2 requirements defined and mapped |
-| ROADMAP.md | Active | Phase 22 complete; milestone closeout is next |
-| STATE.md | Active | Updated after Phase 22 completion |
+| PROJECT.md | Active | Updated to reflect shipped `v1.2` state and next milestone goals |
+| ROADMAP.md | Active | Collapsed to milestone index between milestones |
+| REQUIREMENTS.md | Pending archive removal | Next milestone will create a fresh file |
+| milestones/ | Active | `v1`, `v1.1`, and `v1.2` archives available |
+| MILESTONES.md | Active | `v1.2` shipped summary recorded |
+| RETROSPECTIVE.md | Planned | To be created during milestone archival wrap-up |
 
-## Current Phase Outlook
+## Current Outlook
 
 ### Next action
 
-- Run milestone closeout for **v1.2 Notes, Browser & Platform Growth**.
+- Start the next milestone definition flow with `/gsd-new-milestone`.
 
-### Most recently completed phase
+### Most recently completed milestone
 
-- **Phase 22: Browser Launcher Identity Cleanup** — complete, verified, and ready to hand off.
+- **v1.2: Notes, Browser & Platform Growth** — archived and ready to hand off.
 
 ### Planned next phase
 
-- None. `v1.2` phase work is complete; milestone closeout is next.
+- None. Fresh requirements and roadmap work are needed before a new phase can exist.
 
 ## Notes
 
-- Installed standalone iPhone usage is the primary experience.
-- v1 shipped the installable iPhone-inspired shell, shared runtime/motion system, and high-fidelity Calculator.
-- v1.1 is scoped around `Settings`, `Notes`, a managed-iframe `Browser`, multi-page home screens, and the first app-platform primitives.
-- Browser embedding constraints mean the Browser app should be limited and truthful rather than pretending to be a general-purpose web browser.
-- Phase 9 established page-aware launcher state, paged shell UI, and browser-verified return-home page semantics.
-- Phase 10 established the internal app-definition, settings-participation, and storage-namespace layer that later apps will consume.
-- Phase 11 established the shared settings store, real Settings app, and first internal app-management surface.
-- Phase 12 established local-only Notes persistence, a real Notes app, and browser-verified reopen behavior with honest no-sync messaging.
-- Phase 13 established the managed Browser app with a truthful embedded/fallback model and deterministic browser verification.
-- Phase 14 locked the final integrated quality bar across pages, platform metadata, Settings, Notes, and Browser.
-- Historical phase directories were archived to `.planning/milestones/v1.1-phases/` before starting the next milestone.
-- Phase 22 closed the remaining Browser audit debt by making the shared Browser namespace explicit and adding dock-entry launcher-path proof.
-- v1.2 focus is Notes expansion, careful Browser expansion, and app distribution groundwork.
-- The milestone now spans Phases 16-22.
+- Installed standalone iPhone usage remains the primary experience.
+- `v1.2` added Notes search/folders, truthful Browser direct entry, repo-driven app submission validation, and the first in-product app catalog.
+- The milestone audit passed and the remaining notes are non-blocking follow-up debt, not blockers to further planning.
+- Phase execution history for `v1.2` will live under `.planning/milestones/v1.2-phases/`.
 
 ## Session
 
-**Last Date:** 2026-04-12T01:24:32Z
-**Stopped At:** Phase 22 complete, ready for v1.2 milestone closeout
-**Resume File:** .planning/ROADMAP.md
+**Last Date:** 2026-05-27T13:21:33Z  
+**Stopped At:** v1.2 archived; ready for `/gsd-new-milestone`  
+**Resume File:** `.planning/ROADMAP.md`
 
 ---
-*State updated: 2026-04-11 after completing Phase 22*
+*State updated: 2026-05-27 after archiving the v1.2 milestone*

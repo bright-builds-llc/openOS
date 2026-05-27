@@ -1,5 +1,33 @@
 # Project Milestones: openOS
 
+## v1.2 Notes, Browser & Platform Growth (Shipped: 2026-04-11)
+
+**Delivered:** openOS grew into a more useful daily system with searchable organized Notes, truthful Browser direct navigation, repo-driven app submission validation, the first in-product app catalog, and follow-up hardening for submission drift and Browser launcher identity.
+
+**Phases completed:** 16-22 (20 plans, 56 tasks)
+
+**Key accomplishments:**
+
+- Added local Notes search, folders, migration, and launcher-path verification.
+- Added Browser direct URL entry with honest inline-vs-fallback classification and real launcher-path proof.
+- Introduced a checked-in submitted-app manifest contract with repo-native validation.
+- Shipped `Library` as a real metadata-driven app catalog surface sourced from reviewed submissions.
+- Unified milestone closeout behind one canonical `bun run verify:v1.2` command and one integrated launcher-path walkthrough.
+- Closed the audit follow-up gaps by making submission drift fail-closed and Browser grid/dock identity explicit.
+
+**Stats:**
+
+- 105 files changed
+- 9,527 lines of TypeScript/TSX in the current repo
+- 7 phases, 20 plans, 56 tasks
+- 2 days from milestone definition to ship (2026-04-09 → 2026-04-11)
+
+**Git range:** `docs: research milestone v1.2 notes-browser-platform-growth` → `chore(22): finalize autonomous phase 22`
+
+**What's next:** Define the next milestone around deeper Notes capability, careful Browser state growth, and the next platform/distribution step while simplifying today’s manual submission registry seams.
+
+---
+
 ## v1.1 Core Apps & Platform Foundations (Shipped: 2026-04-09)
 
 **Delivered:** The first believable multi-app openOS system with page-aware home screens, real `Settings` and `Notes` apps, a truthful managed-iframe `Browser`, and shared internal app-platform primitives.

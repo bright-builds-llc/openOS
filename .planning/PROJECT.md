@@ -2,29 +2,20 @@
 
 ## What This Is
 
-openOS is a shipped mobile web experience that aims to feel nearly indistinguishable from using an iPhone when opened fullscreen on an iPhone in portrait mode. `v1.1` grows the project from a shell-and-Calculator proof into the first believable multi-app system, adding page-aware home screens, `Settings`, `Notes`, a truthful managed-iframe `Browser`, and the first reusable app-platform primitives.
+openOS is a shipped mobile web experience that aims to feel nearly indistinguishable from using an iPhone when opened fullscreen on an iPhone in portrait mode. It now includes page-aware home screens, persistent `Settings`, local-first `Notes` with search and folders, a truthful direct-entry `Browser`, and a repo-driven app distribution surface anchored by reviewed submissions and an in-product `Library` catalog.
 
-Longer term, the project still aims to become an open platform for browser-native "virtual iOS apps," including a basic UIKit-style library, a repo-driven app distribution model, and an escape hatch for installing arbitrary apps inside the experience.
+Longer term, the project still aims to become an open platform for browser-native "virtual iOS apps," including richer Notes capability, more capable browsing without dishonest claims, and an eventual install escape hatch built on top of reviewed app metadata.
 
 ## Core Value
 
 When launched fullscreen on an iPhone, the experience must feel convincingly like using iOS, starting with the home screen, motion system, and Calculator.
 
-## Current Milestone: v1.2 Notes, Browser & Platform Growth
-
-**Goal:** Expand openOS into a more useful daily system by deepening Notes, broadening Browser carefully, and laying the first contributor-facing app distribution groundwork without weakening the current truthfulness bar.
-
-**Target features:**
-- searchable, organized Notes with local structure beyond a flat list
-- more capable Browser navigation, including direct URL entry, while keeping embed vs external behavior honest
-- repo-driven app submission foundations plus a first in-product app catalog surface
-
 ## Current State
 
-- **Shipped version:** `v1.1` on 2026-04-09
-- **User-facing surface:** install-first Safari onboarding, adaptive shell, shared launcher/runtime/motion system, multi-page home screens, high-fidelity Calculator, real `Settings`, local-only `Notes`, and a truthful managed-iframe `Browser`
-- **Verification:** milestone audit passed after `pnpm test` (`95` tests), `pnpm test:e2e --project=webkit-iphone` (`16` tests), and `pnpm build`
-- **Codebase:** React 19, Vite 8, TypeScript 6, Vitest 4, Playwright 1.59, with about 6,538 lines of TypeScript/TSX in `src/` and `tests/`
+- **Shipped version:** `v1.2` on 2026-04-11
+- **User-facing surface:** install-first Safari onboarding, adaptive shell, shared launcher/runtime/motion system, multi-page home screens, high-fidelity Calculator, real `Settings`, folder-aware local `Notes`, a truthful direct-entry `Browser`, reviewed submitted app manifests, and the first in-product `Library` app catalog
+- **Verification:** `v1.2` milestone audit was refreshed on 2026-05-27 after `bun run verify:v1.2`, covering `submissions:check`, `118` Vitest assertions, explicit typecheck, production build, and `19` WebKit iPhone launcher-path tests
+- **Codebase:** React 19, Vite 8, TypeScript 6, Vitest 4, Playwright 1.59, with about `9,527` lines of TypeScript/TSX in `src/` and `tests/`
 
 ## Requirements
 
@@ -37,28 +28,34 @@ When launched fullscreen on an iPhone, the experience must feel convincingly lik
 - ✓ Real `Settings` app with persistent preferences and internal app-management surface — `v1.1`
 - ✓ Real local-only `Notes` app with browser-verified persistence and honest no-sync messaging — `v1.1`
 - ✓ Truthful managed-iframe `Browser` with curated destinations, graceful fallback, and integrated launcher-path verification — `v1.1`
+- ✓ Users can search notes by title and body text — `v1.2`
+- ✓ Users can organize notes using folders or tags and browse notes through that structure — `v1.2`
+- ✓ Users can enter destinations directly in `Browser` and browse beyond the original curated set without dishonest capability claims — `v1.2`
+- ✓ Contributors can submit apps through a repo-driven review workflow — `v1.2`
+- ✓ Users can browse apps in an in-product app catalog — `v1.2`
+- ✓ The repo exposes one canonical verification command for milestone-defining submission, Notes, Browser, and catalog flows — `v1.2`
 
 ### Active
 
-- [ ] Users can search notes and organize them with folders or tags.
-- [ ] Users can enter destinations directly in Browser and browse beyond the current curated list without dishonest capability claims.
-- [ ] Contributors can submit apps through a repo-driven review workflow and users can browse a first in-product app catalog.
+- [ ] Users can sync notes across devices/accounts.
+- [ ] Users can edit notes with richer formatting than plain text.
+- [ ] Users can use multiple browser tabs.
+- [ ] Users can install arbitrary virtual apps through an escape-hatch flow.
 
 ### Out of Scope
 
 - Landscape mode until the portrait iPhone experience remains strong as the product grows.
 - Widgets, notifications, and lock screen system surfaces before the app platform and core shell mature further.
 - Literal Apple logos and related marks.
-- Notes sync/accounts until local search and organization are proven.
-- Rich-text Notes editing until the upgraded Notes information model settles.
-- Browser tabs and Safari-parity browsing claims.
-- Arbitrary app install escape hatches until submission and catalog foundations exist.
+- Backend-heavy notes sync before the local Notes model proves stable over time.
+- Full Safari-parity browsing claims until the project can keep them truthful.
+- Arbitrary app install flows before the reviewed submission/catalog path matures further.
 
 ## Context
 
-`v1` proved the install boundary, shell fidelity, shared launcher/runtime path, motion system, and first real app. `v1.1` then validated that openOS can grow carefully without breaking the illusion: the home screen can span multiple pages, real built-in apps can share a platform contract, and browser constraints can be handled truthfully instead of hidden behind fake general-purpose browsing claims.
+`v1` proved the install boundary, shell fidelity, shared launcher/runtime path, motion system, and first real app. `v1.1` then proved openOS could grow carefully without breaking the illusion by adding multi-page home screens, real built-in apps, and the first shared app-platform seams.
 
-`v1.2` is focused rather than broad. The goal is to make Notes feel more useful, make Browser more capable without lying about the web, and start turning the internal app-platform layer into a contributor-facing distribution surface. The milestone should still avoid backend-heavy sync scope and any claim that openOS already behaves like a full Safari replacement.
+`v1.2` validated the next layer of utility and platform growth. Notes is now useful beyond a flat local notebook, Browser can handle typed destinations without pretending to be full Safari, contributors have a repo-native submission workflow, and users can browse a first in-product app catalog. Two follow-up hardening phases also closed the milestone audit’s remaining workflow and Browser identity gaps without reopening product scope.
 
 ## Constraints
 
@@ -66,7 +63,7 @@ When launched fullscreen on an iPhone, the experience must feel convincingly lik
 - **Installation model:** Fullscreen installed web app is still the intended experience.
 - **Responsive fidelity:** Support essentially all portrait iPhone sizes without weakening the illusion.
 - **Interaction fidelity:** Home screen, motion, touch response, and built-in app quality remain non-negotiable.
-- **Architecture:** Keep app identity, launcher behavior, settings participation, and storage ownership on shared runtime/platform seams.
+- **Architecture:** Keep app identity, launcher behavior, settings participation, storage ownership, and app-catalog metadata on shared runtime/platform seams.
 - **Verification:** Maintain browser-level regression coverage for illusion-critical and milestone-defining user flows.
 - **Brand/IP:** Avoid literal Apple marks while pursuing close UX parity.
 
@@ -76,24 +73,26 @@ When launched fullscreen on an iPhone, the experience must feel convincingly lik
 |----------|-----------|---------|
 | Make installed fullscreen usage the primary target on iPhone | The illusion is materially stronger without browser chrome | ✓ Validated in `v1` |
 | Build an extensible app model early instead of a Calculator-only demo | Future apps and platform work needed shared launcher/runtime seams from the start | ✓ Validated in `v1` |
-| Keep Browser truthful and limited to curated/embed-safe destinations | Arbitrary browsing is constrained by iframe embedding policy and would be dishonest to overclaim | ✓ Validated in `v1.1` |
-| Use shared platform metadata as the source of truth for app identity, settings participation, and storage | Multiple built-in apps needed one reusable contract instead of ad hoc wiring | ✓ Validated in `v1.1` |
-| Close milestone audit gaps with focused cleanup instead of reopening broad scope | Preserved momentum and fixed the actual truthfulness issue in app-side code | ✓ Validated in `v1.1` |
+| Keep Browser truthful and limited to curated/embed-safe destinations until the shell can prove broader behavior honestly | Arbitrary browsing is constrained by iframe embedding policy and would be dishonest to overclaim | ✓ Validated in `v1.1`, expanded carefully in `v1.2` |
+| Keep Notes local-first while proving search and organization before sync/accounts | Utility can increase without dragging backend and identity scope into the next milestone | ✓ Validated in `v1.2` |
+| Use shared platform metadata as the source of truth for app identity, settings participation, storage, submissions, and catalog entries | Multiple built-in and submitted apps needed one reusable contract instead of ad hoc wiring | ✓ Validated across `v1.1` and `v1.2` |
+| Close milestone audit gaps with focused hardening phases instead of reopening broad scope | Preserved momentum while fixing the actual workflow and Browser identity risks | ✓ Validated in `v1.2` |
 
 ## Next Milestone Goals
 
-- Ship Notes search and organization without taking on sync/accounts yet.
-- Broaden Browser navigation carefully enough that users can type destinations directly and still get truthful fallback behavior.
-- Establish app submission and app-catalog foundations without committing to arbitrary app installation yet.
+- Explore the next Notes step, likely sync/accounts or richer editing, only after confirming the local information model remains the right base.
+- Broaden Browser state carefully, likely through tabs or lightweight persistence, without weakening the current truthfulness bar.
+- Simplify the submitted-app workflow so reviewed metadata is safer and easier to maintain before any arbitrary install escape hatch is attempted.
 
 <details>
 <summary>Archived milestone framing</summary>
 
-### Completed Milestone
+### Completed Milestones
 
-`v1.1 Core Apps & Platform Foundations` shipped on 2026-04-09 after Phases 9-15 and a passing milestone audit.
+- `v1.2 Notes, Browser & Platform Growth` shipped on 2026-04-11 after Phases 16-22 and a passing milestone audit.
+- `v1.1 Core Apps & Platform Foundations` shipped on 2026-04-09 after Phases 9-15 and a passing milestone audit.
 
 </details>
 
 ---
-*Last updated: 2026-04-09 after starting v1.2 milestone*
+*Last updated: 2026-05-27 after archiving the v1.2 milestone*
