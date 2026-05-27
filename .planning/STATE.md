@@ -28,10 +28,10 @@ See: `.planning/PROJECT.md` (updated 2026-05-27)
 |----------|--------|-------|
 | PROJECT.md | Active | Updated to reflect shipped `v1.2` state and next milestone goals |
 | ROADMAP.md | Active | Collapsed to milestone index between milestones |
-| REQUIREMENTS.md | Pending archive removal | Next milestone will create a fresh file |
+| REQUIREMENTS.md | Archived | Fresh requirements will be created by `/gsd-new-milestone` |
 | milestones/ | Active | `v1`, `v1.1`, and `v1.2` archives available |
 | MILESTONES.md | Active | `v1.2` shipped summary recorded |
-| RETROSPECTIVE.md | Planned | To be created during milestone archival wrap-up |
+| RETROSPECTIVE.md | Active | `v1.2` retrospective recorded |
 
 ## Current Outlook
 
