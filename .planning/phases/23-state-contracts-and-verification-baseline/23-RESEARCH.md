@@ -466,17 +466,17 @@ All claims in this research were verified from repo files, npm registry output, 
 |---|-------|---------|---------------|
 | None | No `[ASSUMED]` claims were used. [VERIFIED: research drafting audit] | All sections | No user confirmation is required before planning. [VERIFIED: source coverage] |
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **Exact status labels and UI copy**
+1. **RESOLVED: Exact status labels and UI copy**
    - What we know: The context leaves exact TypeScript type names and status enum labels to the agent. [VERIFIED: `23-CONTEXT.md` the agent's Discretion]
-   - What's unclear: The final user-facing strings for reset/unavailable banners are not specified. [VERIFIED: `23-CONTEXT.md`]
-   - Recommendation: Plan implementation around stable status semantics first and let later UI phases choose copy per app. [RECOMMENDED: Phase boundaries]
+   - Resolution: Plan 23-01 locks stable typed status semantics for the shared helper now: read statuses `missing`, `loaded`, `reset`, and `unavailable`; write statuses `saved` and `unavailable`; reset statuses `reset` and `unavailable`; reset reasons `malformed-json`, `unsupported-version`, and `invalid-payload`; unavailable reasons `storage-read-failed`, `storage-write-failed`, and `storage-reset-failed`.
+   - Resolution: User-facing copy remains deferred to later app-specific UI phases because Phase 23 only creates the platform contract and verification baseline. [VERIFIED: `23-CONTEXT.md` Phase Boundary; VERIFIED: `23-01-PLAN.md`]
 
-2. **Whether `appStorage.ts` should own `createAppSessionStorageKey`**
+2. **RESOLVED: Whether `appStorage.ts` should own `createAppSessionStorageKey`**
    - What we know: `createAppStorageKey(namespace, "session")` already produces the canonical key. [VERIFIED: `src/features/platform/appStorage.ts`, `23-CONTEXT.md` D-01]
-   - What's unclear: A wrapper may be clearer, but it is not strictly necessary. [VERIFIED: current helper capability]
-   - Recommendation: Add the wrapper only if tests and call sites become clearer; otherwise keep the existing helper. [RECOMMENDED: minimal-impact constraint]
+   - Resolution: Add and export `createAppSessionStorageKey(namespace: string)` from `src/features/platform/appStorage.ts`; Plan 23-01 requires the exact implementation expression `createAppStorageKey(namespace, "session")`.
+   - Resolution: The wrapper is justified because it makes canonical `.session` key expectations grep-verifiable across platform tests, runtime Browser namespace regression, Notes durable-isolation tests, and later app-specific session adapters. [VERIFIED: `23-01-PLAN.md`; VERIFIED: `23-02-PLAN.md`]
 
 ## Sources
 

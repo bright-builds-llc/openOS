@@ -34,7 +34,10 @@
   1. User-authored durable data remains intact when disposable app-session state is reset or cleared.
   2. User can recover from malformed saved app-session state without losing notes or reviewed catalog data.
   3. User sees truthful unavailable or reset behavior when local storage cannot preserve app-session state.
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 23-01-PLAN.md - Platform app-session storage contract and canonical namespace tests
+- [ ] 23-02-PLAN.md - Durable Notes isolation regression and `verify:v1.3` wiring
 
 ### Phase 24: Notes Structured Model And Migration
 **Goal**: Existing Notes data safely moves to a structured local model that remains searchable and previewable.
