@@ -10,9 +10,9 @@ Requirements for `v1.3 Stateful Apps & Platform Maturity`. Each maps to exactly 
 ### State Contracts
 
 - [ ] **STATE-01**: User can leave and reopen a core built-in app without losing meaningful local UI context.
-- [ ] **STATE-02**: User-authored durable data remains separate from disposable app-session state.
-- [ ] **STATE-03**: User can recover from malformed saved app-session state without losing notes or reviewed catalog data.
-- [ ] **STATE-04**: User sees truthful unavailable or reset behavior when local storage cannot preserve app-session state.
+- [x] **STATE-02**: User-authored durable data remains separate from disposable app-session state.
+- [x] **STATE-03**: User can recover from malformed saved app-session state without losing notes or reviewed catalog data.
+- [x] **STATE-04**: User sees truthful unavailable or reset behavior when local storage cannot preserve app-session state.
 - [ ] **STATE-05**: Maintainers can verify the shared v1.3 app-state contract through one canonical `verify:v1.3` command.
 
 ### Notes
@@ -86,9 +86,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | STATE-01 | Phase 28 | Pending |
-| STATE-02 | Phase 23 | Pending |
-| STATE-03 | Phase 23 | Pending |
-| STATE-04 | Phase 23 | Pending |
+| STATE-02 | Phase 23 | Complete |
+| STATE-03 | Phase 23 | Complete |
+| STATE-04 | Phase 23 | Complete |
 | STATE-05 | Phase 28 | Pending |
 | NOTES-01 | Phase 24 | Pending |
 | NOTES-02 | Phase 25 | Pending |

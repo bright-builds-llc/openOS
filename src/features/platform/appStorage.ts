@@ -31,6 +31,10 @@ export function createAppStorageKey(
   return `${namespace}.${key}`;
 }
 
+export function createAppSessionStorageKey(namespace: string): string {
+  return createAppStorageKey(namespace, "session");
+}
+
 export function listStorageManagedApps<
   TApp extends StorageAwareApp,
 >(

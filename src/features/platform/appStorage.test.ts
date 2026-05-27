@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   createAppStorageMetadata,
   createAppStorageNamespace,
+  createAppSessionStorageKey,
   getAppStorageNamespace,
   listStorageManagedApps,
 } from "./appStorage";
@@ -66,5 +67,50 @@ describe("appStorage", () => {
 
     // Assert
     expect(result).toBe("openos.apps.settings");
+  });
+
+  it("creates canonical app session storage keys", () => {
+    // Arrange
+    const appIds = [
+      "notes",
+      "browser",
+      "library",
+      "calculator",
+    ];
+
+    // Act
+    const result = appIds.map((appId) =>
+      createAppSessionStorageKey(
+        getAppStorageNamespace(appId, builtInAppDefinitions) ??
+          "",
+      ),
+    );
+
+    // Assert
+    expect(result).toEqual([
+      "openos.apps.notes.session",
+      "openos.apps.browser.session",
+      "openos.apps.library.session",
+      "openos.apps.calculator.session",
+    ]);
+  });
+
+  it("aliases browser grid and dock entries to the same session key", () => {
+    // Arrange
+    const appIds = ["browser-grid", "browser"];
+
+    // Act
+    const result = appIds.map((appId) =>
+      createAppSessionStorageKey(
+        getAppStorageNamespace(appId, builtInAppDefinitions) ??
+          "",
+      ),
+    );
+
+    // Assert
+    expect(result).toEqual([
+      "openos.apps.browser.session",
+      "openos.apps.browser.session",
+    ]);
   });
 });

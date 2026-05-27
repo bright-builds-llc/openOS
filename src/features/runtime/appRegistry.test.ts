@@ -10,6 +10,7 @@ import {
   listRuntimeAppsForSettings,
   listRuntimeStorageManagedApps,
 } from "./appRegistry";
+import { createAppSessionStorageKey } from "../platform/appStorage";
 
 describe("appRegistry", () => {
   it("marks the implemented app set explicitly", () => {
@@ -174,5 +175,17 @@ describe("appRegistry", () => {
       "openos.apps.browser",
       "openos.apps.library",
     ]);
+  });
+
+  it("resolves the canonical Browser session key through launch surface storage", () => {
+    // Arrange
+
+    // Act
+    const result = createAppSessionStorageKey(
+      getCanonicalRuntimeAppStorageNamespace("browser") ?? "",
+    );
+
+    // Assert
+    expect(result).toBe("openos.apps.browser.session");
   });
 });

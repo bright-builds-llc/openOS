@@ -1,8 +1,14 @@
 import { describe, expect, it } from "vitest";
 import {
   createAppStorageKey,
+  createAppSessionStorageKey,
   createAppStorageNamespace,
 } from "../../platform/appStorage";
+import {
+  readAppSessionSnapshot,
+  resetAppSessionSnapshot,
+  type AppSessionPayloadParser,
+} from "../../platform/appSessionStorage";
 import {
   createStoredFolder,
   createStoredNote,
@@ -38,6 +44,43 @@ function createStorage(): Storage {
     },
   } as Storage;
 }
+
+type NotesSession = {
+  selectedFolderId: string;
+  selectedNoteId: string | null;
+};
+
+function isRecord(
+  maybeValue: unknown,
+): maybeValue is Record<string, unknown> {
+  return (
+    typeof maybeValue === "object" &&
+    maybeValue !== null
+  );
+}
+
+const defaultNotesSession: NotesSession = {
+  selectedFolderId: DEFAULT_NOTES_FOLDER_ID,
+  selectedNoteId: null,
+};
+
+const parseNotesSession: AppSessionPayloadParser<NotesSession> = (
+  maybeSession,
+) => {
+  if (
+    !isRecord(maybeSession) ||
+    typeof maybeSession.selectedFolderId !== "string" ||
+    (maybeSession.selectedNoteId !== null &&
+      typeof maybeSession.selectedNoteId !== "string")
+  ) {
+    return null;
+  }
+
+  return {
+    selectedFolderId: maybeSession.selectedFolderId,
+    selectedNoteId: maybeSession.selectedNoteId,
+  };
+};
 
 describe("notesStorage", () => {
   const namespace = createAppStorageNamespace("notes");
@@ -255,5 +298,91 @@ describe("notesStorage", () => {
 
     // Assert
     expect(notes).toEqual([]);
+  });
+
+  it("resets malformed Notes session JSON without touching durable notes", () => {
+    // Arrange
+    const storage = createStorage();
+    createStoredNote(
+      storage,
+      namespace,
+      {
+        title: "Durable",
+        body: "Session reset should not touch this",
+        folderId: DEFAULT_NOTES_FOLDER_ID,
+      },
+      {
+        createId: () => "note-1",
+        now: () => "2026-04-11T10:00:00Z",
+      },
+    );
+    storage.setItem(
+      createAppSessionStorageKey(namespace),
+      "{bad-json",
+    );
+
+    // Act
+    const result = readAppSessionSnapshot(storage, namespace, {
+      version: 1,
+      defaultSession: defaultNotesSession,
+      parseSession: parseNotesSession,
+    });
+    const durableNotes = listStoredNotes(storage, namespace);
+
+    // Assert
+    expect(result.status).toBe("reset");
+    if (result.status !== "reset") {
+      throw new Error("Expected reset result");
+    }
+    expect(result.reason).toBe("malformed-json");
+    expect(
+      storage.getItem(createAppStorageKey(namespace, "notes")),
+    ).not.toBeNull();
+    expect(durableNotes.map((note) => note.id)).toEqual([
+      "note-1",
+    ]);
+  });
+
+  it("resets Notes session state without removing durable notes", () => {
+    // Arrange
+    const storage = createStorage();
+    const createdNote = createStoredNote(
+      storage,
+      namespace,
+      {
+        title: "Durable",
+        body: "Session reset should not touch this",
+        folderId: DEFAULT_NOTES_FOLDER_ID,
+      },
+      {
+        createId: () => "note-1",
+        now: () => "2026-04-11T10:00:00Z",
+      },
+    );
+    storage.setItem(
+      createAppSessionStorageKey(namespace),
+      JSON.stringify({
+        version: 1,
+        session: {
+          selectedFolderId: DEFAULT_NOTES_FOLDER_ID,
+          selectedNoteId: createdNote.id,
+        },
+      }),
+    );
+
+    // Act
+    const result = resetAppSessionSnapshot(storage, namespace);
+    const reopenedNote = getStoredNote(
+      storage,
+      namespace,
+      createdNote.id,
+    );
+
+    // Assert
+    expect(result).toEqual({ status: "reset" });
+    expect(
+      storage.getItem(createAppSessionStorageKey(namespace)),
+    ).toBeNull();
+    expect(reopenedNote).toEqual(createdNote);
   });
 });

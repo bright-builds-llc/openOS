@@ -17,7 +17,7 @@
 - Integer phases (23, 24, 25): Planned milestone work continuing after `v1.2`
 - Decimal phases (23.1, 23.2): Urgent insertions, if needed later
 
-- [ ] **Phase 23: State Contracts And Verification Baseline** - Make app-session state safe, recoverable, and distinct from durable user data.
+- [x] **Phase 23: State Contracts And Verification Baseline** - Make app-session state safe, recoverable, and distinct from durable user data. (completed 2026-05-27)
 - [ ] **Phase 24: Notes Structured Model And Migration** - Move Notes to a structured local model while preserving existing notes and search.
 - [ ] **Phase 25: Notes Editor And Resume** - Let users edit structured notes and resume meaningful Notes context.
 - [ ] **Phase 26: Browser Tabs And Session Restore** - Add truthful multi-tab Browser state shared across launcher entry points.
@@ -36,8 +36,8 @@
   3. User sees truthful unavailable or reset behavior when local storage cannot preserve app-session state.
 **Plans**: 2 plans
 Plans:
-- [ ] 23-01-PLAN.md - Platform app-session storage contract and canonical namespace tests
-- [ ] 23-02-PLAN.md - Durable Notes isolation regression and `verify:v1.3` wiring
+- [x] 23-01-PLAN.md - Platform app-session storage contract and canonical namespace tests
+- [x] 23-02-PLAN.md - Durable Notes isolation regression and `verify:v1.3` wiring
 
 ### Phase 24: Notes Structured Model And Migration
 **Goal**: Existing Notes data safely moves to a structured local model that remains searchable and previewable.
@@ -105,7 +105,7 @@ Phases execute in numeric order: 23 -> 24 -> 25 -> 26 -> 27 -> 28
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
-| 23. State Contracts And Verification Baseline | v1.3 | 0/TBD | Not started | - |
+| 23. State Contracts And Verification Baseline | v1.3 | 2/2 | Complete    | 2026-05-27 |
 | 24. Notes Structured Model And Migration | v1.3 | 0/TBD | Not started | - |
 | 25. Notes Editor And Resume | v1.3 | 0/TBD | Not started | - |
 | 26. Browser Tabs And Session Restore | v1.3 | 0/TBD | Not started | - |
