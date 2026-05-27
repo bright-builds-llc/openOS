@@ -1,16 +1,16 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.2
-milestone_name: Notes, Browser & Platform Growth
-status: Ready for next milestone planning
-stopped_at: v1.2 archived; ready for /gsd-new-milestone
-last_updated: "2026-05-27T13:21:33.265Z"
+milestone: v1.3
+milestone_name: Stateful Apps & Platform Maturity
+status: Defining requirements
+stopped_at: v1.3 started; ready to define requirements
+last_updated: "2026-05-27T13:53:48.242Z"
 progress:
-  total_phases: 7
-  completed_phases: 7
-  total_plans: 20
-  completed_plans: 20
-  percent: 100
+  total_phases: 0
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
+  percent: 0
 ---
 
 # Project State: openOS
@@ -20,15 +20,22 @@ progress:
 See: `.planning/PROJECT.md` (updated 2026-05-27)
 
 **Core value:** When launched fullscreen on an iPhone, the experience must feel convincingly like using iOS, starting with the home screen, motion system, and Calculator.  
-**Current focus:** Define the next milestone after `v1.2`
+**Current focus:** Define requirements and roadmap for `v1.3 Stateful Apps & Platform Maturity`
+
+## Current Position
+
+Phase: Not started (defining requirements)
+Plan: -
+Status: Defining requirements
+Last activity: 2026-05-27 — Milestone `v1.3 Stateful Apps & Platform Maturity` started
 
 ## Artifact Status
 
 | Artifact | Status | Notes |
 |----------|--------|-------|
-| PROJECT.md | Active | Updated to reflect shipped `v1.2` state and next milestone goals |
-| ROADMAP.md | Active | Collapsed to milestone index between milestones |
-| REQUIREMENTS.md | Archived | Fresh requirements will be created by `/gsd-new-milestone` |
+| PROJECT.md | Active | Updated with the `v1.3` milestone goal and target features |
+| ROADMAP.md | Pending | Fresh roadmap will be created after requirements |
+| REQUIREMENTS.md | Pending | Fresh `v1.3` requirements will be created next |
 | milestones/ | Active | `v1`, `v1.1`, and `v1.2` archives available |
 | MILESTONES.md | Active | `v1.2` shipped summary recorded |
 | RETROSPECTIVE.md | Active | `v1.2` retrospective recorded |
@@ -37,7 +44,7 @@ See: `.planning/PROJECT.md` (updated 2026-05-27)
 
 ### Next action
 
-- Start the next milestone definition flow with `/gsd-new-milestone`.
+- Define scoped `v1.3` requirements, then create the Phase 23+ roadmap.
 
 ### Most recently completed milestone
 
@@ -45,20 +52,21 @@ See: `.planning/PROJECT.md` (updated 2026-05-27)
 
 ### Planned next phase
 
-- None. Fresh requirements and roadmap work are needed before a new phase can exist.
+- None yet. Fresh requirements and roadmap work are needed before Phase 23 exists.
 
 ## Notes
 
 - Installed standalone iPhone usage remains the primary experience.
 - `v1.2` added Notes search/folders, truthful Browser direct entry, repo-driven app submission validation, and the first in-product app catalog.
-- The milestone audit passed and the remaining notes are non-blocking follow-up debt, not blockers to further planning.
-- Phase execution history for `v1.2` will live under `.planning/milestones/v1.2-phases/`.
+- `v1.3` should deepen local app state and platform workflow maturity before backend-heavy sync or arbitrary install scope.
+- The `v1.2` milestone audit passed and the remaining notes are non-blocking follow-up debt, not blockers to `v1.3`.
+- Phase execution history for `v1.2` lives under `.planning/milestones/v1.2-phases/`.
 
 ## Session
 
-**Last Date:** 2026-05-27T13:21:33Z  
-**Stopped At:** v1.2 archived; ready for `/gsd-new-milestone`  
-**Resume File:** `.planning/ROADMAP.md`
+**Last Date:** 2026-05-27T13:53:48Z
+**Stopped At:** v1.3 started; ready to define requirements
+**Resume File:** `.planning/PROJECT.md`
 
 ---
-*State updated: 2026-05-27 after archiving the v1.2 milestone*
+*State updated: 2026-05-27 after starting the v1.3 milestone*

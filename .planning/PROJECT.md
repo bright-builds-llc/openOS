@@ -17,6 +17,17 @@ When launched fullscreen on an iPhone, the experience must feel convincingly lik
 - **Verification:** `v1.2` milestone audit was refreshed on 2026-05-27 after `bun run verify:v1.2`, covering `submissions:check`, `118` Vitest assertions, explicit typecheck, production build, and `19` WebKit iPhone launcher-path tests
 - **Codebase:** React 19, Vite 8, TypeScript 6, Vitest 4, Playwright 1.59, with about `9,527` lines of TypeScript/TSX in `src/` and `tests/`
 
+## Current Milestone: v1.3 Stateful Apps & Platform Maturity
+
+**Goal:** Make existing apps feel more stateful and trustworthy by deepening local Notes and Browser workflows while reducing platform submission/catalog drift before any backend-heavy sync or arbitrary install expansion.
+
+**Target features:**
+
+- Richer local Notes editing and structure that builds on the existing search/folder model.
+- Browser tabs and session state that preserve the current truthfulness bar around embed limitations and fallback behavior.
+- Safer submitted-app metadata workflow so reviewed submissions, validation, and the Library catalog stay aligned with less manual registry upkeep.
+- Core app-state polish where returning to built-in apps restores meaningful context instead of feeling like a fresh launch.
+
 ## Requirements
 
 ### Validated
@@ -37,10 +48,10 @@ When launched fullscreen on an iPhone, the experience must feel convincingly lik
 
 ### Active
 
-- [ ] Users can sync notes across devices/accounts.
-- [ ] Users can edit notes with richer formatting than plain text.
-- [ ] Users can use multiple browser tabs.
-- [ ] Users can install arbitrary virtual apps through an escape-hatch flow.
+- [ ] Users can edit local notes with richer formatting or structure than plain text without losing existing notes.
+- [ ] Users can use multiple Browser tabs and recover recent Browser context across app relaunches or refreshes.
+- [ ] Users can return to core built-in apps and resume meaningful local app state.
+- [ ] Contributors can maintain reviewed submitted-app metadata through a safer workflow that keeps validation and the Library catalog aligned.
 
 ### Out of Scope
 
@@ -50,6 +61,25 @@ When launched fullscreen on an iPhone, the experience must feel convincingly lik
 - Backend-heavy notes sync before the local Notes model proves stable over time.
 - Full Safari-parity browsing claims until the project can keep them truthful.
 - Arbitrary app install flows before the reviewed submission/catalog path matures further.
+
+## Evolution
+
+This document evolves at phase transitions and milestone boundaries.
+
+**After each phase transition** (via `/gsd-transition`):
+
+1. Requirements invalidated? Move to Out of Scope with reason.
+2. Requirements validated? Move to Validated with phase reference.
+3. New requirements emerged? Add to Active.
+4. Decisions to log? Add to Key Decisions.
+5. "What This Is" still accurate? Update if drifted.
+
+**After each milestone** (via `/gsd-complete-milestone`):
+
+1. Full review of all sections.
+2. Core Value check: still the right priority?
+3. Audit Out of Scope: reasons still valid?
+4. Update Context with current state.
 
 ## Context
 
@@ -95,4 +125,4 @@ When launched fullscreen on an iPhone, the experience must feel convincingly lik
 </details>
 
 ---
-*Last updated: 2026-05-27 after archiving the v1.2 milestone*
+*Last updated: 2026-05-27 after starting the v1.3 milestone*
