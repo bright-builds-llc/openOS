@@ -85,34 +85,34 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| STATE-01 | Pending roadmap | Pending |
-| STATE-02 | Pending roadmap | Pending |
-| STATE-03 | Pending roadmap | Pending |
-| STATE-04 | Pending roadmap | Pending |
-| STATE-05 | Pending roadmap | Pending |
-| NOTES-01 | Pending roadmap | Pending |
-| NOTES-02 | Pending roadmap | Pending |
-| NOTES-03 | Pending roadmap | Pending |
-| NOTES-04 | Pending roadmap | Pending |
-| NOTES-05 | Pending roadmap | Pending |
-| BROWSER-01 | Pending roadmap | Pending |
-| BROWSER-02 | Pending roadmap | Pending |
-| BROWSER-03 | Pending roadmap | Pending |
-| BROWSER-04 | Pending roadmap | Pending |
-| BROWSER-05 | Pending roadmap | Pending |
-| BROWSER-06 | Pending roadmap | Pending |
-| PLATFORM-01 | Pending roadmap | Pending |
-| PLATFORM-02 | Pending roadmap | Pending |
-| PLATFORM-03 | Pending roadmap | Pending |
-| PLATFORM-04 | Pending roadmap | Pending |
-| PLATFORM-05 | Pending roadmap | Pending |
-| PLATFORM-06 | Pending roadmap | Pending |
+| STATE-01 | Phase 28 | Pending |
+| STATE-02 | Phase 23 | Pending |
+| STATE-03 | Phase 23 | Pending |
+| STATE-04 | Phase 23 | Pending |
+| STATE-05 | Phase 28 | Pending |
+| NOTES-01 | Phase 24 | Pending |
+| NOTES-02 | Phase 25 | Pending |
+| NOTES-03 | Phase 25 | Pending |
+| NOTES-04 | Phase 24 | Pending |
+| NOTES-05 | Phase 25 | Pending |
+| BROWSER-01 | Phase 26 | Pending |
+| BROWSER-02 | Phase 26 | Pending |
+| BROWSER-03 | Phase 26 | Pending |
+| BROWSER-04 | Phase 26 | Pending |
+| BROWSER-05 | Phase 26 | Pending |
+| BROWSER-06 | Phase 26 | Pending |
+| PLATFORM-01 | Phase 27 | Pending |
+| PLATFORM-02 | Phase 27 | Pending |
+| PLATFORM-03 | Phase 27 | Pending |
+| PLATFORM-04 | Phase 27 | Pending |
+| PLATFORM-05 | Phase 27 | Pending |
+| PLATFORM-06 | Phase 27 | Pending |
 
 **Coverage:**
 - v1.3 requirements: 22 total
-- Mapped to phases: 0
-- Unmapped: 22
+- Mapped to phases: 22
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-05-27*
-*Last updated: 2026-05-27 after initial definition*
+*Last updated: 2026-05-27 after roadmap creation*
