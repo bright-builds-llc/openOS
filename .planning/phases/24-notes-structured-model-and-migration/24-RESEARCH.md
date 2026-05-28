@@ -446,12 +446,13 @@ export function getNotePreview(note: Note): string {
 
 **All claims in this research were verified or cited; no `[ASSUMED]` claims are present.** [VERIFIED: research provenance review]
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **Should the implementation eagerly rewrite v2 snapshots to v3 on read, or lazily persist v3 on the next mutation?** [VERIFIED: .planning/phases/24-notes-structured-model-and-migration/24-CONTEXT.md]
+1. **RESOLVED: Should the implementation eagerly rewrite v2 snapshots to v3 on read, or lazily persist v3 on the next mutation?** [VERIFIED: .planning/phases/24-notes-structured-model-and-migration/24-CONTEXT.md]
    - What we know: The user explicitly allows either eager or lazy migration if tests prove the read path returns structured notes and data remains intact. [VERIFIED: .planning/phases/24-notes-structured-model-and-migration/24-CONTEXT.md]
-   - What's unclear: The success criteria do not require asserting that `localStorage` changes to `version: 3` immediately after app load. [VERIFIED: .planning/ROADMAP.md]
-   - Recommendation: Prefer lazy normalization for lower read-side effect risk; write v3 on create/update/delete, and add an explicit tested migration function only if planning wants a durable rewrite assertion. [VERIFIED: src/features/apps/notes/notesStorage.ts; CITED: https://raw.githubusercontent.com/bright-builds-llc/bright-builds-rules/05f8d7a6c9c2e157ec4f922a05273e72dab97676/standards/core/architecture.md]
+   - Decision: Use lazy persistence. Version-2 snapshots and legacy arrays must read as structured v3 `Note` objects immediately, but durable `localStorage` only needs to be rewritten as `version: 3` on the next create/update/delete/write path. [VERIFIED: .planning/phases/24-notes-structured-model-and-migration/24-02-PLAN.md]
+   - Rationale: Lazy persistence avoids read-side effects while still proving the user-visible migration: existing notes reopen with title, body text, folder, timestamps, searchability, and previews intact. [VERIFIED: .planning/ROADMAP.md; VERIFIED: .planning/REQUIREMENTS.md]
+   - Planning implication: Plan 24-02 should keep its current version-3 write-path assertions and should not add a requirement that merely opening Notes rewrites `localStorage` to `version: 3`. [VERIFIED: .planning/phases/24-notes-structured-model-and-migration/24-02-PLAN.md]
 
 ## Environment Availability
 
