@@ -47,7 +47,11 @@ Plans:
   1. User's existing v1.2 notes migrate with title, body, folder, timestamps, and searchability preserved.
   2. User can search structured note content, including formatted or checklist text, and see useful previews generated from that content.
   3. User can keep browsing existing folders after migration without notes dropping out of the local collection.
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 24-01-PLAN.md - Structured Notes content model and search/preview helpers
+- [ ] 24-02-PLAN.md - Durable Notes version 3 migration and storage safety
+- [ ] 24-03-PLAN.md - Plain-text app adapter and `verify:v1.3` coverage
 
 ### Phase 25: Notes Editor And Resume
 **Goal**: Users can create structured local notes and return to the Notes editor screen without losing meaningful context.
