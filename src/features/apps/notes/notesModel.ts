@@ -1,3 +1,8 @@
+import {
+  getNoteContentText,
+  type NoteContentDocument,
+} from "./notesContent";
+
 export const DEFAULT_NOTES_FOLDER_ID = "notes-folder-default";
 export const DEFAULT_NOTES_FOLDER_NAME = "Notes";
 
@@ -15,7 +20,7 @@ export type NoteFolder = {
 export type Note = {
   id: string;
   title: string;
-  body: string;
+  content: NoteContentDocument;
   folderId: string;
   createdAt: string;
   updatedAt: string;
@@ -67,16 +72,20 @@ export function getNoteTitle(note: Note): string {
   return note.title.trim() === "" ? "Untitled" : note.title;
 }
 
+export function getNoteBodyText(note: Note): string {
+  return getNoteContentText(note.content);
+}
+
 export function getNotePreview(note: Note): string {
-  const collapsedBody = note.body
+  const collapsedContent = getNoteContentText(note.content)
     .replace(/\s+/g, " ")
     .trim();
 
-  if (collapsedBody === "") {
+  if (collapsedContent === "") {
     return "Empty note";
   }
 
-  return collapsedBody.slice(0, NOTE_PREVIEW_LENGTH);
+  return collapsedContent.slice(0, NOTE_PREVIEW_LENGTH);
 }
 
 export function filterNotes(
@@ -104,7 +113,8 @@ export function filterNotes(
       return true;
     }
 
-    const haystack = `${note.title}\n${note.body}`.toLowerCase();
+    const contentText = getNoteContentText(note.content);
+    const haystack = `${note.title}\n${contentText}`.toLowerCase();
 
     return queryTerms.every((term) =>
       haystack.includes(term),
