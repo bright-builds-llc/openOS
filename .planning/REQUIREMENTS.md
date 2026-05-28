@@ -17,10 +17,10 @@ Requirements for `v1.3 Stateful Apps & Platform Maturity`. Each maps to exactly 
 
 ### Notes
 
-- [ ] **NOTES-01**: User's existing v1.2 notes migrate to the v1.3 Notes model without losing title, body, folder, timestamps, or searchability.
+- [x] **NOTES-01**: User's existing v1.2 notes migrate to the v1.3 Notes model without losing title, body, folder, timestamps, or searchability.
 - [ ] **NOTES-02**: User can create and edit structured local notes with headings or sections.
 - [ ] **NOTES-03**: User can create and update checklist or list content inside a local note.
-- [ ] **NOTES-04**: User can search structured note content and see useful previews generated from formatted text.
+- [x] **NOTES-04**: User can search structured note content and see useful previews generated from formatted text.
 - [ ] **NOTES-05**: User can return to Notes and resume the last meaningful folder, note, and edit context after navigating home or reloading.
 
 ### Browser
@@ -90,10 +90,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | STATE-03 | Phase 23 | Complete |
 | STATE-04 | Phase 23 | Complete |
 | STATE-05 | Phase 28 | Pending |
-| NOTES-01 | Phase 24 | Pending |
+| NOTES-01 | Phase 24 | Complete |
 | NOTES-02 | Phase 25 | Pending |
 | NOTES-03 | Phase 25 | Pending |
-| NOTES-04 | Phase 24 | Pending |
+| NOTES-04 | Phase 24 | Complete |
 | NOTES-05 | Phase 25 | Pending |
 | BROWSER-01 | Phase 26 | Pending |
 | BROWSER-02 | Phase 26 | Pending |

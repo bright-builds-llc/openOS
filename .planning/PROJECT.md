@@ -14,7 +14,7 @@ When launched fullscreen on an iPhone, the experience must feel convincingly lik
 
 - **Shipped version:** `v1.2` on 2026-04-11
 - **User-facing surface:** install-first Safari onboarding, adaptive shell, shared launcher/runtime/motion system, multi-page home screens, high-fidelity Calculator, real `Settings`, folder-aware local `Notes`, a truthful direct-entry `Browser`, reviewed submitted app manifests, and the first in-product `Library` app catalog
-- **Verification:** `v1.2` milestone audit was refreshed on 2026-05-27 after `bun run verify:v1.2`, covering `submissions:check`, `118` Vitest assertions, explicit typecheck, production build, and `19` WebKit iPhone launcher-path tests
+- **Verification:** `v1.2` milestone audit was refreshed on 2026-05-27 after `bun run verify:v1.2`, and Phase 24 of `v1.3` passed `bun run verify:v1.3` on 2026-05-28, covering focused Notes migration/search tests, the full unit suite, explicit typecheck, production build, and `19` WebKit iPhone launcher-path tests
 - **Codebase:** React 19, Vite 8, TypeScript 6, Vitest 4, Playwright 1.59, with about `9,527` lines of TypeScript/TSX in `src/` and `tests/`
 
 ## Current Milestone: v1.3 Stateful Apps & Platform Maturity
@@ -45,6 +45,8 @@ When launched fullscreen on an iPhone, the experience must feel convincingly lik
 - ✓ Contributors can submit apps through a repo-driven review workflow — `v1.2`
 - ✓ Users can browse apps in an in-product app catalog — `v1.2`
 - ✓ The repo exposes one canonical verification command for milestone-defining submission, Notes, Browser, and catalog flows — `v1.2`
+- ✓ Existing v1.2 Notes data migrates into the v1.3 structured local model without losing title, body text, folder, timestamps, or searchability — Phase 24
+- ✓ Structured Notes content remains searchable and previewable while the existing plain title/body UI stays compatible — Phase 24
 
 ### Active
 
@@ -107,6 +109,7 @@ This document evolves at phase transitions and milestone boundaries.
 | Keep Notes local-first while proving search and organization before sync/accounts | Utility can increase without dragging backend and identity scope into the next milestone | ✓ Validated in `v1.2` |
 | Use shared platform metadata as the source of truth for app identity, settings participation, storage, submissions, and catalog entries | Multiple built-in and submitted apps needed one reusable contract instead of ad hoc wiring | ✓ Validated across `v1.1` and `v1.2` |
 | Close milestone audit gaps with focused hardening phases instead of reopening broad scope | Preserved momentum while fixing the actual workflow and Browser identity risks | ✓ Validated in `v1.2` |
+| Keep Notes structured content as an internal typed model before adding richer editor affordances | Phase 24 proved migration, search, previews, and existing textarea compatibility without adopting a rich-text editor framework | ✓ Validated in Phase 24 |
 
 ## Next Milestone Goals
 
@@ -125,4 +128,4 @@ This document evolves at phase transitions and milestone boundaries.
 </details>
 
 ---
-*Last updated: 2026-05-27 after starting the v1.3 milestone*
+*Last updated: 2026-05-28 after completing Phase 24*

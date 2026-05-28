@@ -18,7 +18,7 @@
 - Decimal phases (23.1, 23.2): Urgent insertions, if needed later
 
 - [x] **Phase 23: State Contracts And Verification Baseline** - Make app-session state safe, recoverable, and distinct from durable user data. (completed 2026-05-27)
-- [ ] **Phase 24: Notes Structured Model And Migration** - Move Notes to a structured local model while preserving existing notes and search.
+- [x] **Phase 24: Notes Structured Model And Migration** - Move Notes to a structured local model while preserving existing notes and search. (completed 2026-05-28)
 - [ ] **Phase 25: Notes Editor And Resume** - Let users edit structured notes and resume meaningful Notes context.
 - [ ] **Phase 26: Browser Tabs And Session Restore** - Add truthful multi-tab Browser state shared across launcher entry points.
 - [ ] **Phase 27: Submitted Metadata Workflow Hardening** - Keep submitted app validation, generated registry output, and Library catalog metadata aligned.
@@ -49,9 +49,9 @@ Plans:
   3. User can keep browsing existing folders after migration without notes dropping out of the local collection.
 **Plans**: 3 plans
 Plans:
-- [ ] 24-01-PLAN.md - Structured Notes content model and search/preview helpers
-- [ ] 24-02-PLAN.md - Durable Notes version 3 migration and storage safety
-- [ ] 24-03-PLAN.md - Plain-text app adapter and `verify:v1.3` coverage
+- [x] 24-01-PLAN.md - Structured Notes content model and search/preview helpers
+- [x] 24-02-PLAN.md - Durable Notes version 3 migration and storage safety
+- [x] 24-03-PLAN.md - Plain-text app adapter and `verify:v1.3` coverage
 
 ### Phase 25: Notes Editor And Resume
 **Goal**: Users can create structured local notes and return to the Notes editor screen without losing meaningful context.
@@ -110,7 +110,7 @@ Phases execute in numeric order: 23 -> 24 -> 25 -> 26 -> 27 -> 28
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
 | 23. State Contracts And Verification Baseline | v1.3 | 2/2 | Complete    | 2026-05-27 |
-| 24. Notes Structured Model And Migration | v1.3 | 0/TBD | Not started | - |
+| 24. Notes Structured Model And Migration | v1.3 | 3/3 | Complete    | 2026-05-28 |
 | 25. Notes Editor And Resume | v1.3 | 0/TBD | Not started | - |
 | 26. Browser Tabs And Session Restore | v1.3 | 0/TBD | Not started | - |
 | 27. Submitted Metadata Workflow Hardening | v1.3 | 0/TBD | Not started | - |
