@@ -19,6 +19,7 @@ import {
 import {
   DEFAULT_NOTES_FOLDER_ID,
   filterNotes,
+  getNoteBodyText,
   getNotePreview,
   getNoteTitle,
   type Note,
@@ -675,7 +676,7 @@ export function NotesApp() {
                 onChange={(event) => {
                   handleUpdateNote("body", event.target.value);
                 }}
-                value={selectedNote.body}
+                value={getNoteBodyText(selectedNote)}
               />
             </>
           )}
