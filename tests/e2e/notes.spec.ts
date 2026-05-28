@@ -26,6 +26,80 @@ test.describe("notes app", () => {
     await page.getByTestId("notes-title-input").fill("Groceries");
     await page.getByTestId("notes-body-input").fill("Eggs and milk");
 
+    await page.evaluate(() => {
+      const maybeRawSnapshot = localStorage.getItem(
+        "openos.apps.notes.notes",
+      );
+
+      if (maybeRawSnapshot === null) {
+        throw new Error("Expected durable Notes snapshot.");
+      }
+
+      const snapshot = JSON.parse(maybeRawSnapshot) as {
+        version?: unknown;
+        notes?: Array<{
+          title?: unknown;
+          content?: {
+            version?: unknown;
+            blocks?: Array<{
+              kind?: unknown;
+              text?: unknown;
+            }>;
+          };
+        }>;
+      };
+
+      if (snapshot.version !== 3) {
+        throw new Error("Expected durable Notes snapshot version 3.");
+      }
+
+      if (!Array.isArray(snapshot.notes)) {
+        throw new Error("Expected durable Notes array.");
+      }
+
+      const maybeGroceriesNote = snapshot.notes.find(
+        (note) => note.title === "Groceries",
+      );
+
+      if (maybeGroceriesNote === undefined) {
+        throw new Error("Expected Groceries note in durable snapshot.");
+      }
+
+      const groceriesNote = maybeGroceriesNote;
+
+      if (groceriesNote.content === undefined) {
+        throw new Error("Expected Groceries note content.");
+      }
+
+      if (groceriesNote.content.version !== 1) {
+        throw new Error("Expected Groceries note content version 1.");
+      }
+
+      if (!Array.isArray(groceriesNote.content.blocks)) {
+        throw new Error("Expected Groceries note content blocks.");
+      }
+
+      const hasParagraphBlock = groceriesNote.content.blocks.some(
+        (block) =>
+          block.kind === "paragraph" &&
+          block.text === "Eggs and milk",
+      );
+
+      if (!hasParagraphBlock) {
+        throw new Error(
+          "Expected Groceries note paragraph content block.",
+        );
+      }
+
+      const omitsLegacyBody =
+        Object.prototype.hasOwnProperty.call(groceriesNote, "body") ===
+        false;
+
+      if (!omitsLegacyBody) {
+        throw new Error("Expected Groceries note to omit legacy body.");
+      }
+    });
+
     const noteItem = page.locator('[data-testid^="notes-item:"]').first();
     await expect(noteItem).toContainText("Groceries");
     await expect(noteItem).toContainText("Eggs and milk");
