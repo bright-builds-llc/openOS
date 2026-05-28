@@ -103,7 +103,7 @@ _Task 2 did not require production changes because Task 1's storage boundary alr
 - **Verification:** `bun run test -- src/features/apps/notes/notesStorage.test.ts`
 - **Committed in:** `97fe0ab`
 
----
+***
 
 **Total deviations:** 1 auto-fixed (1 bug)
 **Impact on plan:** The fix was limited to the new test fixture rewrite and did not change plan scope.
@@ -147,6 +147,6 @@ Plan 24-03 can integrate the Notes UI/editor adapter with structured `Note.conte
 - Confirmed task commits `3738498`, `410fe28`, and `97fe0ab` exist in git history.
 - Confirmed only `.planning/phases/24-notes-structured-model-and-migration/24-02-SUMMARY.md` was untracked after task commits, preserving the requested STATE/ROADMAP scope boundary.
 
----
+***
 *Phase: 24-notes-structured-model-and-migration*
 *Completed: 2026-05-28*
