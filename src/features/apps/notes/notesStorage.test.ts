@@ -88,6 +88,35 @@ const parseNotesSession: AppSessionPayloadParser<NotesSession> = (
   };
 };
 
+function createVersion3DurableNotesSnapshot() {
+  return {
+    version: 3,
+    folders: [createDefaultNotesFolder()],
+    notes: [
+      {
+        id: "note-1",
+        title: "Durable",
+        content: createNoteContentFromPlainText(
+          "Session reset should not touch this",
+        ),
+        folderId: DEFAULT_NOTES_FOLDER_ID,
+        createdAt: "2026-04-11T10:00:00Z",
+        updatedAt: "2026-04-11T10:00:00Z",
+      },
+    ],
+  };
+}
+
+function seedVersion3DurableNotes(
+  storage: Storage,
+  namespace: string,
+): void {
+  storage.setItem(
+    createAppStorageKey(namespace, "notes"),
+    JSON.stringify(createVersion3DurableNotesSnapshot()),
+  );
+}
+
 describe("notesStorage", () => {
   const namespace = createAppStorageNamespace("notes");
 
@@ -535,22 +564,31 @@ describe("notesStorage", () => {
     expect(notes).toEqual([]);
   });
 
+  it("returns empty notes for malformed durable payloads without removing unrelated keys", () => {
+    // Arrange
+    const storage = createStorage();
+    const sessionKey = createAppSessionStorageKey(namespace);
+    const catalogKey = "openos.apps.catalog.reviewed";
+    storage.setItem(
+      createAppStorageKey(namespace, "notes"),
+      "{bad-json",
+    );
+    storage.setItem(sessionKey, "keep-session");
+    storage.setItem(catalogKey, "keep-catalog");
+
+    // Act
+    const notes = listStoredNotes(storage, namespace);
+
+    // Assert
+    expect(notes).toEqual([]);
+    expect(storage.getItem(sessionKey)).toBe("keep-session");
+    expect(storage.getItem(catalogKey)).toBe("keep-catalog");
+  });
+
   it("resets malformed Notes session JSON without touching durable notes", () => {
     // Arrange
     const storage = createStorage();
-    createStoredNote(
-      storage,
-      namespace,
-      {
-        title: "Durable",
-        body: "Session reset should not touch this",
-        folderId: DEFAULT_NOTES_FOLDER_ID,
-      },
-      {
-        createId: () => "note-1",
-        now: () => "2026-04-11T10:00:00Z",
-      },
-    );
+    seedVersion3DurableNotes(storage, namespace);
     storage.setItem(
       createAppSessionStorageKey(namespace),
       "{bad-json",
@@ -573,34 +611,27 @@ describe("notesStorage", () => {
     expect(
       storage.getItem(createAppStorageKey(namespace, "notes")),
     ).not.toBeNull();
-    expect(durableNotes.map((note) => note.id)).toEqual([
-      "note-1",
-    ]);
+    expect(durableNotes).toEqual(
+      createVersion3DurableNotesSnapshot().notes,
+    );
   });
 
   it("resets Notes session state without removing durable notes", () => {
     // Arrange
     const storage = createStorage();
-    const createdNote = createStoredNote(
-      storage,
-      namespace,
-      {
-        title: "Durable",
-        body: "Session reset should not touch this",
-        folderId: DEFAULT_NOTES_FOLDER_ID,
-      },
-      {
-        createId: () => "note-1",
-        now: () => "2026-04-11T10:00:00Z",
-      },
-    );
+    const durableSnapshot = createVersion3DurableNotesSnapshot();
+    const durableNoteId = durableSnapshot.notes[0]?.id;
+    if (durableNoteId === undefined) {
+      throw new Error("Expected durable note fixture");
+    }
+    seedVersion3DurableNotes(storage, namespace);
     storage.setItem(
       createAppSessionStorageKey(namespace),
       JSON.stringify({
         version: 1,
         session: {
           selectedFolderId: DEFAULT_NOTES_FOLDER_ID,
-          selectedNoteId: createdNote.id,
+          selectedNoteId: durableSnapshot.notes[0]?.id ?? null,
         },
       }),
     );
@@ -610,7 +641,7 @@ describe("notesStorage", () => {
     const reopenedNote = getStoredNote(
       storage,
       namespace,
-      createdNote.id,
+      durableNoteId,
     );
 
     // Assert
@@ -618,6 +649,6 @@ describe("notesStorage", () => {
     expect(
       storage.getItem(createAppSessionStorageKey(namespace)),
     ).toBeNull();
-    expect(reopenedNote).toEqual(createdNote);
+    expect(reopenedNote).toEqual(durableSnapshot.notes[0]);
   });
 });
