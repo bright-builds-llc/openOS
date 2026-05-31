@@ -2,9 +2,9 @@
 gsd_state_version: 1.0
 milestone: v1.3
 milestone_name: Stateful Apps & Platform Maturity
-status: executing
-stopped_at: Phase 24 complete, Phase 25 ready to discuss
-last_updated: "2026-05-28T04:31:50.000Z"
+status: Ready to discuss and plan
+stopped_at: Phase 25 context gathered
+last_updated: "2026-05-31T23:54:05.203Z"
 last_activity: 2026-05-28 -- Phase 24 complete, transitioned to Phase 25
 progress:
   total_phases: 6
@@ -80,9 +80,9 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-05-28T04:31:50.000Z
-Stopped at: Phase 24 complete, Phase 25 ready to discuss
-Resume file: .planning/ROADMAP.md
+Last session: 2026-05-31T23:54:05.199Z
+Stopped at: Phase 25 context gathered
+Resume file: .planning/phases/25-notes-editor-and-resume/25-CONTEXT.md
 
 ---
 *State updated: 2026-05-28 after completing Phase 24*
