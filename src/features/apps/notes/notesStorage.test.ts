@@ -10,16 +10,20 @@ import {
   type AppSessionPayloadParser,
 } from "../../platform/appSessionStorage";
 import {
+  NOTE_CONTENT_DOCUMENT_VERSION,
   createNoteContentFromPlainText,
   getNoteContentText,
+  type NoteContentDocument,
 } from "./notesContent";
 import {
+  createStoredNoteFromContent,
   createStoredFolder,
   createStoredNote,
   deleteStoredNote,
   getStoredNote,
   listStoredFolders,
   listStoredNotes,
+  updateStoredNoteContent,
   updateStoredNote,
 } from "./notesStorage";
 import {
@@ -514,6 +518,158 @@ describe("notesStorage", () => {
       updatedAt: "2026-04-11T11:00:00Z",
     });
     expect(Object.hasOwn(snapshot.notes[0], "body")).toBe(false);
+  });
+
+  it("creates stored notes from structured content without durable body fields", () => {
+    // Arrange
+    const storage = createStorage();
+    const content: NoteContentDocument = {
+      version: NOTE_CONTENT_DOCUMENT_VERSION,
+      blocks: [
+        { kind: "heading", text: "Trip plan" },
+        {
+          kind: "checklistItem",
+          text: "Pack charger",
+          checked: true,
+        },
+      ],
+    };
+
+    // Act
+    const createdNote = createStoredNoteFromContent(
+      storage,
+      namespace,
+      {
+        title: "Packing",
+        content,
+        folderId: DEFAULT_NOTES_FOLDER_ID,
+      },
+      {
+        createId: () => "note-structured",
+        now: () => "2026-04-11T10:00:00Z",
+      },
+    );
+    const storedValue = storage.getItem(
+      createAppStorageKey(namespace, "notes"),
+    );
+
+    // Assert
+    expect(createdNote.content).toEqual(content);
+    expect(storedValue).not.toBeNull();
+    const snapshot = JSON.parse(storedValue ?? "{}");
+    expect(snapshot.version).toBe(3);
+    expect(snapshot.notes[0]).toEqual({
+      id: "note-structured",
+      title: "Packing",
+      content,
+      folderId: DEFAULT_NOTES_FOLDER_ID,
+      createdAt: "2026-04-11T10:00:00Z",
+      updatedAt: "2026-04-11T10:00:00Z",
+    });
+    expect(Object.hasOwn(snapshot.notes[0], "body")).toBe(false);
+  });
+
+  it("updates stored note content directly while preserving checklist checked state", () => {
+    // Arrange
+    const storage = createStorage();
+    const originalContent: NoteContentDocument = {
+      version: NOTE_CONTENT_DOCUMENT_VERSION,
+      blocks: [{ kind: "paragraph", text: "Draft" }],
+    };
+    const nextContent: NoteContentDocument = {
+      version: NOTE_CONTENT_DOCUMENT_VERSION,
+      blocks: [
+        { kind: "heading", text: "Trip plan" },
+        {
+          kind: "checklistItem",
+          text: "Pack charger",
+          checked: true,
+        },
+      ],
+    };
+    createStoredNoteFromContent(
+      storage,
+      namespace,
+      {
+        title: "Packing",
+        content: originalContent,
+        folderId: DEFAULT_NOTES_FOLDER_ID,
+      },
+      {
+        createId: () => "note-structured",
+        now: () => "2026-04-11T10:00:00Z",
+      },
+    );
+
+    // Act
+    const updatedNote = updateStoredNoteContent(
+      storage,
+      namespace,
+      "note-structured",
+      nextContent,
+      { now: () => "2026-04-11T11:00:00Z" },
+    );
+    const reopenedNote = getStoredNote(
+      storage,
+      namespace,
+      "note-structured",
+    );
+
+    // Assert
+    expect(updatedNote).not.toBeNull();
+    if (updatedNote === null) {
+      throw new Error("Expected structured note update");
+    }
+    expect(updatedNote.content).toEqual(nextContent);
+    expect(updatedNote.updatedAt).toBe("2026-04-11T11:00:00Z");
+    expect(reopenedNote?.content.blocks[1]).toEqual({
+      kind: "checklistItem",
+      text: "Pack charger",
+      checked: true,
+    });
+  });
+
+  it("leaves session and catalog keys untouched during structured content writes", () => {
+    // Arrange
+    const storage = createStorage();
+    const sessionKey = createAppSessionStorageKey(namespace);
+    const catalogKey = "openos.apps.catalog.reviewed";
+    const firstContent: NoteContentDocument = {
+      version: NOTE_CONTENT_DOCUMENT_VERSION,
+      blocks: [{ kind: "heading", text: "Before" }],
+    };
+    const nextContent: NoteContentDocument = {
+      version: NOTE_CONTENT_DOCUMENT_VERSION,
+      blocks: [{ kind: "heading", text: "After" }],
+    };
+    storage.setItem(sessionKey, "keep-session");
+    storage.setItem(catalogKey, "keep-catalog");
+
+    // Act
+    const createdNote = createStoredNoteFromContent(
+      storage,
+      namespace,
+      {
+        title: "Durable",
+        content: firstContent,
+        folderId: DEFAULT_NOTES_FOLDER_ID,
+      },
+      {
+        createId: () => "note-structured",
+        now: () => "2026-04-11T10:00:00Z",
+      },
+    );
+    updateStoredNoteContent(
+      storage,
+      namespace,
+      createdNote.id,
+      nextContent,
+      { now: () => "2026-04-11T11:00:00Z" },
+    );
+
+    // Assert
+    expect(storage.getItem(sessionKey)).toBe("keep-session");
+    expect(storage.getItem(catalogKey)).toBe("keep-catalog");
   });
 
   it("rejects duplicate folder names", () => {
