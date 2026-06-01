@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.3
 milestone_name: Stateful Apps & Platform Maturity
-status: executing
-stopped_at: Completed 25-02-PLAN.md
-last_updated: "2026-06-01T00:58:24.320Z"
+status: verifying
+stopped_at: Completed 25-03-PLAN.md
+last_updated: "2026-06-01T01:09:43.322Z"
 last_activity: 2026-06-01
 progress:
   total_phases: 6
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 8
-  completed_plans: 7
-  percent: 88
+  completed_plans: 8
+  percent: 100
 ---
 
 # Project State: openOS
@@ -25,20 +25,20 @@ See: `.planning/PROJECT.md` (updated 2026-05-28)
 
 ## Current Position
 
-Phase: 25 (Notes Editor And Resume) — EXECUTING
+Phase: 25 (Notes Editor And Resume) — VERIFYING
 Plan: 3 of 3
-Status: Ready to execute
+Status: Phase complete — ready for verification
 Last activity: 2026-06-01
 
-Progress: [█████████░] 88%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 7
+- Total plans completed: 8
 - Average duration: Not available yet
-- Total execution time: 0.3 hours
+- Total execution time: 0.4 hours
 
 **By Phase:**
 
@@ -46,15 +46,15 @@ Progress: [█████████░] 88%
 |-------|-------|-------|----------|
 | 23. State Contracts And Verification Baseline | 2/2 | TBD | - |
 | 24. Notes Structured Model And Migration | 3/3 | TBD | - |
-| 25. Notes Editor And Resume | 2/3 | 16 min | 8 min |
+| 25. Notes Editor And Resume | 3/3 | 22 min | 7 min |
 | 26. Browser Tabs And Session Restore | 0/TBD | TBD | - |
 | 27. Submitted Metadata Workflow Hardening | 0/TBD | TBD | - |
 | 28. Core App-State Polish And Integrated Regression | 0/TBD | TBD | - |
 
 **Recent Trend:**
 
-- Last 5 plans: Phase 24 P01, Phase 24 P02, Phase 24 P03, Phase 25 P01, Phase 25 P02
-- Trend: Notes structured model contracts and editor resume wiring landed
+- Last 5 plans: Phase 24 P02, Phase 24 P03, Phase 25 P01, Phase 25 P02, Phase 25 P03
+- Trend: Notes structured editor and browser verification complete
 
 *Updated after each plan completion*
 
@@ -74,6 +74,9 @@ Recent decisions affecting current work:
 - [Phase 25-notes-editor-and-resume]: Kept block authoring in an extracted NotesEditor component so NotesApp owns storage/session wiring while the editor owns only controlled block inputs.
 - [Phase 25-notes-editor-and-resume]: Treated openos.apps.notes.session as disposable resume state: read/reset/write failures show a warning while durable Notes edits continue through notesStorage.
 - [Phase 25-notes-editor-and-resume]: Kept the existing local Notes workflow and added only the exact destructive confirmation needed before durable note deletion.
+- [Phase 25-notes-editor-and-resume]: Kept the primary Notes browser proof on the installed launcher path so structured editing, search, home navigation, reload, and malformed-session behavior are validated through the real app shell.
+- [Phase 25-notes-editor-and-resume]: Kept existing integration, distribution, and README media assertions intact while moving Notes authoring from the removed body textarea to structured block input 0.
+- [Phase 25-notes-editor-and-resume]: Extended the existing verify:v1.3 focused test list instead of adding a second command or weakening the full WebKit iPhone suite.
 
 ### Pending Todos
 
@@ -86,9 +89,9 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-01T00:58:24.316Z
-Stopped at: Completed 25-02-PLAN.md
+Last session: 2026-06-01T01:09:43.318Z
+Stopped at: Completed 25-03-PLAN.md
 Resume file: None
 
 ---
-*State updated: 2026-06-01 after completing Phase 25 P02*
+*State updated: 2026-06-01 after completing Phase 25 P03*
