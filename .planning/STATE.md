@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.3
 milestone_name: Stateful Apps & Platform Maturity
 status: executing
-stopped_at: Completed 25-01-PLAN.md
-last_updated: "2026-06-01T00:45:56.168Z"
+stopped_at: Completed 25-02-PLAN.md
+last_updated: "2026-06-01T00:58:24.320Z"
 last_activity: 2026-06-01
 progress:
   total_phases: 6
   completed_phases: 2
   total_plans: 8
-  completed_plans: 6
-  percent: 75
+  completed_plans: 7
+  percent: 88
 ---
 
 # Project State: openOS
@@ -26,19 +26,19 @@ See: `.planning/PROJECT.md` (updated 2026-05-28)
 ## Current Position
 
 Phase: 25 (Notes Editor And Resume) — EXECUTING
-Plan: 2 of 3
+Plan: 3 of 3
 Status: Ready to execute
 Last activity: 2026-06-01
 
-Progress: [████████░░] 75%
+Progress: [█████████░] 88%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 6
+- Total plans completed: 7
 - Average duration: Not available yet
-- Total execution time: 0.1 hours
+- Total execution time: 0.3 hours
 
 **By Phase:**
 
@@ -46,15 +46,15 @@ Progress: [████████░░] 75%
 |-------|-------|-------|----------|
 | 23. State Contracts And Verification Baseline | 2/2 | TBD | - |
 | 24. Notes Structured Model And Migration | 3/3 | TBD | - |
-| 25. Notes Editor And Resume | 1/3 | 8 min | 8 min |
+| 25. Notes Editor And Resume | 2/3 | 16 min | 8 min |
 | 26. Browser Tabs And Session Restore | 0/TBD | TBD | - |
 | 27. Submitted Metadata Workflow Hardening | 0/TBD | TBD | - |
 | 28. Core App-State Polish And Integrated Regression | 0/TBD | TBD | - |
 
 **Recent Trend:**
 
-- Last 5 plans: Phase 23 P02, Phase 24 P01, Phase 24 P02, Phase 24 P03, Phase 25 P01
-- Trend: Notes structured model contracts and resume state started
+- Last 5 plans: Phase 24 P01, Phase 24 P02, Phase 24 P03, Phase 25 P01, Phase 25 P02
+- Trend: Notes structured model contracts and editor resume wiring landed
 
 *Updated after each plan completion*
 
@@ -71,6 +71,9 @@ Recent decisions affecting current work:
 - [Phase 25-notes-editor-and-resume]: Kept block editing as pure typed helpers in notesContent.ts so React can call one content API instead of reshaping block arrays.
 - [Phase 25-notes-editor-and-resume]: Added structured durable write APIs beside the legacy body adapter so existing plain-text callers keep working while new editor paths preserve headings and checklist checked state.
 - [Phase 25-notes-editor-and-resume]: Stored Notes resume state only through openos.apps.notes.session, with saved ids and block indexes treated as disposable hints resolved against current folders and notes.
+- [Phase 25-notes-editor-and-resume]: Kept block authoring in an extracted NotesEditor component so NotesApp owns storage/session wiring while the editor owns only controlled block inputs.
+- [Phase 25-notes-editor-and-resume]: Treated openos.apps.notes.session as disposable resume state: read/reset/write failures show a warning while durable Notes edits continue through notesStorage.
+- [Phase 25-notes-editor-and-resume]: Kept the existing local Notes workflow and added only the exact destructive confirmation needed before durable note deletion.
 
 ### Pending Todos
 
@@ -83,9 +86,9 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-01T00:45:56.163Z
-Stopped at: Completed 25-01-PLAN.md
+Last session: 2026-06-01T00:58:24.316Z
+Stopped at: Completed 25-02-PLAN.md
 Resume file: None
 
 ---
-*State updated: 2026-06-01 after completing Phase 25 P01*
+*State updated: 2026-06-01 after completing Phase 25 P02*
