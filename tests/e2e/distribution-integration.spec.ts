@@ -18,7 +18,7 @@ test.describe("distribution integration", () => {
     await page.getByTestId("notes-create").click();
     await page.getByTestId("notes-title-input").fill("Catalog launch");
     await page
-      .getByTestId("notes-body-input")
+      .getByTestId("notes-block-input:0")
       .fill("Signal Box and Studio Lab ship through reviewed metadata.");
     await page
       .getByTestId("notes-search-input")

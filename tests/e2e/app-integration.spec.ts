@@ -52,7 +52,9 @@ test.describe("app integration", () => {
     await expect(page.getByTestId("notes-local-warning")).toBeVisible();
     await page.getByTestId("notes-create").click();
     await page.getByTestId("notes-title-input").fill("Phase 14");
-    await page.getByTestId("notes-body-input").fill("Integration check");
+    await page
+      .getByTestId("notes-block-input:0")
+      .fill("Integration check");
     await returnHome(page, "notes");
     await expectActiveHomePage(page, 0);
 

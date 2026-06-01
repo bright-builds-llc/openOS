@@ -105,7 +105,7 @@ test("captures shipped README media from real launcher flows", async ({
   await page.getByTestId("notes-create").click();
   await page.getByTestId("notes-title-input").fill("v1.2 ideas");
   await page
-    .getByTestId("notes-body-input")
+    .getByTestId("notes-block-input:0")
     .fill("Search notes, direct URLs, app catalog.");
   await blurActiveElement(page);
   await page.getByTestId("app-surface:notes").screenshot({
