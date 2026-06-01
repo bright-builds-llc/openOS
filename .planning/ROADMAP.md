@@ -61,7 +61,11 @@ Plans:
   1. User can create and edit local notes with headings or sections.
   2. User can create and update checklist or list content inside a local note.
   3. User can return to Notes and resume the last meaningful folder, note, and edit context after navigating home or reloading.
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 25-01-PLAN.md - Structured Notes content, storage, and session contracts
+- [ ] 25-02-PLAN.md - Notes structured editor and resume UI wiring
+- [ ] 25-03-PLAN.md - Browser resume coverage and `verify:v1.3` gate
 **UI hint**: yes
 
 ### Phase 26: Browser Tabs And Session Restore
