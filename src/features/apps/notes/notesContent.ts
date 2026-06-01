@@ -11,9 +11,16 @@ export type NoteContentBlock =
       checked: boolean;
     };
 
+export type NoteContentBlockKind = NoteContentBlock["kind"];
+
 export type NoteContentDocument = {
   version: typeof NOTE_CONTENT_DOCUMENT_VERSION;
   blocks: NoteContentBlock[];
+};
+
+export type NoteContentSelectionResult = {
+  content: NoteContentDocument;
+  selectedBlockIndex: number | null;
 };
 
 export function createEmptyNoteContent(): NoteContentDocument {
@@ -33,6 +40,96 @@ export function createNoteContentFromPlainText(
   return {
     version: NOTE_CONTENT_DOCUMENT_VERSION,
     blocks: [{ kind: "paragraph", text: body }],
+  };
+}
+
+export function createDefaultEditableNoteContent(): NoteContentDocument {
+  return {
+    version: NOTE_CONTENT_DOCUMENT_VERSION,
+    blocks: [{ kind: "paragraph", text: "" }],
+  };
+}
+
+export function appendNoteContentBlock(
+  content: NoteContentDocument,
+  kind: NoteContentBlockKind,
+): NoteContentSelectionResult {
+  const block = createEmptyNoteContentBlock(kind);
+
+  return {
+    content: {
+      ...content,
+      blocks: [...content.blocks, block],
+    },
+    selectedBlockIndex: content.blocks.length,
+  };
+}
+
+export function updateNoteContentBlockText(
+  content: NoteContentDocument,
+  blockIndex: number,
+  text: string,
+): NoteContentDocument {
+  if (!isValidBlockIndex(content, blockIndex)) {
+    return content;
+  }
+
+  return {
+    ...content,
+    blocks: content.blocks.map((block, index) =>
+      index === blockIndex ? { ...block, text } : block,
+    ),
+  };
+}
+
+export function toggleChecklistItemBlock(
+  content: NoteContentDocument,
+  blockIndex: number,
+): NoteContentDocument {
+  if (!isValidBlockIndex(content, blockIndex)) {
+    return content;
+  }
+
+  const block = content.blocks[blockIndex];
+
+  if (block.kind !== "checklistItem") {
+    return content;
+  }
+
+  return {
+    ...content,
+    blocks: content.blocks.map((currentBlock, index) =>
+      index === blockIndex
+        ? { ...block, checked: !block.checked }
+        : currentBlock,
+    ),
+  };
+}
+
+export function removeNoteContentBlock(
+  content: NoteContentDocument,
+  blockIndex: number,
+): NoteContentSelectionResult {
+  if (!isValidBlockIndex(content, blockIndex)) {
+    return {
+      content,
+      selectedBlockIndex: null,
+    };
+  }
+
+  const blocks = content.blocks.filter(
+    (_block, index) => index !== blockIndex,
+  );
+
+  return {
+    content: {
+      ...content,
+      blocks,
+    },
+    selectedBlockIndex:
+      blocks.length === 0
+        ? null
+        : Math.min(blockIndex, blocks.length - 1),
   };
 }
 
@@ -124,6 +221,34 @@ function parseTextBlock(
     kind,
     text: maybeValue.text,
   };
+}
+
+function createEmptyNoteContentBlock(
+  kind: NoteContentBlockKind,
+): NoteContentBlock {
+  if (kind === "checklistItem") {
+    return {
+      kind,
+      text: "",
+      checked: false,
+    };
+  }
+
+  return {
+    kind,
+    text: "",
+  };
+}
+
+function isValidBlockIndex(
+  content: NoteContentDocument,
+  blockIndex: number,
+): boolean {
+  return (
+    Number.isInteger(blockIndex) &&
+    blockIndex >= 0 &&
+    blockIndex < content.blocks.length
+  );
 }
 
 function isRecord(maybeValue: unknown): maybeValue is UnknownRecord {
