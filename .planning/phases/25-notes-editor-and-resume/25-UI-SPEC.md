@@ -1,10 +1,11 @@
 ---
 phase: 25
 slug: notes-editor-and-resume
-status: draft
+status: approved
 shadcn_initialized: false
 preset: none
 created: 2026-06-01
+reviewed_at: 2026-06-01T00:13:59.526Z
 ---
 
 # Phase 25 — UI Design Contract
@@ -91,6 +92,8 @@ Additional required labels: `Add Text`, `Add Heading`, `Add Checklist Item`, `Re
 
 Phase 25 extends the current Notes screen, not the app shell. Preserve the existing order: hero, local-only warning, search/folder toolbar, folder filter strip, note list, editor panel. On narrow iPhone portrait layouts, the list and editor remain stacked with no horizontal overflow; at wider widths the current two-column list/editor layout may remain.
 
+Primary focal point: when no note is selected, `New Note` is the primary visual anchor; when editing, the focused structured block/editor panel is primary and selected list/folder state is secondary.
+
 The editor surface renders the Phase 24 typed blocks directly: `paragraph`, `heading`, and `checklistItem`. New notes start as structured documents. Existing paragraph-only notes open in the structured editor without a migration prompt.
 
 Required block controls:
@@ -122,11 +125,11 @@ Use these stable test IDs for new browser coverage: `notes-add-text`, `notes-add
 
 ## Checker Sign-Off
 
-- [ ] Dimension 1 Copywriting: PASS
-- [ ] Dimension 2 Visuals: PASS
-- [ ] Dimension 3 Color: PASS
-- [ ] Dimension 4 Typography: PASS
-- [ ] Dimension 5 Spacing: PASS
-- [ ] Dimension 6 Registry Safety: PASS
+- [x] Dimension 1 Copywriting: PASS
+- [x] Dimension 2 Visuals: PASS with non-blocking focal-point recommendation applied
+- [x] Dimension 3 Color: PASS
+- [x] Dimension 4 Typography: PASS
+- [x] Dimension 5 Spacing: PASS
+- [x] Dimension 6 Registry Safety: PASS
 
-**Approval:** pending
+**Approval:** approved
