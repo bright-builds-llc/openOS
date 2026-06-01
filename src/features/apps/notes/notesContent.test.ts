@@ -1,9 +1,14 @@
 import { describe, expect, it } from "vitest";
 import {
   NOTE_CONTENT_DOCUMENT_VERSION,
+  appendNoteContentBlock,
+  createDefaultEditableNoteContent,
   createNoteContentFromPlainText,
   getNoteContentText,
   parseNoteContentDocument,
+  removeNoteContentBlock,
+  toggleChecklistItemBlock,
+  updateNoteContentBlockText,
   type NoteContentDocument,
 } from "./notesContent";
 
@@ -102,5 +107,232 @@ describe("notesContent", () => {
 
     // Assert
     expect(result).toBeNull();
+  });
+
+  it("creates default editable content with one empty paragraph", () => {
+    // Act
+    const result = createDefaultEditableNoteContent();
+
+    // Assert
+    expect(result).toEqual({
+      version: NOTE_CONTENT_DOCUMENT_VERSION,
+      blocks: [{ kind: "paragraph", text: "" }],
+    });
+  });
+
+  it("appends a heading block and selects it", () => {
+    // Arrange
+    const content = createDefaultEditableNoteContent();
+
+    // Act
+    const result = appendNoteContentBlock(content, "heading");
+
+    // Assert
+    expect(result).toEqual({
+      content: {
+        version: NOTE_CONTENT_DOCUMENT_VERSION,
+        blocks: [
+          { kind: "paragraph", text: "" },
+          { kind: "heading", text: "" },
+        ],
+      },
+      selectedBlockIndex: 1,
+    });
+    expect(content.blocks).toEqual([{ kind: "paragraph", text: "" }]);
+  });
+
+  it("appends an unchecked checklist item block and selects it", () => {
+    // Arrange
+    const content = createDefaultEditableNoteContent();
+
+    // Act
+    const result = appendNoteContentBlock(content, "checklistItem");
+
+    // Assert
+    expect(result).toEqual({
+      content: {
+        version: NOTE_CONTENT_DOCUMENT_VERSION,
+        blocks: [
+          { kind: "paragraph", text: "" },
+          { kind: "checklistItem", text: "", checked: false },
+        ],
+      },
+      selectedBlockIndex: 1,
+    });
+    expect(content.blocks).toEqual([{ kind: "paragraph", text: "" }]);
+  });
+
+  it("updates block text without changing other blocks", () => {
+    // Arrange
+    const content: NoteContentDocument = {
+      version: NOTE_CONTENT_DOCUMENT_VERSION,
+      blocks: [
+        { kind: "paragraph", text: "Intro" },
+        { kind: "heading", text: "Plan" },
+        {
+          kind: "checklistItem",
+          text: "Pack charger",
+          checked: false,
+        },
+      ],
+    };
+
+    // Act
+    const result = updateNoteContentBlockText(
+      content,
+      2,
+      "Pack adapter",
+    );
+
+    // Assert
+    expect(result).toEqual({
+      version: NOTE_CONTENT_DOCUMENT_VERSION,
+      blocks: [
+        { kind: "paragraph", text: "Intro" },
+        { kind: "heading", text: "Plan" },
+        {
+          kind: "checklistItem",
+          text: "Pack adapter",
+          checked: false,
+        },
+      ],
+    });
+    expect(content.blocks[2]).toEqual({
+      kind: "checklistItem",
+      text: "Pack charger",
+      checked: false,
+    });
+  });
+
+  it("returns original content when updating an invalid block index", () => {
+    // Arrange
+    const content = createDefaultEditableNoteContent();
+
+    // Act
+    const result = updateNoteContentBlockText(content, 3, "Ignored");
+
+    // Assert
+    expect(result).toBe(content);
+  });
+
+  it("toggles only checklist item checked state", () => {
+    // Arrange
+    const content: NoteContentDocument = {
+      version: NOTE_CONTENT_DOCUMENT_VERSION,
+      blocks: [
+        { kind: "paragraph", text: "Intro" },
+        {
+          kind: "checklistItem",
+          text: "Pack charger",
+          checked: false,
+        },
+      ],
+    };
+
+    // Act
+    const result = toggleChecklistItemBlock(content, 1);
+
+    // Assert
+    expect(result).toEqual({
+      version: NOTE_CONTENT_DOCUMENT_VERSION,
+      blocks: [
+        { kind: "paragraph", text: "Intro" },
+        {
+          kind: "checklistItem",
+          text: "Pack charger",
+          checked: true,
+        },
+      ],
+    });
+    expect(content.blocks[1]).toEqual({
+      kind: "checklistItem",
+      text: "Pack charger",
+      checked: false,
+    });
+  });
+
+  it("returns original content when toggling a non-checklist block", () => {
+    // Arrange
+    const content = createDefaultEditableNoteContent();
+
+    // Act
+    const result = toggleChecklistItemBlock(content, 0);
+
+    // Assert
+    expect(result).toBe(content);
+  });
+
+  it("returns original content when toggling an invalid block index", () => {
+    // Arrange
+    const content = createDefaultEditableNoteContent();
+
+    // Act
+    const result = toggleChecklistItemBlock(content, -1);
+
+    // Assert
+    expect(result).toBe(content);
+  });
+
+  it("removes a block and selects the nearest remaining block", () => {
+    // Arrange
+    const content: NoteContentDocument = {
+      version: NOTE_CONTENT_DOCUMENT_VERSION,
+      blocks: [
+        { kind: "paragraph", text: "Intro" },
+        { kind: "heading", text: "Plan" },
+        {
+          kind: "checklistItem",
+          text: "Pack charger",
+          checked: false,
+        },
+      ],
+    };
+
+    // Act
+    const result = removeNoteContentBlock(content, 2);
+
+    // Assert
+    expect(result).toEqual({
+      content: {
+        version: NOTE_CONTENT_DOCUMENT_VERSION,
+        blocks: [
+          { kind: "paragraph", text: "Intro" },
+          { kind: "heading", text: "Plan" },
+        ],
+      },
+      selectedBlockIndex: 1,
+    });
+    expect(content.blocks).toHaveLength(3);
+  });
+
+  it("removes the only block and clears selection", () => {
+    // Arrange
+    const content = createDefaultEditableNoteContent();
+
+    // Act
+    const result = removeNoteContentBlock(content, 0);
+
+    // Assert
+    expect(result).toEqual({
+      content: {
+        version: NOTE_CONTENT_DOCUMENT_VERSION,
+        blocks: [],
+      },
+      selectedBlockIndex: null,
+    });
+  });
+
+  it("returns original content and null selection when removing an invalid block index", () => {
+    // Arrange
+    const content = createDefaultEditableNoteContent();
+
+    // Act
+    const result = removeNoteContentBlock(content, 4);
+
+    // Assert
+    expect(result).toEqual({
+      content,
+      selectedBlockIndex: null,
+    });
   });
 });
