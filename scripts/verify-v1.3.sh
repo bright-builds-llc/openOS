@@ -12,7 +12,8 @@ bun run test -- \
   src/features/runtime/appRegistry.test.ts \
   src/features/apps/notes/notesContent.test.ts \
   src/features/apps/notes/notesModel.test.ts \
-  src/features/apps/notes/notesStorage.test.ts
+  src/features/apps/notes/notesStorage.test.ts \
+  src/features/apps/notes/notesSession.test.ts
 
 echo "[verify:v1.3] running full unit and integration tests"
 bun run test
