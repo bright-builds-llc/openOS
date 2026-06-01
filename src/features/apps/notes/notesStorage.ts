@@ -2,6 +2,7 @@ import { createAppStorageKey } from "../../platform/appStorage";
 import {
   createNoteContentFromPlainText,
   parseNoteContentDocument,
+  type NoteContentDocument,
 } from "./notesContent";
 import type {
   Note,
@@ -28,6 +29,12 @@ type NotesSnapshot = {
   version: typeof NOTES_STORAGE_VERSION;
   folders: NoteFolder[];
   notes: Note[];
+};
+
+export type StructuredNoteInput = {
+  title: string;
+  content: NoteContentDocument;
+  folderId: string;
 };
 
 function getNotesStorageKey(
@@ -373,6 +380,43 @@ export function createStoredNote(
   return nextNote;
 }
 
+export function createStoredNoteFromContent(
+  storage: StorageLike,
+  namespace: string,
+  input: StructuredNoteInput,
+  maybeOptions?: {
+    createId?: () => string;
+    now?: () => string;
+  },
+): Note {
+  const snapshot = readSnapshot(storage, namespace);
+  const createId =
+    maybeOptions?.createId ??
+    (() => crypto.randomUUID());
+  const now =
+    maybeOptions?.now ??
+    (() => new Date().toISOString());
+  const timestamp = now();
+  const nextNote: Note = {
+    id: createId(),
+    title: input.title,
+    content: input.content,
+    folderId: resolveFolderId(
+      snapshot.folders,
+      input.folderId,
+    ),
+    createdAt: timestamp,
+    updatedAt: timestamp,
+  };
+
+  writeSnapshot(storage, namespace, {
+    ...snapshot,
+    notes: [nextNote, ...snapshot.notes],
+  });
+
+  return nextNote;
+}
+
 export function createStoredFolder(
   storage: StorageLike,
   namespace: string,
@@ -456,6 +500,48 @@ export function updateStoredNote(
                 snapshot.folders,
                 updates.folderId,
               ),
+        updatedAt: now(),
+      };
+
+      return maybeUpdatedNote;
+    },
+  );
+
+  if (maybeUpdatedNote === null) {
+    return null;
+  }
+
+  writeSnapshot(storage, namespace, {
+    ...snapshot,
+    notes: nextNotes,
+  });
+
+  return maybeUpdatedNote;
+}
+
+export function updateStoredNoteContent(
+  storage: StorageLike,
+  namespace: string,
+  noteId: string,
+  content: NoteContentDocument,
+  maybeOptions?: {
+    now?: () => string;
+  },
+): Note | null {
+  const snapshot = readSnapshot(storage, namespace);
+  const now =
+    maybeOptions?.now ??
+    (() => new Date().toISOString());
+  let maybeUpdatedNote: Note | null = null;
+  const nextNotes = snapshot.notes.map(
+    (note) => {
+      if (note.id !== noteId) {
+        return note;
+      }
+
+      maybeUpdatedNote = {
+        ...note,
+        content,
         updatedAt: now(),
       };
 
