@@ -420,12 +420,12 @@ await expect(page.getByTestId("notes-block-check:1")).toBeChecked();
 |---|-------|---------|---------------|
 | — | No claims were intentionally left as `[ASSUMED]`; planning recommendations are tied to verified code, user decisions, or cited docs. | — | — |
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **Should block resume include exact caret offset or only selected block?**  
+1. **RESOLVED: Should block resume include exact caret offset or only selected block?**  
    - What we know: User decisions require selected/editor-focused block and enough edit context, not exact text selection offsets. [VERIFIED: .planning/phases/25-notes-editor-and-resume/25-CONTEXT.md]  
-   - What's unclear: Exact caret offset persistence has not been decided and is fragile across block edits/deletes. [VERIFIED: src/features/apps/notes/notesContent.ts]  
-   - Recommendation: Plan selected block index only for Phase 25; add caret offsets only if UAT explicitly needs them. [VERIFIED: .planning/phases/25-notes-editor-and-resume/25-CONTEXT.md]
+   - Resolution: Phase 25 resumes the selected/focused block index only. Exact caret offset persistence is not required for this phase and should be added later only if UAT explicitly asks for it. [VERIFIED: .planning/phases/25-notes-editor-and-resume/25-CONTEXT.md]
+   - Plan impact: Current plans already implement `selectedBlockIndex`-only resume and do not need a plan rewrite. [VERIFIED: .planning/phases/25-notes-editor-and-resume/25-01-PLAN.md; .planning/phases/25-notes-editor-and-resume/25-02-PLAN.md; .planning/phases/25-notes-editor-and-resume/25-03-PLAN.md]
 
 ## Environment Availability
 
