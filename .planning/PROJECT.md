@@ -2,7 +2,7 @@
 
 ## What This Is
 
-openOS is a shipped mobile web experience that aims to feel nearly indistinguishable from using an iPhone when opened fullscreen on an iPhone in portrait mode. It now includes page-aware home screens, persistent `Settings`, local-first `Notes` with search and folders, a truthful direct-entry `Browser`, and a repo-driven app distribution surface anchored by reviewed submissions and an in-product `Library` catalog.
+openOS is a shipped mobile web experience that aims to feel nearly indistinguishable from using an iPhone when opened fullscreen on an iPhone in portrait mode. It now includes page-aware home screens, persistent `Settings`, local-first `Notes` with structured block editing, search, folders, and resume state, a truthful direct-entry `Browser`, and a repo-driven app distribution surface anchored by reviewed submissions and an in-product `Library` catalog.
 
 Longer term, the project still aims to become an open platform for browser-native "virtual iOS apps," including richer Notes capability, more capable browsing without dishonest claims, and an eventual install escape hatch built on top of reviewed app metadata.
 
@@ -13,9 +13,9 @@ When launched fullscreen on an iPhone, the experience must feel convincingly lik
 ## Current State
 
 - **Shipped version:** `v1.2` on 2026-04-11
-- **User-facing surface:** install-first Safari onboarding, adaptive shell, shared launcher/runtime/motion system, multi-page home screens, high-fidelity Calculator, real `Settings`, folder-aware local `Notes`, a truthful direct-entry `Browser`, reviewed submitted app manifests, and the first in-product `Library` app catalog
-- **Verification:** `v1.2` milestone audit was refreshed on 2026-05-27 after `bun run verify:v1.2`, and Phase 24 of `v1.3` passed `bun run verify:v1.3` on 2026-05-28, covering focused Notes migration/search tests, the full unit suite, explicit typecheck, production build, and `19` WebKit iPhone launcher-path tests
-- **Codebase:** React 19, Vite 8, TypeScript 6, Vitest 4, Playwright 1.59, with about `9,527` lines of TypeScript/TSX in `src/` and `tests/`
+- **User-facing surface:** install-first Safari onboarding, adaptive shell, shared launcher/runtime/motion system, multi-page home screens, high-fidelity Calculator, real `Settings`, structured local `Notes` with folders, search, checklist/heading editing, and editor resume, a truthful direct-entry `Browser`, reviewed submitted app manifests, and the first in-product `Library` app catalog
+- **Verification:** `v1.2` milestone audit was refreshed on 2026-05-27 after `bun run verify:v1.2`, and Phase 25 of `v1.3` passed `bun run verify:v1.3` on 2026-06-01, covering focused Notes/session tests, the full unit suite, explicit typecheck, production build, and `19` WebKit iPhone launcher-path tests
+- **Codebase:** React 19, Vite 8, TypeScript 6, Vitest 4, Playwright 1.59, with about `12,734` lines of TypeScript/TSX in `src/` and `tests/`
 
 ## Current Milestone: v1.3 Stateful Apps & Platform Maturity
 
@@ -47,10 +47,12 @@ When launched fullscreen on an iPhone, the experience must feel convincingly lik
 - ✓ The repo exposes one canonical verification command for milestone-defining submission, Notes, Browser, and catalog flows — `v1.2`
 - ✓ Existing v1.2 Notes data migrates into the v1.3 structured local model without losing title, body text, folder, timestamps, or searchability — Phase 24
 - ✓ Structured Notes content remains searchable and previewable while the existing plain title/body UI stays compatible — Phase 24
+- ✓ Users can edit local notes with richer formatting or structure than plain text without losing existing notes — Phase 25
+- ✓ Users can create and update checklist or list content inside a local note — Phase 25
+- ✓ Users can return to Notes and resume the last meaningful folder, note, and edit context after navigating home or reloading — Phase 25
 
 ### Active
 
-- [ ] Users can edit local notes with richer formatting or structure than plain text without losing existing notes.
 - [ ] Users can use multiple Browser tabs and recover recent Browser context across app relaunches or refreshes.
 - [ ] Users can return to core built-in apps and resume meaningful local app state.
 - [ ] Contributors can maintain reviewed submitted-app metadata through a safer workflow that keeps validation and the Library catalog aligned.
@@ -89,6 +91,8 @@ This document evolves at phase transitions and milestone boundaries.
 
 `v1.2` validated the next layer of utility and platform growth. Notes is now useful beyond a flat local notebook, Browser can handle typed destinations without pretending to be full Safari, contributors have a repo-native submission workflow, and users can browse a first in-product app catalog. Two follow-up hardening phases also closed the milestone audit’s remaining workflow and Browser identity gaps without reopening product scope.
 
+`v1.3` has now validated the local Notes foundation through Phase 25. Durable Notes data migrated to a structured model, the editor can author paragraph, heading, and checklist blocks without adopting a rich-text engine, and disposable Notes session state restores meaningful folder, note, search, and block context after home navigation or reload.
+
 ## Constraints
 
 - **Platform:** Mobile web on iPhone in portrait remains the primary target.
@@ -110,6 +114,7 @@ This document evolves at phase transitions and milestone boundaries.
 | Use shared platform metadata as the source of truth for app identity, settings participation, storage, submissions, and catalog entries | Multiple built-in and submitted apps needed one reusable contract instead of ad hoc wiring | ✓ Validated across `v1.1` and `v1.2` |
 | Close milestone audit gaps with focused hardening phases instead of reopening broad scope | Preserved momentum while fixing the actual workflow and Browser identity risks | ✓ Validated in `v1.2` |
 | Keep Notes structured content as an internal typed model before adding richer editor affordances | Phase 24 proved migration, search, previews, and existing textarea compatibility without adopting a rich-text editor framework | ✓ Validated in Phase 24 |
+| Keep Notes rich editing lightweight and local-first before sync/accounts | Phase 25 proved structured block editing, checklist authoring, and editor resume through local durable/session storage without adding a rich-text engine or backend scope | ✓ Validated in Phase 25 |
 
 ## Next Milestone Goals
 
@@ -128,4 +133,4 @@ This document evolves at phase transitions and milestone boundaries.
 </details>
 
 ---
-*Last updated: 2026-05-28 after completing Phase 24*
+*Last updated: 2026-06-01 after completing Phase 25*
