@@ -115,7 +115,7 @@ Phases execute in numeric order: 23 -> 24 -> 25 -> 26 -> 27 -> 28
 |-------|-----------|----------------|--------|-----------|
 | 23. State Contracts And Verification Baseline | v1.3 | 2/2 | Complete    | 2026-05-27 |
 | 24. Notes Structured Model And Migration | v1.3 | 3/3 | Complete    | 2026-05-28 |
-| 25. Notes Editor And Resume | v1.3 | 1/3 | In Progress | - |
+| 25. Notes Editor And Resume | v1.3 | 1/3 | In Progress|  |
 | 26. Browser Tabs And Session Restore | v1.3 | 0/TBD | Not started | - |
 | 27. Submitted Metadata Workflow Hardening | v1.3 | 0/TBD | Not started | - |
 | 28. Core App-State Polish And Integrated Regression | v1.3 | 0/TBD | Not started | - |
